@@ -636,6 +636,225 @@ module.exports = function (iterator) {
 
 /***/ }),
 
+/***/ "2bcf":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af.js": [
+		"f2df",
+		1
+	],
+	"./ar.js": [
+		"7676",
+		2
+	],
+	"./bg.js": [
+		"8225",
+		3
+	],
+	"./bs.js": [
+		"1609",
+		4
+	],
+	"./ca.js": [
+		"783f",
+		5
+	],
+	"./cs.js": [
+		"16e5",
+		6
+	],
+	"./da.js": [
+		"b160",
+		7
+	],
+	"./de.js": [
+		"7ac4",
+		8
+	],
+	"./ee.js": [
+		"be73",
+		9
+	],
+	"./el.js": [
+		"db51",
+		10
+	],
+	"./en.js": [
+		"97d7",
+		11
+	],
+	"./es.js": [
+		"a75e",
+		12
+	],
+	"./fa.js": [
+		"6544",
+		13
+	],
+	"./fi.js": [
+		"e2c1",
+		14
+	],
+	"./fo.js": [
+		"a4fe",
+		15
+	],
+	"./fr.js": [
+		"d018",
+		16
+	],
+	"./ge.js": [
+		"9955",
+		17
+	],
+	"./he.js": [
+		"cc5b",
+		18
+	],
+	"./hr.js": [
+		"c673",
+		19
+	],
+	"./hu.js": [
+		"d811",
+		20
+	],
+	"./id.js": [
+		"2b49",
+		21
+	],
+	"./is.js": [
+		"3dcd",
+		22
+	],
+	"./it.js": [
+		"0fe8",
+		23
+	],
+	"./ja.js": [
+		"919c",
+		24
+	],
+	"./kk.js": [
+		"fa99",
+		25
+	],
+	"./ko.js": [
+		"9823",
+		26
+	],
+	"./lb.js": [
+		"9d5c",
+		27
+	],
+	"./lt.js": [
+		"0c2c",
+		28
+	],
+	"./lv.js": [
+		"f85b",
+		29
+	],
+	"./mn.js": [
+		"4851",
+		30
+	],
+	"./nb-NO.js": [
+		"0af9",
+		31
+	],
+	"./nl.js": [
+		"b7a4",
+		32
+	],
+	"./pl.js": [
+		"5a7a",
+		33
+	],
+	"./pt-BR.js": [
+		"f024",
+		34
+	],
+	"./ro.js": [
+		"1629",
+		35
+	],
+	"./ru.js": [
+		"b6a5",
+		36
+	],
+	"./sk.js": [
+		"8164",
+		37
+	],
+	"./sl-SI.js": [
+		"94ab",
+		38
+	],
+	"./sq.js": [
+		"e0ce",
+		39
+	],
+	"./sr-CYRL.js": [
+		"6186",
+		40
+	],
+	"./sr.js": [
+		"37c0",
+		41
+	],
+	"./sv.js": [
+		"88aa",
+		42
+	],
+	"./th.js": [
+		"2b89",
+		43
+	],
+	"./tr.js": [
+		"0137",
+		44
+	],
+	"./uk.js": [
+		"e923",
+		45
+	],
+	"./ur.js": [
+		"de50",
+		46
+	],
+	"./vi.js": [
+		"51b0",
+		47
+	],
+	"./zh.js": [
+		"b628",
+		48
+	]
+};
+function webpackAsyncContext(req) {
+	if(!__webpack_require__.o(map, req)) {
+		return Promise.resolve().then(function() {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
+	}
+
+	var ids = map[req], id = ids[0];
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(id);
+	});
+}
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = "2bcf";
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
 /***/ "2cf4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -774,513 +993,6 @@ if (v8) {
 
 module.exports = version && +version;
 
-
-/***/ }),
-
-/***/ "3096":
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./af.esm.js": [
-		"16bd",
-		9,
-		1
-	],
-	"./af.js": [
-		"3b23",
-		7,
-		49
-	],
-	"./ar.esm.js": [
-		"a316",
-		9,
-		2
-	],
-	"./ar.js": [
-		"8574",
-		7,
-		50
-	],
-	"./bg.esm.js": [
-		"bd38",
-		9,
-		3
-	],
-	"./bg.js": [
-		"94e0",
-		7,
-		51
-	],
-	"./bs.esm.js": [
-		"2dd1",
-		9,
-		4
-	],
-	"./bs.js": [
-		"b4a4",
-		7,
-		52
-	],
-	"./ca.esm.js": [
-		"49f4",
-		9,
-		5
-	],
-	"./ca.js": [
-		"b59d",
-		7,
-		53
-	],
-	"./cs.esm.js": [
-		"5f06",
-		9,
-		6
-	],
-	"./cs.js": [
-		"613f",
-		7,
-		54
-	],
-	"./da.esm.js": [
-		"73fe",
-		9,
-		7
-	],
-	"./da.js": [
-		"d6ab",
-		7,
-		55
-	],
-	"./de.esm.js": [
-		"7779",
-		9,
-		8
-	],
-	"./de.js": [
-		"5ae0",
-		7,
-		56
-	],
-	"./ee.esm.js": [
-		"01ab",
-		9,
-		9
-	],
-	"./ee.js": [
-		"2397",
-		7,
-		57
-	],
-	"./el.esm.js": [
-		"078d",
-		9,
-		10
-	],
-	"./el.js": [
-		"c7ce",
-		7,
-		58
-	],
-	"./en.esm.js": [
-		"27fd",
-		9,
-		11
-	],
-	"./en.js": [
-		"205d",
-		7,
-		59
-	],
-	"./es.esm.js": [
-		"721f",
-		9,
-		12
-	],
-	"./es.js": [
-		"41ad",
-		7,
-		60
-	],
-	"./fa.esm.js": [
-		"ee1f",
-		9,
-		13
-	],
-	"./fa.js": [
-		"c9fb",
-		7,
-		61
-	],
-	"./fi.esm.js": [
-		"50aa",
-		9,
-		14
-	],
-	"./fi.js": [
-		"0665",
-		7,
-		62
-	],
-	"./fo.esm.js": [
-		"f47b",
-		9,
-		15
-	],
-	"./fo.js": [
-		"36d4",
-		7,
-		63
-	],
-	"./fr.esm.js": [
-		"ac73",
-		9,
-		16
-	],
-	"./fr.js": [
-		"588f",
-		7,
-		64
-	],
-	"./ge.esm.js": [
-		"cdbd",
-		9,
-		17
-	],
-	"./ge.js": [
-		"7ab4",
-		7,
-		65
-	],
-	"./he.esm.js": [
-		"8948",
-		9,
-		18
-	],
-	"./he.js": [
-		"80f5",
-		7,
-		66
-	],
-	"./hr.esm.js": [
-		"9322",
-		9,
-		19
-	],
-	"./hr.js": [
-		"01db",
-		7,
-		67
-	],
-	"./hu.esm.js": [
-		"4456",
-		9,
-		20
-	],
-	"./hu.js": [
-		"e829",
-		7,
-		68
-	],
-	"./id.esm.js": [
-		"1c6d",
-		9,
-		21
-	],
-	"./id.js": [
-		"7b8b",
-		7,
-		69
-	],
-	"./is.esm.js": [
-		"c1d1",
-		9,
-		22
-	],
-	"./is.js": [
-		"d5ae",
-		7,
-		70
-	],
-	"./it.esm.js": [
-		"c43d",
-		9,
-		23
-	],
-	"./it.js": [
-		"b219",
-		7,
-		71
-	],
-	"./ja.esm.js": [
-		"2412",
-		9,
-		24
-	],
-	"./ja.js": [
-		"d0b7",
-		7,
-		72
-	],
-	"./kk.esm.js": [
-		"2a51",
-		9,
-		25
-	],
-	"./kk.js": [
-		"a09b",
-		7,
-		73
-	],
-	"./ko.esm.js": [
-		"bace",
-		9,
-		26
-	],
-	"./ko.js": [
-		"7de2",
-		7,
-		74
-	],
-	"./lb.esm.js": [
-		"6e57",
-		9,
-		27
-	],
-	"./lb.js": [
-		"8a33",
-		7,
-		75
-	],
-	"./lt.esm.js": [
-		"be55",
-		9,
-		28
-	],
-	"./lt.js": [
-		"e040",
-		7,
-		76
-	],
-	"./lv.esm.js": [
-		"7369",
-		9,
-		29
-	],
-	"./lv.js": [
-		"22ff",
-		7,
-		77
-	],
-	"./mn.esm.js": [
-		"6319",
-		9,
-		30
-	],
-	"./mn.js": [
-		"7ee5",
-		7,
-		78
-	],
-	"./nb-NO.esm.js": [
-		"ff84",
-		9,
-		31
-	],
-	"./nb-NO.js": [
-		"da3b",
-		7,
-		79
-	],
-	"./nl.esm.js": [
-		"69be",
-		9,
-		32
-	],
-	"./nl.js": [
-		"3218",
-		7,
-		80
-	],
-	"./pl.esm.js": [
-		"88bb",
-		9,
-		33
-	],
-	"./pl.js": [
-		"225b",
-		7,
-		81
-	],
-	"./pt-BR.esm.js": [
-		"8749",
-		9,
-		34
-	],
-	"./pt-BR.js": [
-		"8b7c",
-		7,
-		82
-	],
-	"./ro.esm.js": [
-		"703f",
-		9,
-		35
-	],
-	"./ro.js": [
-		"1f26",
-		7,
-		83
-	],
-	"./ru.esm.js": [
-		"1f45",
-		9,
-		36
-	],
-	"./ru.js": [
-		"923d",
-		7,
-		84
-	],
-	"./sk.esm.js": [
-		"82b1",
-		9,
-		37
-	],
-	"./sk.js": [
-		"838f",
-		7,
-		85
-	],
-	"./sl-SI.esm.js": [
-		"9501",
-		9,
-		38
-	],
-	"./sl-SI.js": [
-		"a0ff",
-		7,
-		86
-	],
-	"./sq.esm.js": [
-		"2d1a",
-		9,
-		39
-	],
-	"./sq.js": [
-		"b1f7",
-		7,
-		87
-	],
-	"./sr-CYRL.esm.js": [
-		"f028",
-		9,
-		40
-	],
-	"./sr-CYRL.js": [
-		"294b",
-		7,
-		88
-	],
-	"./sr.esm.js": [
-		"89cd",
-		9,
-		41
-	],
-	"./sr.js": [
-		"dc07",
-		7,
-		89
-	],
-	"./sv.esm.js": [
-		"ebca",
-		9,
-		42
-	],
-	"./sv.js": [
-		"5bc9",
-		7,
-		90
-	],
-	"./th.esm.js": [
-		"7414",
-		9,
-		43
-	],
-	"./th.js": [
-		"2eb8",
-		7,
-		91
-	],
-	"./tr.esm.js": [
-		"cea8",
-		9,
-		44
-	],
-	"./tr.js": [
-		"5db6",
-		7,
-		92
-	],
-	"./uk.esm.js": [
-		"4bc8",
-		9,
-		45
-	],
-	"./uk.js": [
-		"4f68",
-		7,
-		93
-	],
-	"./ur.esm.js": [
-		"c839",
-		9,
-		46
-	],
-	"./ur.js": [
-		"6ae8",
-		7,
-		94
-	],
-	"./vi.esm.js": [
-		"6790",
-		9,
-		47
-	],
-	"./vi.js": [
-		"d73e",
-		7,
-		95
-	],
-	"./zh.esm.js": [
-		"2116",
-		9,
-		48
-	],
-	"./zh.js": [
-		"a9d4",
-		7,
-		96
-	]
-};
-function webpackAsyncContext(req) {
-	if(!__webpack_require__.o(map, req)) {
-		return Promise.resolve().then(function() {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-
-	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[2]).then(function() {
-		return __webpack_require__.t(id, ids[1])
-	});
-}
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = "3096";
-module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -3643,12 +3355,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2523f3ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=0b905e6f&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"34b97949-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=6e259ffa&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=0b905e6f&
+// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=6e259ffa&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -7173,7 +6885,7 @@ __vue_render__$5._withStripped = true;
           _this = this;
 
       var lang = (_this$context$attribu = this.context.attributes.language) !== null && _this$context$attribu !== void 0 ? _this$context$attribu : "en";
-      __webpack_require__("3096")("./".concat(lang, ".js")).then(function (result) {
+      __webpack_require__("2bcf")("./".concat(lang, ".js")).then(function (result) {
         _this.language = result.default;
       });
     }

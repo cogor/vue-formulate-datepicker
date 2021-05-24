@@ -41,7 +41,7 @@ export default {
     getLanguage() {
       let lang = this.context.attributes.language ?? "en";
       import(
-        `@sum.cumo/vue-datepicker/dist/locale/translations/${lang}.js`
+        `@sum.cumo/vue-datepicker/src/locale/translations/${lang}.js`
       ).then((result) => {
         this.language = result.default;
       });
