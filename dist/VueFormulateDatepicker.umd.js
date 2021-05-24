@@ -9,52 +9,8 @@
 		root["VueFormulateDatepicker"] = factory();
 })((typeof self !== 'undefined' ? self : this), function() {
 return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// install a JSONP callback for chunk loading
-/******/ 	function webpackJsonpCallback(data) {
-/******/ 		var chunkIds = data[0];
-/******/ 		var moreModules = data[1];
-/******/
-/******/
-/******/ 		// add "moreModules" to the modules object,
-/******/ 		// then flag all "chunkIds" as loaded and fire callback
-/******/ 		var moduleId, chunkId, i = 0, resolves = [];
-/******/ 		for(;i < chunkIds.length; i++) {
-/******/ 			chunkId = chunkIds[i];
-/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 				resolves.push(installedChunks[chunkId][0]);
-/******/ 			}
-/******/ 			installedChunks[chunkId] = 0;
-/******/ 		}
-/******/ 		for(moduleId in moreModules) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-/******/ 				modules[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
-/******/
-/******/ 		while(resolves.length) {
-/******/ 			resolves.shift()();
-/******/ 		}
-/******/
-/******/ 	};
-/******/
-/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
-/******/ 	// object to store loaded and loading chunks
-/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 	// Promise = chunk loading, 0 = chunk loaded
-/******/ 	var installedChunks = {
-/******/ 		0: 0
-/******/ 	};
-/******/
-/******/
-/******/
-/******/ 	// script path function
-/******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "VueFormulateDatepicker.umd." + ({}[chunkId]||chunkId) + ".js"
-/******/ 	}
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -80,67 +36,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		return module.exports;
 /******/ 	}
 /******/
-/******/ 	// This file contains only the entry chunk.
-/******/ 	// The chunk loading function for additional chunks
-/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
-/******/ 		var promises = [];
-/******/
-/******/
-/******/ 		// JSONP chunk loading for javascript
-/******/
-/******/ 		var installedChunkData = installedChunks[chunkId];
-/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
-/******/
-/******/ 			// a Promise means "currently loading".
-/******/ 			if(installedChunkData) {
-/******/ 				promises.push(installedChunkData[2]);
-/******/ 			} else {
-/******/ 				// setup Promise in chunk cache
-/******/ 				var promise = new Promise(function(resolve, reject) {
-/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
-/******/ 				});
-/******/ 				promises.push(installedChunkData[2] = promise);
-/******/
-/******/ 				// start chunk loading
-/******/ 				var script = document.createElement('script');
-/******/ 				var onScriptComplete;
-/******/
-/******/ 				script.charset = 'utf-8';
-/******/ 				script.timeout = 120;
-/******/ 				if (__webpack_require__.nc) {
-/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
-/******/ 				}
-/******/ 				script.src = jsonpScriptSrc(chunkId);
-/******/
-/******/ 				// create error before stack unwound to get useful stacktrace later
-/******/ 				var error = new Error();
-/******/ 				onScriptComplete = function (event) {
-/******/ 					// avoid mem leaks in IE.
-/******/ 					script.onerror = script.onload = null;
-/******/ 					clearTimeout(timeout);
-/******/ 					var chunk = installedChunks[chunkId];
-/******/ 					if(chunk !== 0) {
-/******/ 						if(chunk) {
-/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
-/******/ 							var realSrc = event && event.target && event.target.src;
-/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
-/******/ 							error.name = 'ChunkLoadError';
-/******/ 							error.type = errorType;
-/******/ 							error.request = realSrc;
-/******/ 							chunk[1](error);
-/******/ 						}
-/******/ 						installedChunks[chunkId] = undefined;
-/******/ 					}
-/******/ 				};
-/******/ 				var timeout = setTimeout(function(){
-/******/ 					onScriptComplete({ type: 'timeout', target: script });
-/******/ 				}, 120000);
-/******/ 				script.onerror = script.onload = onScriptComplete;
-/******/ 				document.head.appendChild(script);
-/******/ 			}
-/******/ 		}
-/******/ 		return Promise.all(promises);
-/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -194,68 +89,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	// on error function for async loading
-/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
-/******/
-/******/ 	var jsonpArray = (typeof self !== 'undefined' ? self : this)["webpackJsonpVueFormulateDatepicker"] = (typeof self !== 'undefined' ? self : this)["webpackJsonpVueFormulateDatepicker"] || [];
-/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
-/******/ 	jsonpArray.push = webpackJsonpCallback;
-/******/ 	jsonpArray = jsonpArray.slice();
-/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
-/******/ 	var parentJsonpFunction = oldJsonpFunction;
-/******/
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "00ee":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var test = {};
-
-test[TO_STRING_TAG] = 'z';
-
-module.exports = String(test) === '[object z]';
-
-
-/***/ }),
-
-/***/ "0366":
-/***/ (function(module, exports, __webpack_require__) {
-
-var aFunction = __webpack_require__("1c0b");
-
-// optional / simple context binding
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 0: return function () {
-      return fn.call(that);
-    };
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
 
 /***/ "06cf":
 /***/ (function(module, exports, __webpack_require__) {
@@ -303,95 +142,6 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "19aa":
-/***/ (function(module, exports) {
-
-module.exports = function (it, Constructor, name) {
-  if (!(it instanceof Constructor)) {
-    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "1be4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getBuiltIn = __webpack_require__("d066");
-
-module.exports = getBuiltIn('document', 'documentElement');
-
-
-/***/ }),
-
-/***/ "1c0b":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') {
-    throw TypeError(String(it) + ' is not a function');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "1c7e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-
-var ITERATOR = wellKnownSymbol('iterator');
-var SAFE_CLOSING = false;
-
-try {
-  var called = 0;
-  var iteratorWithReturn = {
-    next: function () {
-      return { done: !!called++ };
-    },
-    'return': function () {
-      SAFE_CLOSING = true;
-    }
-  };
-  iteratorWithReturn[ITERATOR] = function () {
-    return this;
-  };
-  // eslint-disable-next-line es/no-array-from, no-throw-literal -- required for testing
-  Array.from(iteratorWithReturn, function () { throw 2; });
-} catch (error) { /* empty */ }
-
-module.exports = function (exec, SKIP_CLOSING) {
-  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
-  var ITERATION_SUPPORT = false;
-  try {
-    var object = {};
-    object[ITERATOR] = function () {
-      return {
-        next: function () {
-          return { done: ITERATION_SUPPORT = true };
-        }
-      };
-    };
-    exec(object);
-  } catch (error) { /* empty */ }
-  return ITERATION_SUPPORT;
-};
-
-
-/***/ }),
-
-/***/ "1cdc":
-/***/ (function(module, exports, __webpack_require__) {
-
-var userAgent = __webpack_require__("342f");
-
-module.exports = /(?:iphone|ipod|ipad).*applewebkit/i.test(userAgent);
-
-
-/***/ }),
-
 /***/ "1d80":
 /***/ (function(module, exports) {
 
@@ -426,71 +176,6 @@ module.exports = function (METHOD_NAME) {
     };
     return array[METHOD_NAME](Boolean).foo !== 1;
   });
-};
-
-
-/***/ }),
-
-/***/ "2266":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("825a");
-var isArrayIteratorMethod = __webpack_require__("e95a");
-var toLength = __webpack_require__("50c4");
-var bind = __webpack_require__("0366");
-var getIteratorMethod = __webpack_require__("35a1");
-var iteratorClose = __webpack_require__("2a62");
-
-var Result = function (stopped, result) {
-  this.stopped = stopped;
-  this.result = result;
-};
-
-module.exports = function (iterable, unboundFunction, options) {
-  var that = options && options.that;
-  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
-  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
-  var INTERRUPTED = !!(options && options.INTERRUPTED);
-  var fn = bind(unboundFunction, that, 1 + AS_ENTRIES + INTERRUPTED);
-  var iterator, iterFn, index, length, result, next, step;
-
-  var stop = function (condition) {
-    if (iterator) iteratorClose(iterator);
-    return new Result(true, condition);
-  };
-
-  var callFn = function (value) {
-    if (AS_ENTRIES) {
-      anObject(value);
-      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
-    } return INTERRUPTED ? fn(value, stop) : fn(value);
-  };
-
-  if (IS_ITERATOR) {
-    iterator = iterable;
-  } else {
-    iterFn = getIteratorMethod(iterable);
-    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
-    // optimisation for array iterators
-    if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = toLength(iterable.length); length > index; index++) {
-        result = callFn(iterable[index]);
-        if (result && result instanceof Result) return result;
-      } return new Result(false);
-    }
-    iterator = iterFn.call(iterable);
-  }
-
-  next = iterator.next;
-  while (!(step = next.call(iterator)).done) {
-    try {
-      result = callFn(step.value);
-    } catch (error) {
-      iteratorClose(iterator);
-      throw error;
-    }
-    if (typeof result == 'object' && result && result instanceof Result) return result;
-  } return new Result(false);
 };
 
 
@@ -594,381 +279,6 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "2626":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var getBuiltIn = __webpack_require__("d066");
-var definePropertyModule = __webpack_require__("9bf2");
-var wellKnownSymbol = __webpack_require__("b622");
-var DESCRIPTORS = __webpack_require__("83ab");
-
-var SPECIES = wellKnownSymbol('species');
-
-module.exports = function (CONSTRUCTOR_NAME) {
-  var Constructor = getBuiltIn(CONSTRUCTOR_NAME);
-  var defineProperty = definePropertyModule.f;
-
-  if (DESCRIPTORS && Constructor && !Constructor[SPECIES]) {
-    defineProperty(Constructor, SPECIES, {
-      configurable: true,
-      get: function () { return this; }
-    });
-  }
-};
-
-
-/***/ }),
-
-/***/ "2a62":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("825a");
-
-module.exports = function (iterator) {
-  var returnMethod = iterator['return'];
-  if (returnMethod !== undefined) {
-    return anObject(returnMethod.call(iterator)).value;
-  }
-};
-
-
-/***/ }),
-
-/***/ "2bcf":
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./af.js": [
-		"f2df",
-		1
-	],
-	"./ar.js": [
-		"7676",
-		2
-	],
-	"./bg.js": [
-		"8225",
-		3
-	],
-	"./bs.js": [
-		"1609",
-		4
-	],
-	"./ca.js": [
-		"783f",
-		5
-	],
-	"./cs.js": [
-		"16e5",
-		6
-	],
-	"./da.js": [
-		"b160",
-		7
-	],
-	"./de.js": [
-		"7ac4",
-		8
-	],
-	"./ee.js": [
-		"be73",
-		9
-	],
-	"./el.js": [
-		"db51",
-		10
-	],
-	"./en.js": [
-		"97d7",
-		11
-	],
-	"./es.js": [
-		"a75e",
-		12
-	],
-	"./fa.js": [
-		"6544",
-		13
-	],
-	"./fi.js": [
-		"e2c1",
-		14
-	],
-	"./fo.js": [
-		"a4fe",
-		15
-	],
-	"./fr.js": [
-		"d018",
-		16
-	],
-	"./ge.js": [
-		"9955",
-		17
-	],
-	"./he.js": [
-		"cc5b",
-		18
-	],
-	"./hr.js": [
-		"c673",
-		19
-	],
-	"./hu.js": [
-		"d811",
-		20
-	],
-	"./id.js": [
-		"2b49",
-		21
-	],
-	"./is.js": [
-		"3dcd",
-		22
-	],
-	"./it.js": [
-		"0fe8",
-		23
-	],
-	"./ja.js": [
-		"919c",
-		24
-	],
-	"./kk.js": [
-		"fa99",
-		25
-	],
-	"./ko.js": [
-		"9823",
-		26
-	],
-	"./lb.js": [
-		"9d5c",
-		27
-	],
-	"./lt.js": [
-		"0c2c",
-		28
-	],
-	"./lv.js": [
-		"f85b",
-		29
-	],
-	"./mn.js": [
-		"4851",
-		30
-	],
-	"./nb-NO.js": [
-		"0af9",
-		31
-	],
-	"./nl.js": [
-		"b7a4",
-		32
-	],
-	"./pl.js": [
-		"5a7a",
-		33
-	],
-	"./pt-BR.js": [
-		"f024",
-		34
-	],
-	"./ro.js": [
-		"1629",
-		35
-	],
-	"./ru.js": [
-		"b6a5",
-		36
-	],
-	"./sk.js": [
-		"8164",
-		37
-	],
-	"./sl-SI.js": [
-		"94ab",
-		38
-	],
-	"./sq.js": [
-		"e0ce",
-		39
-	],
-	"./sr-CYRL.js": [
-		"6186",
-		40
-	],
-	"./sr.js": [
-		"37c0",
-		41
-	],
-	"./sv.js": [
-		"88aa",
-		42
-	],
-	"./th.js": [
-		"2b89",
-		43
-	],
-	"./tr.js": [
-		"0137",
-		44
-	],
-	"./uk.js": [
-		"e923",
-		45
-	],
-	"./ur.js": [
-		"de50",
-		46
-	],
-	"./vi.js": [
-		"51b0",
-		47
-	],
-	"./zh.js": [
-		"b628",
-		48
-	]
-};
-function webpackAsyncContext(req) {
-	if(!__webpack_require__.o(map, req)) {
-		return Promise.resolve().then(function() {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-
-	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(id);
-	});
-}
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = "2bcf";
-module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ "2cf4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var fails = __webpack_require__("d039");
-var bind = __webpack_require__("0366");
-var html = __webpack_require__("1be4");
-var createElement = __webpack_require__("cc12");
-var IS_IOS = __webpack_require__("1cdc");
-var IS_NODE = __webpack_require__("605d");
-
-var location = global.location;
-var set = global.setImmediate;
-var clear = global.clearImmediate;
-var process = global.process;
-var MessageChannel = global.MessageChannel;
-var Dispatch = global.Dispatch;
-var counter = 0;
-var queue = {};
-var ONREADYSTATECHANGE = 'onreadystatechange';
-var defer, channel, port;
-
-var run = function (id) {
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  if (queue.hasOwnProperty(id)) {
-    var fn = queue[id];
-    delete queue[id];
-    fn();
-  }
-};
-
-var runner = function (id) {
-  return function () {
-    run(id);
-  };
-};
-
-var listener = function (event) {
-  run(event.data);
-};
-
-var post = function (id) {
-  // old engines have not location.origin
-  global.postMessage(id + '', location.protocol + '//' + location.host);
-};
-
-// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-if (!set || !clear) {
-  set = function setImmediate(fn) {
-    var args = [];
-    var i = 1;
-    while (arguments.length > i) args.push(arguments[i++]);
-    queue[++counter] = function () {
-      // eslint-disable-next-line no-new-func -- spec requirement
-      (typeof fn == 'function' ? fn : Function(fn)).apply(undefined, args);
-    };
-    defer(counter);
-    return counter;
-  };
-  clear = function clearImmediate(id) {
-    delete queue[id];
-  };
-  // Node.js 0.8-
-  if (IS_NODE) {
-    defer = function (id) {
-      process.nextTick(runner(id));
-    };
-  // Sphere (JS game engine) Dispatch API
-  } else if (Dispatch && Dispatch.now) {
-    defer = function (id) {
-      Dispatch.now(runner(id));
-    };
-  // Browsers with MessageChannel, includes WebWorkers
-  // except iOS - https://github.com/zloirock/core-js/issues/624
-  } else if (MessageChannel && !IS_IOS) {
-    channel = new MessageChannel();
-    port = channel.port2;
-    channel.port1.onmessage = listener;
-    defer = bind(port.postMessage, port, 1);
-  // Browsers with postMessage, skip WebWorkers
-  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-  } else if (
-    global.addEventListener &&
-    typeof postMessage == 'function' &&
-    !global.importScripts &&
-    location && location.protocol !== 'file:' &&
-    !fails(post)
-  ) {
-    defer = post;
-    global.addEventListener('message', listener, false);
-  // IE8-
-  } else if (ONREADYSTATECHANGE in createElement('script')) {
-    defer = function (id) {
-      html.appendChild(createElement('script'))[ONREADYSTATECHANGE] = function () {
-        html.removeChild(this);
-        run(id);
-      };
-    };
-  // Rest old browsers
-  } else {
-    defer = function (id) {
-      setTimeout(runner(id), 0);
-    };
-  }
-}
-
-module.exports = {
-  set: set,
-  clear: clear
-};
-
-
-/***/ }),
-
 /***/ "2d00":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1006,107 +316,6 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
-/***/ "35a1":
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__("f5df");
-var Iterators = __webpack_require__("3f8c");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var ITERATOR = wellKnownSymbol('iterator');
-
-module.exports = function (it) {
-  if (it != undefined) return it[ITERATOR]
-    || it['@@iterator']
-    || Iterators[classof(it)];
-};
-
-
-/***/ }),
-
-/***/ "37e8":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var definePropertyModule = __webpack_require__("9bf2");
-var anObject = __webpack_require__("825a");
-var objectKeys = __webpack_require__("df75");
-
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es/no-object-defineproperties -- safe
-module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var index = 0;
-  var key;
-  while (length > index) definePropertyModule.f(O, key = keys[index++], Properties[key]);
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "3bbe":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("861d");
-
-module.exports = function (it) {
-  if (!isObject(it) && it !== null) {
-    throw TypeError("Can't set " + String(it) + ' as a prototype');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "3ca3":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var charAt = __webpack_require__("6547").charAt;
-var InternalStateModule = __webpack_require__("69f3");
-var defineIterator = __webpack_require__("7dd0");
-
-var STRING_ITERATOR = 'String Iterator';
-var setInternalState = InternalStateModule.set;
-var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
-
-// `String.prototype[@@iterator]` method
-// https://tc39.es/ecma262/#sec-string.prototype-@@iterator
-defineIterator(String, 'String', function (iterated) {
-  setInternalState(this, {
-    type: STRING_ITERATOR,
-    string: String(iterated),
-    index: 0
-  });
-// `%StringIteratorPrototype%.next` method
-// https://tc39.es/ecma262/#sec-%stringiteratorprototype%.next
-}, function next() {
-  var state = getInternalState(this);
-  var string = state.string;
-  var index = state.index;
-  var point;
-  if (index >= string.length) return { value: undefined, done: true };
-  point = charAt(string, index);
-  state.index += point.length;
-  return { value: point, done: false };
-});
-
-
-/***/ }),
-
-/***/ "3f8c":
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-
 /***/ "428f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1133,68 +342,6 @@ module.exports = fails(function () {
 }) ? function (it) {
   return classof(it) == 'String' ? split.call(it, '') : Object(it);
 } : Object;
-
-
-/***/ }),
-
-/***/ "44d2":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-var create = __webpack_require__("7c73");
-var definePropertyModule = __webpack_require__("9bf2");
-
-var UNSCOPABLES = wellKnownSymbol('unscopables');
-var ArrayPrototype = Array.prototype;
-
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] == undefined) {
-  definePropertyModule.f(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-  });
-}
-
-// add a key to Array.prototype[@@unscopables]
-module.exports = function (key) {
-  ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
-
-/***/ }),
-
-/***/ "44de":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-
-module.exports = function (a, b) {
-  var console = global.console;
-  if (console && console.error) {
-    arguments.length === 1 ? console.error(a) : console.error(a, b);
-  }
-};
-
-
-/***/ }),
-
-/***/ "4840":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("825a");
-var aFunction = __webpack_require__("1c0b");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var SPECIES = wellKnownSymbol('species');
-
-// `SpeciesConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-speciesconstructor
-module.exports = function (O, defaultConstructor) {
-  var C = anObject(O).constructor;
-  var S;
-  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aFunction(S);
-};
 
 
 /***/ }),
@@ -1344,40 +491,6 @@ var classof = __webpack_require__("c6b6");
 var global = __webpack_require__("da84");
 
 module.exports = classof(global.process) == 'process';
-
-
-/***/ }),
-
-/***/ "6547":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__("a691");
-var requireObjectCoercible = __webpack_require__("1d80");
-
-// `String.prototype.{ codePointAt, at }` methods implementation
-var createMethod = function (CONVERT_TO_STRING) {
-  return function ($this, pos) {
-    var S = String(requireObjectCoercible($this));
-    var position = toInteger(pos);
-    var size = S.length;
-    var first, second;
-    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
-    first = S.charCodeAt(position);
-    return first < 0xD800 || first > 0xDBFF || position + 1 === size
-      || (second = S.charCodeAt(position + 1)) < 0xDC00 || second > 0xDFFF
-        ? CONVERT_TO_STRING ? S.charAt(position) : first
-        : CONVERT_TO_STRING ? S.slice(position, position + 2) : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
-  };
-};
-
-module.exports = {
-  // `String.prototype.codePointAt` method
-  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
-  codeAt: createMethod(false),
-  // `String.prototype.at` method
-  // https://github.com/mathiasbynens/String.prototype.at
-  charAt: createMethod(true)
-};
 
 
 /***/ }),
@@ -1565,189 +678,6 @@ var requireObjectCoercible = __webpack_require__("1d80");
 // https://tc39.es/ecma262/#sec-toobject
 module.exports = function (argument) {
   return Object(requireObjectCoercible(argument));
-};
-
-
-/***/ }),
-
-/***/ "7c73":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("825a");
-var defineProperties = __webpack_require__("37e8");
-var enumBugKeys = __webpack_require__("7839");
-var hiddenKeys = __webpack_require__("d012");
-var html = __webpack_require__("1be4");
-var documentCreateElement = __webpack_require__("cc12");
-var sharedKey = __webpack_require__("f772");
-
-var GT = '>';
-var LT = '<';
-var PROTOTYPE = 'prototype';
-var SCRIPT = 'script';
-var IE_PROTO = sharedKey('IE_PROTO');
-
-var EmptyConstructor = function () { /* empty */ };
-
-var scriptTag = function (content) {
-  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
-};
-
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function (activeXDocument) {
-  activeXDocument.write(scriptTag(''));
-  activeXDocument.close();
-  var temp = activeXDocument.parentWindow.Object;
-  activeXDocument = null; // avoid memory leak
-  return temp;
-};
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement('iframe');
-  var JS = 'java' + SCRIPT + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  // https://github.com/zloirock/core-js/issues/475
-  iframe.src = String(JS);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(scriptTag('document.F=Object'));
-  iframeDocument.close();
-  return iframeDocument.F;
-};
-
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function () {
-  try {
-    /* global ActiveXObject -- old IE */
-    activeXDocument = document.domain && new ActiveXObject('htmlfile');
-  } catch (error) { /* ignore */ }
-  NullProtoObject = activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame();
-  var length = enumBugKeys.length;
-  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-  return NullProtoObject();
-};
-
-hiddenKeys[IE_PROTO] = true;
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject(O);
-    result = new EmptyConstructor();
-    EmptyConstructor[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = NullProtoObject();
-  return Properties === undefined ? result : defineProperties(result, Properties);
-};
-
-
-/***/ }),
-
-/***/ "7dd0":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var createIteratorConstructor = __webpack_require__("9ed3");
-var getPrototypeOf = __webpack_require__("e163");
-var setPrototypeOf = __webpack_require__("d2bb");
-var setToStringTag = __webpack_require__("d44e");
-var createNonEnumerableProperty = __webpack_require__("9112");
-var redefine = __webpack_require__("6eeb");
-var wellKnownSymbol = __webpack_require__("b622");
-var IS_PURE = __webpack_require__("c430");
-var Iterators = __webpack_require__("3f8c");
-var IteratorsCore = __webpack_require__("ae93");
-
-var IteratorPrototype = IteratorsCore.IteratorPrototype;
-var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
-var ITERATOR = wellKnownSymbol('iterator');
-var KEYS = 'keys';
-var VALUES = 'values';
-var ENTRIES = 'entries';
-
-var returnThis = function () { return this; };
-
-module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
-  createIteratorConstructor(IteratorConstructor, NAME, next);
-
-  var getIterationMethod = function (KIND) {
-    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
-    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
-    switch (KIND) {
-      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
-      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
-      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
-    } return function () { return new IteratorConstructor(this); };
-  };
-
-  var TO_STRING_TAG = NAME + ' Iterator';
-  var INCORRECT_VALUES_NAME = false;
-  var IterablePrototype = Iterable.prototype;
-  var nativeIterator = IterablePrototype[ITERATOR]
-    || IterablePrototype['@@iterator']
-    || DEFAULT && IterablePrototype[DEFAULT];
-  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
-  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
-  var CurrentIteratorPrototype, methods, KEY;
-
-  // fix native
-  if (anyNativeIterator) {
-    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
-    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
-      if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
-        if (setPrototypeOf) {
-          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
-          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
-        }
-      }
-      // Set @@toStringTag to native iterators
-      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
-      if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
-    }
-  }
-
-  // fix Array#{values, @@iterator}.name in V8 / FF
-  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    INCORRECT_VALUES_NAME = true;
-    defaultIterator = function values() { return nativeIterator.call(this); };
-  }
-
-  // define iterator
-  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
-    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
-  }
-  Iterators[NAME] = defaultIterator;
-
-  // export additional methods
-  if (DEFAULT) {
-    methods = {
-      values: getIterationMethod(VALUES),
-      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
-      entries: getIterationMethod(ENTRIES)
-    };
-    if (FORCED) for (KEY in methods) {
-      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
-        redefine(IterablePrototype, KEY, methods[KEY]);
-      }
-    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
-  }
-
-  return methods;
 };
 
 
@@ -2081,40 +1011,6 @@ exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attrib
 
 /***/ }),
 
-/***/ "9ed3":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var IteratorPrototype = __webpack_require__("ae93").IteratorPrototype;
-var create = __webpack_require__("7c73");
-var createPropertyDescriptor = __webpack_require__("5c6c");
-var setToStringTag = __webpack_require__("d44e");
-var Iterators = __webpack_require__("3f8c");
-
-var returnThis = function () { return this; };
-
-module.exports = function (IteratorConstructor, NAME, next) {
-  var TO_STRING_TAG = NAME + ' Iterator';
-  IteratorConstructor.prototype = create(IteratorPrototype, { next: createPropertyDescriptor(1, next) });
-  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
-  Iterators[TO_STRING_TAG] = returnThis;
-  return IteratorConstructor;
-};
-
-
-/***/ }),
-
-/***/ "a4b4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var userAgent = __webpack_require__("342f");
-
-module.exports = /web0s(?!.*chrome)/i.test(userAgent);
-
-
-/***/ }),
-
 /***/ "a691":
 /***/ (function(module, exports) {
 
@@ -2125,163 +1021,6 @@ var floor = Math.floor;
 // https://tc39.es/ecma262/#sec-tointeger
 module.exports = function (argument) {
   return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
-};
-
-
-/***/ }),
-
-/***/ "ae93":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var fails = __webpack_require__("d039");
-var getPrototypeOf = __webpack_require__("e163");
-var createNonEnumerableProperty = __webpack_require__("9112");
-var has = __webpack_require__("5135");
-var wellKnownSymbol = __webpack_require__("b622");
-var IS_PURE = __webpack_require__("c430");
-
-var ITERATOR = wellKnownSymbol('iterator');
-var BUGGY_SAFARI_ITERATORS = false;
-
-var returnThis = function () { return this; };
-
-// `%IteratorPrototype%` object
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
-var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-
-/* eslint-disable es/no-array-prototype-keys -- safe */
-if ([].keys) {
-  arrayIterator = [].keys();
-  // Safari 8 has buggy iterators w/o `next`
-  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-  else {
-    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-  }
-}
-
-var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function () {
-  var test = {};
-  // FF44- legacy iterators case
-  return IteratorPrototype[ITERATOR].call(test) !== test;
-});
-
-if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-
-// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
-  createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
-}
-
-module.exports = {
-  IteratorPrototype: IteratorPrototype,
-  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
-};
-
-
-/***/ }),
-
-/***/ "b041":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
-var classof = __webpack_require__("f5df");
-
-// `Object.prototype.toString` method implementation
-// https://tc39.es/ecma262/#sec-object.prototype.tostring
-module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
-  return '[object ' + classof(this) + ']';
-};
-
-
-/***/ }),
-
-/***/ "b575":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
-var macrotask = __webpack_require__("2cf4").set;
-var IS_IOS = __webpack_require__("1cdc");
-var IS_WEBOS_WEBKIT = __webpack_require__("a4b4");
-var IS_NODE = __webpack_require__("605d");
-
-var MutationObserver = global.MutationObserver || global.WebKitMutationObserver;
-var document = global.document;
-var process = global.process;
-var Promise = global.Promise;
-// Node.js 11 shows ExperimentalWarning on getting `queueMicrotask`
-var queueMicrotaskDescriptor = getOwnPropertyDescriptor(global, 'queueMicrotask');
-var queueMicrotask = queueMicrotaskDescriptor && queueMicrotaskDescriptor.value;
-
-var flush, head, last, notify, toggle, node, promise, then;
-
-// modern engines have queueMicrotask method
-if (!queueMicrotask) {
-  flush = function () {
-    var parent, fn;
-    if (IS_NODE && (parent = process.domain)) parent.exit();
-    while (head) {
-      fn = head.fn;
-      head = head.next;
-      try {
-        fn();
-      } catch (error) {
-        if (head) notify();
-        else last = undefined;
-        throw error;
-      }
-    } last = undefined;
-    if (parent) parent.enter();
-  };
-
-  // browsers with MutationObserver, except iOS - https://github.com/zloirock/core-js/issues/339
-  // also except WebOS Webkit https://github.com/zloirock/core-js/issues/898
-  if (!IS_IOS && !IS_NODE && !IS_WEBOS_WEBKIT && MutationObserver && document) {
-    toggle = true;
-    node = document.createTextNode('');
-    new MutationObserver(flush).observe(node, { characterData: true });
-    notify = function () {
-      node.data = toggle = !toggle;
-    };
-  // environments with maybe non-completely correct, but existent Promise
-  } else if (Promise && Promise.resolve) {
-    // Promise.resolve without an argument throws an error in LG WebOS 2
-    promise = Promise.resolve(undefined);
-    then = promise.then;
-    notify = function () {
-      then.call(promise, flush);
-    };
-  // Node.js without promises
-  } else if (IS_NODE) {
-    notify = function () {
-      process.nextTick(flush);
-    };
-  // for other environments - macrotask based on:
-  // - setImmediate
-  // - MessageChannel
-  // - window.postMessag
-  // - onreadystatechange
-  // - setTimeout
-  } else {
-    notify = function () {
-      // strange IE + webpack dev server bug - use .call(global)
-      macrotask.call(global, flush);
-    };
-  }
-}
-
-module.exports = queueMicrotask || function (fn) {
-  var task = { fn: fn, next: undefined };
-  if (last) last.next = task;
-  if (!head) {
-    head = task;
-    notify();
-  } last = task;
 };
 
 
@@ -2437,25 +1176,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "cdf9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("825a");
-var isObject = __webpack_require__("861d");
-var newPromiseCapability = __webpack_require__("f069");
-
-module.exports = function (C, x) {
-  anObject(C);
-  if (isObject(x) && x.constructor === C) return x;
-  var promiseCapability = newPromiseCapability.f(C);
-  var resolve = promiseCapability.resolve;
-  resolve(x);
-  return promiseCapability.promise;
-};
-
-
-/***/ }),
-
 /***/ "ce4e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2535,73 +1255,6 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "d2bb":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable no-proto -- safe */
-var anObject = __webpack_require__("825a");
-var aPossiblePrototype = __webpack_require__("3bbe");
-
-// `Object.setPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.setprototypeof
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-// eslint-disable-next-line es/no-object-setprototypeof -- safe
-module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
-  var CORRECT_SETTER = false;
-  var test = {};
-  var setter;
-  try {
-    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
-    setter.call(test, []);
-    CORRECT_SETTER = test instanceof Array;
-  } catch (error) { /* empty */ }
-  return function setPrototypeOf(O, proto) {
-    anObject(O);
-    aPossiblePrototype(proto);
-    if (CORRECT_SETTER) setter.call(O, proto);
-    else O.__proto__ = proto;
-    return O;
-  };
-}() : undefined);
-
-
-/***/ }),
-
-/***/ "d3b7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
-var redefine = __webpack_require__("6eeb");
-var toString = __webpack_require__("b041");
-
-// `Object.prototype.toString` method
-// https://tc39.es/ecma262/#sec-object.prototype.tostring
-if (!TO_STRING_TAG_SUPPORT) {
-  redefine(Object.prototype, 'toString', toString, { unsafe: true });
-}
-
-
-/***/ }),
-
-/***/ "d44e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__("9bf2").f;
-var has = __webpack_require__("5135");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-
-module.exports = function (it, TAG, STATIC) {
-  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
-    defineProperty(it, TO_STRING_TAG, { configurable: true, value: TAG });
-  }
-};
-
-
-/***/ }),
-
 /***/ "da84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2621,579 +1274,6 @@ module.exports =
   (function () { return this; })() || Function('return this')();
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
-/***/ "ddb0":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var DOMIterables = __webpack_require__("fdbc");
-var ArrayIteratorMethods = __webpack_require__("e260");
-var createNonEnumerableProperty = __webpack_require__("9112");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var ITERATOR = wellKnownSymbol('iterator');
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var ArrayValues = ArrayIteratorMethods.values;
-
-for (var COLLECTION_NAME in DOMIterables) {
-  var Collection = global[COLLECTION_NAME];
-  var CollectionPrototype = Collection && Collection.prototype;
-  if (CollectionPrototype) {
-    // some Chrome versions have non-configurable methods on DOMTokenList
-    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
-      createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
-    } catch (error) {
-      CollectionPrototype[ITERATOR] = ArrayValues;
-    }
-    if (!CollectionPrototype[TO_STRING_TAG]) {
-      createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
-    }
-    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) {
-      // some Chrome versions have non-configurable methods on DOMTokenList
-      if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
-        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
-      } catch (error) {
-        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
-      }
-    }
-  }
-}
-
-
-/***/ }),
-
-/***/ "df75":
-/***/ (function(module, exports, __webpack_require__) {
-
-var internalObjectKeys = __webpack_require__("ca84");
-var enumBugKeys = __webpack_require__("7839");
-
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es/no-object-keys -- safe
-module.exports = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys);
-};
-
-
-/***/ }),
-
-/***/ "e163":
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__("5135");
-var toObject = __webpack_require__("7b0b");
-var sharedKey = __webpack_require__("f772");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__("e177");
-
-var IE_PROTO = sharedKey('IE_PROTO');
-var ObjectPrototype = Object.prototype;
-
-// `Object.getPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.getprototypeof
-// eslint-disable-next-line es/no-object-getprototypeof -- safe
-module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
-  O = toObject(O);
-  if (has(O, IE_PROTO)) return O[IE_PROTO];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectPrototype : null;
-};
-
-
-/***/ }),
-
-/***/ "e177":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-
-module.exports = !fails(function () {
-  function F() { /* empty */ }
-  F.prototype.constructor = null;
-  // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
-  return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-
-/***/ }),
-
-/***/ "e260":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var toIndexedObject = __webpack_require__("fc6a");
-var addToUnscopables = __webpack_require__("44d2");
-var Iterators = __webpack_require__("3f8c");
-var InternalStateModule = __webpack_require__("69f3");
-var defineIterator = __webpack_require__("7dd0");
-
-var ARRAY_ITERATOR = 'Array Iterator';
-var setInternalState = InternalStateModule.set;
-var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
-
-// `Array.prototype.entries` method
-// https://tc39.es/ecma262/#sec-array.prototype.entries
-// `Array.prototype.keys` method
-// https://tc39.es/ecma262/#sec-array.prototype.keys
-// `Array.prototype.values` method
-// https://tc39.es/ecma262/#sec-array.prototype.values
-// `Array.prototype[@@iterator]` method
-// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
-// `CreateArrayIterator` internal method
-// https://tc39.es/ecma262/#sec-createarrayiterator
-module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
-  setInternalState(this, {
-    type: ARRAY_ITERATOR,
-    target: toIndexedObject(iterated), // target
-    index: 0,                          // next index
-    kind: kind                         // kind
-  });
-// `%ArrayIteratorPrototype%.next` method
-// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
-}, function () {
-  var state = getInternalState(this);
-  var target = state.target;
-  var kind = state.kind;
-  var index = state.index++;
-  if (!target || index >= target.length) {
-    state.target = undefined;
-    return { value: undefined, done: true };
-  }
-  if (kind == 'keys') return { value: index, done: false };
-  if (kind == 'values') return { value: target[index], done: false };
-  return { value: [index, target[index]], done: false };
-}, 'values');
-
-// argumentsList[@@iterator] is %ArrayProto_values%
-// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
-// https://tc39.es/ecma262/#sec-createmappedargumentsobject
-Iterators.Arguments = Iterators.Array;
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('keys');
-addToUnscopables('values');
-addToUnscopables('entries');
-
-
-/***/ }),
-
-/***/ "e2cc":
-/***/ (function(module, exports, __webpack_require__) {
-
-var redefine = __webpack_require__("6eeb");
-
-module.exports = function (target, src, options) {
-  for (var key in src) redefine(target, key, src[key], options);
-  return target;
-};
-
-
-/***/ }),
-
-/***/ "e667":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return { error: false, value: exec() };
-  } catch (error) {
-    return { error: true, value: error };
-  }
-};
-
-
-/***/ }),
-
-/***/ "e6cf":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var IS_PURE = __webpack_require__("c430");
-var global = __webpack_require__("da84");
-var getBuiltIn = __webpack_require__("d066");
-var NativePromise = __webpack_require__("fea9");
-var redefine = __webpack_require__("6eeb");
-var redefineAll = __webpack_require__("e2cc");
-var setToStringTag = __webpack_require__("d44e");
-var setSpecies = __webpack_require__("2626");
-var isObject = __webpack_require__("861d");
-var aFunction = __webpack_require__("1c0b");
-var anInstance = __webpack_require__("19aa");
-var inspectSource = __webpack_require__("8925");
-var iterate = __webpack_require__("2266");
-var checkCorrectnessOfIteration = __webpack_require__("1c7e");
-var speciesConstructor = __webpack_require__("4840");
-var task = __webpack_require__("2cf4").set;
-var microtask = __webpack_require__("b575");
-var promiseResolve = __webpack_require__("cdf9");
-var hostReportErrors = __webpack_require__("44de");
-var newPromiseCapabilityModule = __webpack_require__("f069");
-var perform = __webpack_require__("e667");
-var InternalStateModule = __webpack_require__("69f3");
-var isForced = __webpack_require__("94ca");
-var wellKnownSymbol = __webpack_require__("b622");
-var IS_NODE = __webpack_require__("605d");
-var V8_VERSION = __webpack_require__("2d00");
-
-var SPECIES = wellKnownSymbol('species');
-var PROMISE = 'Promise';
-var getInternalState = InternalStateModule.get;
-var setInternalState = InternalStateModule.set;
-var getInternalPromiseState = InternalStateModule.getterFor(PROMISE);
-var PromiseConstructor = NativePromise;
-var TypeError = global.TypeError;
-var document = global.document;
-var process = global.process;
-var $fetch = getBuiltIn('fetch');
-var newPromiseCapability = newPromiseCapabilityModule.f;
-var newGenericPromiseCapability = newPromiseCapability;
-var DISPATCH_EVENT = !!(document && document.createEvent && global.dispatchEvent);
-var NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == 'function';
-var UNHANDLED_REJECTION = 'unhandledrejection';
-var REJECTION_HANDLED = 'rejectionhandled';
-var PENDING = 0;
-var FULFILLED = 1;
-var REJECTED = 2;
-var HANDLED = 1;
-var UNHANDLED = 2;
-var Internal, OwnPromiseCapability, PromiseWrapper, nativeThen;
-
-var FORCED = isForced(PROMISE, function () {
-  var GLOBAL_CORE_JS_PROMISE = inspectSource(PromiseConstructor) !== String(PromiseConstructor);
-  if (!GLOBAL_CORE_JS_PROMISE) {
-    // V8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=830565
-    // We can't detect it synchronously, so just check versions
-    if (V8_VERSION === 66) return true;
-    // Unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-    if (!IS_NODE && !NATIVE_REJECTION_EVENT) return true;
-  }
-  // We need Promise#finally in the pure version for preventing prototype pollution
-  if (IS_PURE && !PromiseConstructor.prototype['finally']) return true;
-  // We can't use @@species feature detection in V8 since it causes
-  // deoptimization and performance degradation
-  // https://github.com/zloirock/core-js/issues/679
-  if (V8_VERSION >= 51 && /native code/.test(PromiseConstructor)) return false;
-  // Detect correctness of subclassing with @@species support
-  var promise = PromiseConstructor.resolve(1);
-  var FakePromise = function (exec) {
-    exec(function () { /* empty */ }, function () { /* empty */ });
-  };
-  var constructor = promise.constructor = {};
-  constructor[SPECIES] = FakePromise;
-  return !(promise.then(function () { /* empty */ }) instanceof FakePromise);
-});
-
-var INCORRECT_ITERATION = FORCED || !checkCorrectnessOfIteration(function (iterable) {
-  PromiseConstructor.all(iterable)['catch'](function () { /* empty */ });
-});
-
-// helpers
-var isThenable = function (it) {
-  var then;
-  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
-};
-
-var notify = function (state, isReject) {
-  if (state.notified) return;
-  state.notified = true;
-  var chain = state.reactions;
-  microtask(function () {
-    var value = state.value;
-    var ok = state.state == FULFILLED;
-    var index = 0;
-    // variable length - can't use forEach
-    while (chain.length > index) {
-      var reaction = chain[index++];
-      var handler = ok ? reaction.ok : reaction.fail;
-      var resolve = reaction.resolve;
-      var reject = reaction.reject;
-      var domain = reaction.domain;
-      var result, then, exited;
-      try {
-        if (handler) {
-          if (!ok) {
-            if (state.rejection === UNHANDLED) onHandleUnhandled(state);
-            state.rejection = HANDLED;
-          }
-          if (handler === true) result = value;
-          else {
-            if (domain) domain.enter();
-            result = handler(value); // can throw
-            if (domain) {
-              domain.exit();
-              exited = true;
-            }
-          }
-          if (result === reaction.promise) {
-            reject(TypeError('Promise-chain cycle'));
-          } else if (then = isThenable(result)) {
-            then.call(result, resolve, reject);
-          } else resolve(result);
-        } else reject(value);
-      } catch (error) {
-        if (domain && !exited) domain.exit();
-        reject(error);
-      }
-    }
-    state.reactions = [];
-    state.notified = false;
-    if (isReject && !state.rejection) onUnhandled(state);
-  });
-};
-
-var dispatchEvent = function (name, promise, reason) {
-  var event, handler;
-  if (DISPATCH_EVENT) {
-    event = document.createEvent('Event');
-    event.promise = promise;
-    event.reason = reason;
-    event.initEvent(name, false, true);
-    global.dispatchEvent(event);
-  } else event = { promise: promise, reason: reason };
-  if (!NATIVE_REJECTION_EVENT && (handler = global['on' + name])) handler(event);
-  else if (name === UNHANDLED_REJECTION) hostReportErrors('Unhandled promise rejection', reason);
-};
-
-var onUnhandled = function (state) {
-  task.call(global, function () {
-    var promise = state.facade;
-    var value = state.value;
-    var IS_UNHANDLED = isUnhandled(state);
-    var result;
-    if (IS_UNHANDLED) {
-      result = perform(function () {
-        if (IS_NODE) {
-          process.emit('unhandledRejection', value, promise);
-        } else dispatchEvent(UNHANDLED_REJECTION, promise, value);
-      });
-      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
-      state.rejection = IS_NODE || isUnhandled(state) ? UNHANDLED : HANDLED;
-      if (result.error) throw result.value;
-    }
-  });
-};
-
-var isUnhandled = function (state) {
-  return state.rejection !== HANDLED && !state.parent;
-};
-
-var onHandleUnhandled = function (state) {
-  task.call(global, function () {
-    var promise = state.facade;
-    if (IS_NODE) {
-      process.emit('rejectionHandled', promise);
-    } else dispatchEvent(REJECTION_HANDLED, promise, state.value);
-  });
-};
-
-var bind = function (fn, state, unwrap) {
-  return function (value) {
-    fn(state, value, unwrap);
-  };
-};
-
-var internalReject = function (state, value, unwrap) {
-  if (state.done) return;
-  state.done = true;
-  if (unwrap) state = unwrap;
-  state.value = value;
-  state.state = REJECTED;
-  notify(state, true);
-};
-
-var internalResolve = function (state, value, unwrap) {
-  if (state.done) return;
-  state.done = true;
-  if (unwrap) state = unwrap;
-  try {
-    if (state.facade === value) throw TypeError("Promise can't be resolved itself");
-    var then = isThenable(value);
-    if (then) {
-      microtask(function () {
-        var wrapper = { done: false };
-        try {
-          then.call(value,
-            bind(internalResolve, wrapper, state),
-            bind(internalReject, wrapper, state)
-          );
-        } catch (error) {
-          internalReject(wrapper, error, state);
-        }
-      });
-    } else {
-      state.value = value;
-      state.state = FULFILLED;
-      notify(state, false);
-    }
-  } catch (error) {
-    internalReject({ done: false }, error, state);
-  }
-};
-
-// constructor polyfill
-if (FORCED) {
-  // 25.4.3.1 Promise(executor)
-  PromiseConstructor = function Promise(executor) {
-    anInstance(this, PromiseConstructor, PROMISE);
-    aFunction(executor);
-    Internal.call(this);
-    var state = getInternalState(this);
-    try {
-      executor(bind(internalResolve, state), bind(internalReject, state));
-    } catch (error) {
-      internalReject(state, error);
-    }
-  };
-  // eslint-disable-next-line no-unused-vars -- required for `.length`
-  Internal = function Promise(executor) {
-    setInternalState(this, {
-      type: PROMISE,
-      done: false,
-      notified: false,
-      parent: false,
-      reactions: [],
-      rejection: false,
-      state: PENDING,
-      value: undefined
-    });
-  };
-  Internal.prototype = redefineAll(PromiseConstructor.prototype, {
-    // `Promise.prototype.then` method
-    // https://tc39.es/ecma262/#sec-promise.prototype.then
-    then: function then(onFulfilled, onRejected) {
-      var state = getInternalPromiseState(this);
-      var reaction = newPromiseCapability(speciesConstructor(this, PromiseConstructor));
-      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
-      reaction.fail = typeof onRejected == 'function' && onRejected;
-      reaction.domain = IS_NODE ? process.domain : undefined;
-      state.parent = true;
-      state.reactions.push(reaction);
-      if (state.state != PENDING) notify(state, false);
-      return reaction.promise;
-    },
-    // `Promise.prototype.catch` method
-    // https://tc39.es/ecma262/#sec-promise.prototype.catch
-    'catch': function (onRejected) {
-      return this.then(undefined, onRejected);
-    }
-  });
-  OwnPromiseCapability = function () {
-    var promise = new Internal();
-    var state = getInternalState(promise);
-    this.promise = promise;
-    this.resolve = bind(internalResolve, state);
-    this.reject = bind(internalReject, state);
-  };
-  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
-    return C === PromiseConstructor || C === PromiseWrapper
-      ? new OwnPromiseCapability(C)
-      : newGenericPromiseCapability(C);
-  };
-
-  if (!IS_PURE && typeof NativePromise == 'function') {
-    nativeThen = NativePromise.prototype.then;
-
-    // wrap native Promise#then for native async functions
-    redefine(NativePromise.prototype, 'then', function then(onFulfilled, onRejected) {
-      var that = this;
-      return new PromiseConstructor(function (resolve, reject) {
-        nativeThen.call(that, resolve, reject);
-      }).then(onFulfilled, onRejected);
-    // https://github.com/zloirock/core-js/issues/640
-    }, { unsafe: true });
-
-    // wrap fetch result
-    if (typeof $fetch == 'function') $({ global: true, enumerable: true, forced: true }, {
-      // eslint-disable-next-line no-unused-vars -- required for `.length`
-      fetch: function fetch(input /* , init */) {
-        return promiseResolve(PromiseConstructor, $fetch.apply(global, arguments));
-      }
-    });
-  }
-}
-
-$({ global: true, wrap: true, forced: FORCED }, {
-  Promise: PromiseConstructor
-});
-
-setToStringTag(PromiseConstructor, PROMISE, false, true);
-setSpecies(PROMISE);
-
-PromiseWrapper = getBuiltIn(PROMISE);
-
-// statics
-$({ target: PROMISE, stat: true, forced: FORCED }, {
-  // `Promise.reject` method
-  // https://tc39.es/ecma262/#sec-promise.reject
-  reject: function reject(r) {
-    var capability = newPromiseCapability(this);
-    capability.reject.call(undefined, r);
-    return capability.promise;
-  }
-});
-
-$({ target: PROMISE, stat: true, forced: IS_PURE || FORCED }, {
-  // `Promise.resolve` method
-  // https://tc39.es/ecma262/#sec-promise.resolve
-  resolve: function resolve(x) {
-    return promiseResolve(IS_PURE && this === PromiseWrapper ? PromiseConstructor : this, x);
-  }
-});
-
-$({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
-  // `Promise.all` method
-  // https://tc39.es/ecma262/#sec-promise.all
-  all: function all(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var resolve = capability.resolve;
-    var reject = capability.reject;
-    var result = perform(function () {
-      var $promiseResolve = aFunction(C.resolve);
-      var values = [];
-      var counter = 0;
-      var remaining = 1;
-      iterate(iterable, function (promise) {
-        var index = counter++;
-        var alreadyCalled = false;
-        values.push(undefined);
-        remaining++;
-        $promiseResolve.call(C, promise).then(function (value) {
-          if (alreadyCalled) return;
-          alreadyCalled = true;
-          values[index] = value;
-          --remaining || resolve(values);
-        }, reject);
-      });
-      --remaining || resolve(values);
-    });
-    if (result.error) reject(result.value);
-    return capability.promise;
-  },
-  // `Promise.race` method
-  // https://tc39.es/ecma262/#sec-promise.race
-  race: function race(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var reject = capability.reject;
-    var result = perform(function () {
-      var $promiseResolve = aFunction(C.resolve);
-      iterate(iterable, function (promise) {
-        $promiseResolve.call(C, promise).then(capability.resolve, reject);
-      });
-    });
-    if (result.error) reject(result.value);
-    return capability.promise;
-  }
-});
-
 
 /***/ }),
 
@@ -3233,82 +1313,6 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ "e95a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-var Iterators = __webpack_require__("3f8c");
-
-var ITERATOR = wellKnownSymbol('iterator');
-var ArrayPrototype = Array.prototype;
-
-// check on default Array iterator
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-
-/***/ }),
-
-/***/ "f069":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var aFunction = __webpack_require__("1c0b");
-
-var PromiseCapability = function (C) {
-  var resolve, reject;
-  this.promise = new C(function ($$resolve, $$reject) {
-    if (resolve !== undefined || reject !== undefined) throw TypeError('Bad Promise constructor');
-    resolve = $$resolve;
-    reject = $$reject;
-  });
-  this.resolve = aFunction(resolve);
-  this.reject = aFunction(reject);
-};
-
-// 25.4.1.5 NewPromiseCapability(C)
-module.exports.f = function (C) {
-  return new PromiseCapability(C);
-};
-
-
-/***/ }),
-
-/***/ "f5df":
-/***/ (function(module, exports, __webpack_require__) {
-
-var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
-var classofRaw = __webpack_require__("c6b6");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-// ES3 wrong here
-var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (error) { /* empty */ }
-};
-
-// getting tag from ES6+ `Object.prototype.toString`
-module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
-  var O, tag, result;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
-    // builtinTag case
-    : CORRECT_ARGUMENTS ? classofRaw(O)
-    // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
-};
-
-
-/***/ }),
-
 /***/ "f772":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3330,6 +1334,58 @@ module.exports = function (key) {
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// NAMESPACE OBJECT: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/index.esm.js
+var index_esm_namespaceObject = {};
+__webpack_require__.r(index_esm_namespaceObject);
+__webpack_require__.d(index_esm_namespaceObject, "af", function() { return af_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ar", function() { return ar_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "bg", function() { return bg_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "bs", function() { return bs_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ca", function() { return ca_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "cs", function() { return cs_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "da", function() { return da_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "de", function() { return de_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ee", function() { return ee_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "el", function() { return el_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "en", function() { return en_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "es", function() { return es_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "fa", function() { return fa_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "fi", function() { return fi_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "fo", function() { return fo_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "fr", function() { return fr_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ge", function() { return ge_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "he", function() { return he_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "hr", function() { return hr_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "hu", function() { return hu_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "id", function() { return id_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "is", function() { return is_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "it", function() { return it_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ja", function() { return ja_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "kk", function() { return kk_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ko", function() { return ko_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "lb", function() { return lb_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "lt", function() { return lt_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "lv", function() { return lv_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "mn", function() { return mn_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "nbNO", function() { return nb_NO_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "nl", function() { return nl_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "pl", function() { return pl_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ptBR", function() { return pt_BR_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ro", function() { return ro_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ru", function() { return ru_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "sk", function() { return sk_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "slSI", function() { return sl_SI_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "sq", function() { return sq_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "sr", function() { return sr_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "srCYRL", function() { return sr_CYRL_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "sv", function() { return sv_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "th", function() { return th_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "tr", function() { return tr_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "uk", function() { return uk_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "ur", function() { return ur_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "vi", function() { return vi_esm; });
+__webpack_require__.d(index_esm_namespaceObject, "zh", function() { return zh_esm; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -3355,34 +1411,19 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"34b97949-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=6e259ffa&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"51fa5bba-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=dba45f18&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=6e259ffa&
+// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=dba45f18&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__("e260");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
-var es_object_to_string = __webpack_require__("d3b7");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
-var es_promise = __webpack_require__("e6cf");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__("3ca3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__("ddb0");
-
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/Datepicker.esm.js
 /*
-* @sum.cumo/vue-datepicker v3.1.0
+* @sum.cumo/vue-datepicker v3.2.0
 * (c) 2018-2021 sum.cumo GmbH
 * Released under the Apache-2.0 License.
 */
@@ -3469,6 +1510,8 @@ class Language {
 }
 
 var en = new Language('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+
+var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
 
 const getParsedDate = ({
   formatStr,
@@ -3850,112 +1893,114 @@ var makeDateUtils = (useUtc => ({ ...utils,
   useUtc
 }));
 
-var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
-
-var script = {
+var script$8 = {
   props: {
     autofocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     bootstrapStyling: {
       type: Boolean,
-      default: false
+      default: false,
     },
     clearButton: {
       type: Boolean,
-      default: false
+      default: false,
     },
     clearButtonIcon: {
       type: String,
-      default: ''
+      default: '',
     },
     calendarButton: {
       type: Boolean,
-      default: false
+      default: false,
     },
     calendarButtonIcon: {
       type: String,
-      default: ''
+      default: '',
     },
     calendarButtonIconContent: {
       type: String,
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     format: {
       type: [String, Function],
-      default: 'dd MMM yyyy'
+      default: 'dd MMM yyyy',
     },
     id: {
       type: String,
-      default: null
+      default: null,
     },
     inline: {
       type: Boolean,
-      default: false
+      default: false,
     },
     inputClass: {
       type: [String, Object, Array],
-      default: null
+      default: null,
     },
     maxlength: {
       type: [Number, String],
-      default: null
+      default: null,
     },
     name: {
       type: String,
-      default: null
+      default: null,
     },
     openDate: {
       type: [String, Date, Number],
       default: null,
-      validator: val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number'
+      validator: (val) =>
+        val === null ||
+        val instanceof Date ||
+        typeof val === 'string' ||
+        typeof val === 'number',
     },
     parser: {
       type: Function,
-      default: null
+      default: null,
     },
     pattern: {
       type: String,
-      default: null
+      default: null,
     },
     placeholder: {
       type: String,
-      default: null
+      default: null,
     },
     refName: {
       type: String,
-      default: ''
+      default: '',
     },
     required: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showCalendarOnButtonClick: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showCalendarOnFocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tabindex: {
       type: [Number, String],
-      default: null
+      default: null,
     },
     typeable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     useUtc: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
@@ -4034,18 +2079,18 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 }
 
 /* script */
-const __vue_script__ = script;
+const __vue_script__$8 = script$8;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  const __vue_inject_styles__$8 = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  const __vue_scope_id__$8 = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  const __vue_module_identifier__$8 = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = undefined;
+  const __vue_is_functional_template__$8 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -4054,13 +2099,13 @@ const __vue_script__ = script;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
+    __vue_inject_styles__$8,
+    __vue_script__$8,
+    __vue_scope_id__$8,
+    __vue_is_functional_template__$8,
+    __vue_module_identifier__$8,
     false,
     undefined,
     undefined,
@@ -4068,87 +2113,76 @@ const __vue_script__ = script;
   );
 
 //
-var script$1 = {
+
+var script$7 = {
   name: 'DateInput',
-  mixins: [__vue_component__],
+  mixins: [__vue_component__$8],
   props: {
     isOpen: {
       type: Boolean,
-      default: false
+      default: false,
     },
     resetTypedDate: {
       type: [Date],
-      default: null
+      default: null,
     },
     selectedDate: {
       type: Date,
-      default: null
+      default: null,
     },
     translation: {
       type: Object,
-
       default() {
-        return {};
-      }
-
-    }
+        return {}
+      },
+    },
   },
-
   data() {
-    const constructedDateUtils = makeDateUtils(this.useUtc);
     return {
       input: null,
       isFocusedUsed: false,
       isBlurred: false,
       typedDate: '',
-      utils: constructedDateUtils
-    };
+      utils: makeDateUtils(this.useUtc),
+    }
   },
-
   computed: {
     computedInputClass() {
       if (this.bootstrapStyling) {
         if (typeof this.inputClass === 'string') {
-          return [this.inputClass, 'form-control'].join(' ');
+          return [this.inputClass, 'form-control'].join(' ')
         }
-
-        return {
-          'form-control': true,
-          ...this.inputClass
-        };
+        return { 'form-control': true, ...this.inputClass }
       }
-
-      return this.inputClass;
+      return this.inputClass
     },
-
+    formattedDate() {
+      return typeof this.format === 'function'
+        ? this.format(new Date(this.selectedDate))
+        : this.utils.formatDate(
+            new Date(this.selectedDate),
+            this.format,
+            this.translation,
+          )
+    },
     formattedValue() {
       if (!this.selectedDate) {
-        return null;
+        return null
       }
-
       if (this.typedDate.length) {
-        return this.typedDate;
+        return this.typedDate
       }
-
-      return this.formattedDate;
+      return this.formattedDate
     },
-
-    formattedDate() {
-      return typeof this.format === 'function' ? this.format(new Date(this.selectedDate)) : this.utils.formatDate(new Date(this.selectedDate), this.format, this.translation);
-    }
-
   },
   watch: {
     resetTypedDate() {
       this.typedDate = '';
-    }
-
+    },
   },
-
   mounted() {
     this.input = this.$el.querySelector('input');
   },
-
   methods: {
     /**
      * emit a clearDate event
@@ -4156,71 +2190,64 @@ var script$1 = {
     clearDate() {
       this.$emit('clear-date');
     },
-
     /**
      * submit typedDate and emit a blur event
      */
-    inputBlurred() {
+    handleInputBlur() {
       this.isBlurred = this.isOpen;
-
       if (this.typeable) {
         this.submitTypedDate();
       }
-
       this.$emit('blur');
-      this.$emit('close-calendar');
+      this.$emit('close');
       this.isFocusedUsed = false;
     },
-
-    /**
-     * Attempt to parse a typed date
-     * @param {Event} event
-     */
-    parseTypedDate(event) {
-      const code = event.keyCode ? event.keyCode : event.which; // close calendar if escape or enter are pressed
-
-      if ([27, // escape
-      13 // enter
-      ].indexOf(code) !== -1) {
-        this.input.blur();
-      }
-
-      if (this.typeable) {
-        const parsableDate = this.parseDate(this.input.value);
-        const parsedDate = Date.parse(parsableDate);
-
-        if (!Number.isNaN(parsedDate)) {
-          this.typedDate = this.input.value;
-          this.$emit('typed-date', new Date(parsedDate));
-        }
-      }
-    },
-
-    parseDate(value) {
-      return this.utils.parseDate(value, this.format, this.translation, this.parser);
-    },
-
-    showCalendarByClick() {
+    handleInputClick() {
       const isFocusedUsed = this.showCalendarOnFocus && !this.isFocusedUsed;
 
       if (!this.showCalendarOnButtonClick && !isFocusedUsed) {
-        this.toggleCalendar();
+        this.toggle();
       }
 
       if (this.showCalendarOnFocus) {
         this.isFocusedUsed = true;
       }
     },
-
-    showCalendarByFocus() {
+    handleInputFocus() {
       if (this.showCalendarOnFocus) {
-        this.$emit('show-calendar');
+        this.$emit('open');
       }
 
       this.isBlurred = false;
       this.$emit('focus');
     },
-
+    handleKeydownEnter() {
+      if (this.typeable) {
+        this.submitTypedDate();
+      }
+      this.$emit('close');
+    },
+    parseDate(value) {
+      return this.utils.parseDate(
+        value,
+        this.format,
+        this.translation,
+        this.parser,
+      )
+    },
+    /**
+     * Attempt to parse a typed date
+     */
+    parseTypedDate() {
+      if (this.typeable) {
+        const parsableDate = this.parseDate(this.input.value);
+        const parsedDate = Date.parse(parsableDate);
+        if (!Number.isNaN(parsedDate)) {
+          this.typedDate = this.input.value;
+          this.$emit('typed-date', new Date(parsedDate));
+        }
+      }
+    },
     /**
      * Submits a typed date if it's valid
      */
@@ -4236,24 +2263,21 @@ var script$1 = {
         this.$emit('typed-date', parsedDate);
       }
     },
-
-    toggleCalendar() {
+    toggle() {
       if (!this.isOpen && this.isBlurred) {
         this.isBlurred = false;
-        return;
+        return
       }
-
-      this.$emit(this.isOpen ? 'close-calendar' : 'show-calendar');
-    }
-
-  }
+      this.$emit(this.isOpen ? 'close' : 'open');
+    },
+  },
 };
 
 /* script */
-const __vue_script__$1 = script$1;
+const __vue_script__$7 = script$7;
 
 /* template */
-var __vue_render__ = function() {
+var __vue_render__$5 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -4272,7 +2296,7 @@ var __vue_render__ = function() {
                 "input-group-prepend": _vm.bootstrapStyling,
                 "calendar-btn-disabled": _vm.disabled
               },
-              on: { click: _vm.toggleCalendar }
+              on: { click: _vm.toggle }
             },
             [
               _c(
@@ -4314,13 +2338,41 @@ var __vue_render__ = function() {
           readonly: !_vm.typeable,
           required: _vm.required,
           tabindex: _vm.tabindex,
-          type: _vm.inline ? "hidden" : "text"
+          type: _vm.inline ? "hidden" : null
         },
         domProps: { value: _vm.formattedValue },
         on: {
-          blur: _vm.inputBlurred,
-          click: _vm.showCalendarByClick,
-          focus: _vm.showCalendarByFocus,
+          blur: _vm.handleInputBlur,
+          click: _vm.handleInputClick,
+          focus: _vm.handleInputFocus,
+          keydown: [
+            function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              $event.preventDefault();
+              return _vm.handleKeydownEnter($event)
+            },
+            function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k(
+                  $event.keyCode,
+                  "escape",
+                  undefined,
+                  $event.key,
+                  undefined
+                )
+              ) {
+                return null
+              }
+              $event.preventDefault();
+              return _vm.$emit("close")
+            }
+          ],
           keyup: _vm.parseTypedDate
         }
       }),
@@ -4361,17 +2413,17 @@ var __vue_render__ = function() {
     2
   )
 };
-var __vue_staticRenderFns__ = [];
-__vue_render__._withStripped = true;
+var __vue_staticRenderFns__$5 = [];
+__vue_render__$5._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1 = undefined;
+  const __vue_inject_styles__$7 = undefined;
   /* scoped */
-  const __vue_scope_id__$1 = undefined;
+  const __vue_scope_id__$7 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
+  const __vue_module_identifier__$7 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1 = false;
+  const __vue_is_functional_template__$7 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -4380,170 +2432,13 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__$1,
-    __vue_script__$1,
-    __vue_scope_id__$1,
-    __vue_is_functional_template__$1,
-    __vue_module_identifier__$1,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$2 = {
-  name: 'PickerHeader',
-  props: {
-    config: {
-      type: Object,
-
-      default() {
-        return {
-          showHeader: true,
-          isRtl: false,
-          isNextDisabled: false,
-          isPreviousDisabled: false
-        };
-      }
-
-    },
-    next: {
-      type: Function,
-      required: true
-    },
-    previous: {
-      type: Function,
-      required: true
-    }
-  },
-  computed: {
-    /**
-     * Is the left hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isLeftNavDisabled() {
-      return this.config.isRtl ? this.config.isNextDisabled : this.config.isPreviousDisabled;
-    },
-
-    /**
-     * Is the right hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isRightNavDisabled() {
-      return this.config.isRtl ? this.config.isPreviousDisabled : this.config.isNextDisabled;
-    }
-
-  }
-};
-
-/* script */
-const __vue_script__$2 = script$2;
-
-/* template */
-var __vue_render__$1 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _vm.config.showHeader
-    ? _c(
-        "header",
-        [
-          _c(
-            "span",
-            {
-              staticClass: "prev",
-              class: { disabled: _vm.isLeftNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.config.isRtl ? _vm.next() : _vm.previous();
-                }
-              }
-            },
-            [
-              _vm._t("prevIntervalBtn", [
-                _c("span", { staticClass: "default" }, [_vm._v("<")])
-              ])
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _vm._t("default"),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "next",
-              class: { disabled: _vm.isRightNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.config.isRtl ? _vm.previous() : _vm.next();
-                }
-              }
-            },
-            [
-              _vm._t("nextIntervalBtn", [
-                _c("span", { staticClass: "default" }, [_vm._v(">")])
-              ])
-            ],
-            2
-          )
-        ],
-        2
-      )
-    : _vm._e()
-};
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$2 = undefined;
-  /* scoped */
-  const __vue_scope_id__$2 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$2 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-    __vue_inject_styles__$2,
-    __vue_script__$2,
-    __vue_scope_id__$2,
-    __vue_is_functional_template__$2,
-    __vue_module_identifier__$2,
+  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+    __vue_inject_styles__$7,
+    __vue_script__$7,
+    __vue_scope_id__$7,
+    __vue_is_functional_template__$7,
+    __vue_module_identifier__$7,
     false,
     undefined,
     undefined,
@@ -4808,118 +2703,130 @@ class DisabledDate {
 
 }
 
-var script$3 = {
-  components: {
-    PickerHeader: __vue_component__$2
-  },
-  inheritAttrs: false,
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$6 = {
+  name: 'PickerHeader',
   props: {
-    allowedToShowView: {
-      type: Function,
-
-      default() {}
-
+    isNextDisabled: {
+      type: Boolean,
+      required: true,
     },
-    disabledDates: {
-      type: Object,
-
-      default() {
-        return {};
-      }
-
+    isPreviousDisabled: {
+      type: Boolean,
+      required: true,
     },
     isRtl: {
       type: Boolean,
-      default: false
+      required: true,
     },
-    pageDate: {
-      type: Date,
-      default: null
-    },
-    pageTimestamp: {
-      type: Number,
-      default: 0
-    },
-    selectedDate: {
-      type: Date,
-      default: null
-    },
-    showHeader: {
-      type: Boolean,
-      default: true
-    },
-    translation: {
-      type: Object,
-
-      default() {
-        return {};
-      }
-
-    },
-    useUtc: {
-      type: Boolean,
-      default: false
-    }
   },
-
-  data() {
-    return {
-      headerConfig: {
-        showHeader: this.showHeader,
-        isRtl: this.isRtl,
-
-        /**
-         * Need to be set inside the different pickers for month, year, decade
-         */
-        isNextDisabled: this.isNextDisabled,
-        isPreviousDisabled: this.isPreviousDisabled
-      },
-      utils: makeDateUtils(this.useUtc)
-    };
-  },
-
   computed: {
     /**
-     * A look-up object created from 'disabledDates' prop
-     * @return {Object}
+     * Is the left hand navigation button disabled?
+     * @return {Boolean}
      */
-    disabledConfig() {
-      return new DisabledDate(this.utils, this.disabledDates).config;
+    isLeftNavDisabled() {
+      return this.isRtl ? this.isNextDisabled : this.isPreviousDisabled
     },
-
     /**
-     * Returns the current page's full year as an integer.
-     * @return {Number}
+     * Is the right hand navigation button disabled?
+     * @return {Boolean}
      */
-    pageYear() {
-      return this.utils.getFullYear(this.pageDate);
-    }
-
+    isRightNavDisabled() {
+      return this.isRtl ? this.isPreviousDisabled : this.isNextDisabled
+    },
   },
-  methods: {
-    /**
-     * Emit an event to show the month picker
-     */
-    showPickerCalendar(type) {
-      this.$emit(`show-${type}-calendar`);
-    }
-
-  }
 };
 
 /* script */
-const __vue_script__$3 = script$3;
+const __vue_script__$6 = script$6;
 
 /* template */
+var __vue_render__$4 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "header",
+    [
+      _c(
+        "span",
+        {
+          staticClass: "prev",
+          class: { disabled: _vm.isLeftNavDisabled },
+          on: {
+            click: function($event) {
+              return _vm.$emit(_vm.isRtl ? "next" : "previous")
+            }
+          }
+        },
+        [
+          _vm._t("prevIntervalBtn", [
+            _c("span", { staticClass: "default" }, [_vm._v("<")])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("default"),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "next",
+          class: { disabled: _vm.isRightNavDisabled },
+          on: {
+            click: function($event) {
+              return _vm.$emit(_vm.isRtl ? "previous" : "next")
+            }
+          }
+        },
+        [
+          _vm._t("nextIntervalBtn", [
+            _c("span", { staticClass: "default" }, [_vm._v(">")])
+          ])
+        ],
+        2
+      )
+    ],
+    2
+  )
+};
+var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$3 = undefined;
+  const __vue_inject_styles__$6 = undefined;
   /* scoped */
-  const __vue_scope_id__$3 = undefined;
+  const __vue_scope_id__$6 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$3 = undefined;
+  const __vue_module_identifier__$6 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$3 = undefined;
+  const __vue_is_functional_template__$6 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -4928,13 +2835,150 @@ const __vue_script__$3 = script$3;
   
 
   
-  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+    __vue_inject_styles__$6,
+    __vue_script__$6,
+    __vue_scope_id__$6,
+    __vue_is_functional_template__$6,
+    __vue_module_identifier__$6,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+var script$5 = {
+  components: { PickerHeader: __vue_component__$6 },
+  inheritAttrs: false,
+  props: {
+    disabledDates: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    isRtl: {
+      type: Boolean,
+      default: false,
+    },
+    isUpDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    pageDate: {
+      type: Date,
+      default: null,
+    },
+    selectedDate: {
+      type: Date,
+      default: null,
+    },
+    showHeader: {
+      type: Boolean,
+      default: true,
+    },
+    translation: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    useUtc: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      utils: makeDateUtils(this.useUtc),
+    }
+  },
+  computed: {
+    /**
+     * A look-up object created from 'disabledDates' prop
+     * @return {Object}
+     */
+    disabledConfig() {
+      return new DisabledDate(this.utils, this.disabledDates).config
+    },
+    /**
+     * Returns the current page's full year as an integer.
+     * @return {Number}
+     */
+    pageYear() {
+      return this.utils.getFullYear(this.pageDate)
+    },
+  },
+  methods: {
+    /**
+     * Changes the page up or down
+     * @param {Number} incrementBy
+     */
+    changePage(incrementBy) {
+      const date = this.pageDate;
+      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
+
+      this.$emit('page-change', date);
+    },
+    /**
+     * Emits a 'select' or 'select-disabled' event
+     * @param {Object} cell
+     */
+    select(cell) {
+      if (cell.isDisabled) {
+        this.$emit('select-disabled', cell);
+      } else {
+        this.$emit('select', cell);
+      }
+    },
+    /**
+     * Increment the current page
+     */
+    nextPage() {
+      if (!this.isNextDisabled) {
+        this.changePage(+1);
+      }
+    },
+    /**
+     * Decrement the page
+     */
+    previousPage() {
+      if (!this.isPreviousDisabled) {
+        this.changePage(-1);
+      }
+    },
+  },
+};
+
+/* script */
+const __vue_script__$5 = script$5;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$5 = undefined;
+  /* scoped */
+  const __vue_scope_id__$5 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$5 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$5 = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$3,
-    __vue_script__$3,
-    __vue_scope_id__$3,
-    __vue_is_functional_template__$3,
-    __vue_module_identifier__$3,
+    __vue_inject_styles__$5,
+    __vue_script__$5,
+    __vue_scope_id__$5,
+    __vue_is_functional_template__$5,
+    __vue_module_identifier__$5,
     false,
     undefined,
     undefined,
@@ -5024,184 +3068,183 @@ class HighlightedDate {
 }
 
 //
+
 var script$4 = {
-  name: 'DatepickerDayView',
-  mixins: [__vue_component__$3],
+  name: 'PickerDay',
+  mixins: [__vue_component__$5],
   props: {
     dayCellContent: {
       type: Function,
-      default: day => day.date
+      default: (day) => day.date,
     },
     highlighted: {
       type: Object,
-
       default() {
-        return {};
-      }
-
+        return {}
+      },
     },
     firstDayOfWeek: {
       type: String,
-      default: 'sun'
+      default: 'sun',
     },
     showFullMonthName: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showEdgeDates: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   computed: {
-    /**
-     * Gets the name of the month the current page is on
-     * @return {String}
-     */
-    currMonthName() {
-      const monthName = this.showFullMonthName ? this.translation.months : this.translation.monthsAbbr;
-      return this.utils.getMonthNameAbbr(this.pageMonth, monthName);
-    },
-
-    /**
-     * Gets the name of the year that current page is on
-     * @return {String}
-     */
-    currYearName() {
-      const {
-        yearSuffix
-      } = this.translation;
-      return `${this.pageYear}${yearSuffix}`;
-    },
-
     /**
      * Sets an array with all days to show this month
      * @return {Array}
      */
-    days() {
+    cells() {
       const days = [];
-      const daysInCalendar = this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
-      const firstOfMonth = this.newPageDate();
-      const dObj = new Date(firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth));
+      const daysInCalendar =
+        this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
+      const dObj = this.firstCellDate();
 
       for (let i = 0; i < daysInCalendar; i += 1) {
         days.push(this.makeDay(i, dObj));
         this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
       }
 
-      return days;
+      return days
     },
+    /**
+     * Gets the name of the month the current page is on
+     * @return {String}
+     */
+    currMonthName() {
+      const monthName = this.showFullMonthName
+        ? this.translation.months
+        : this.translation.monthsAbbr;
 
+      return this.utils.getMonthNameAbbr(this.pageMonth, monthName)
+    },
+    /**
+     * Gets the name of the year that current page is on
+     * @return {String}
+     */
+    currYearName() {
+      const { yearSuffix } = this.translation;
+      return `${this.pageYear}${yearSuffix}`
+    },
     /**
      * Returns an array of day names
      * @return {String[]}
      */
     daysOfWeek() {
-      return this.translation.getDaysStartingOn(this.firstDayOfWeekNumber);
+      return this.translation.getDaysStartingOn(this.firstDayOfWeekNumber)
     },
-
     /**
      * Returns the number of days in this month
      * @return {String[]}
      */
     daysInMonth() {
-      const dObj = this.newPageDate();
-      return this.utils.getDaysInMonth(dObj);
+      return this.utils.getDaysInMonth(this.pageDate)
     },
-
     /**
      * Calculates how many days to show from the previous month
      * @return {number}
      */
     daysFromPrevMonth() {
-      const dObj = this.newPageDate();
-      return (7 - this.firstDayOfWeekNumber + this.utils.getDay(dObj)) % 7;
+      const firstOfMonthDayNumber = this.utils.getDay(this.pageDate);
+      return (7 - this.firstDayOfWeekNumber + firstOfMonthDayNumber) % 7
     },
-
     /**
      * Calculates how many days to show from the next month
      * @return {number}
      */
     daysFromNextMonth() {
       const daysThisAndPrevMonth = this.daysFromPrevMonth + this.daysInMonth;
-      return Math.ceil(daysThisAndPrevMonth / 7) * 7 - daysThisAndPrevMonth;
+      return Math.ceil(daysThisAndPrevMonth / 7) * 7 - daysThisAndPrevMonth
     },
-
     /**
      * Returns first-day-of-week as a number (Sunday is 0)
      * @return {Number}
      */
     firstDayOfWeekNumber() {
-      return this.utils.getDayFromAbbr(this.firstDayOfWeek);
+      return this.utils.getDayFromAbbr(this.firstDayOfWeek)
     },
-
+    /**
+     * A look-up object created from 'highlighted' prop
+     * @return {Object}
+     */
+    highlightedConfig() {
+      return new HighlightedDate(
+        this.utils,
+        this.disabledDates,
+        this.highlighted,
+      ).config
+    },
     /**
      * Is the next month disabled?
      * @return {Boolean}
      */
     isNextDisabled() {
       if (!this.disabledConfig.has.from) {
-        return false;
+        return false
       }
-
-      return this.disabledConfig.from.month <= this.pageMonth && this.disabledConfig.from.year <= this.pageYear;
+      return (
+        this.disabledConfig.from.month <= this.pageMonth &&
+        this.disabledConfig.from.year <= this.pageYear
+      )
     },
-
     /**
      * Is the previous month disabled?
      * @return {Boolean}
      */
     isPreviousDisabled() {
       if (!this.disabledConfig.has.to) {
-        return false;
+        return false
       }
-
-      return this.disabledConfig.to.month >= this.pageMonth && this.disabledConfig.to.year >= this.pageYear;
+      return (
+        this.disabledConfig.to.month >= this.pageMonth &&
+        this.disabledConfig.to.year >= this.pageYear
+      )
     },
-
     /**
      * Returns the current page's month as an integer.
      * @return {Number}
      */
     pageMonth() {
-      return this.utils.getMonth(this.pageDate);
+      return this.utils.getMonth(this.pageDate)
     },
-
     /**
      * Display the current page's month & year as the title.
      * @return {String}
      */
     pageTitleDay() {
-      return this.translation.ymd ? `${this.currYearName} ${this.currMonthName}` : `${this.currMonthName} ${this.currYearName}`;
+      return this.translation.ymd
+        ? `${this.currYearName} ${this.currMonthName}`
+        : `${this.currMonthName} ${this.currYearName}`
     },
-
     /**
      * The first day of the next page's month.
      * @return {Date}
      */
-    nextPageDate() {
-      const d = new Date(this.pageTimestamp);
-      return new Date(this.utils.setMonth(d, this.utils.getMonth(d) + 1));
+    firstOfNextMonth() {
+      const d = new Date(this.pageDate);
+      return new Date(this.utils.setMonth(d, this.utils.getMonth(d) + 1))
     },
-
-    highlightedConfig() {
-      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).config;
-    }
-
   },
   methods: {
     /**
-     * Change the page month
+     * Changes the page up or down (overrides changePage in pickerMixin)
      * @param {Number} incrementBy
      */
-    changeMonth(incrementBy) {
+    changePage(incrementBy) {
       const date = this.pageDate;
       this.utils.setMonth(date, this.utils.getMonth(date) + incrementBy);
-      this.$emit('changed-month', date);
-    },
 
+      this.$emit('page-change', date);
+    },
     /**
-     * set the class for a specific day
+     * Set the class for a specific day
      * @param {Object} day
      * @return {Object}
      */
@@ -5216,26 +3259,19 @@ var script$4 = {
         'sat': day.isSaturday,
         'sun': day.isSunday,
         'highlight-start': day.isHighlightStart,
-        'highlight-end': day.isHighlightEnd
-      };
+        'highlight-end': day.isHighlightEnd,
+      }
     },
-
-    /**
-     * @return {Number}
-     */
-    getPageMonth() {
-      return this.utils.getMonth(this.pageDate);
-    },
-
     /**
      * Whether a day is disabled
      * @param {Date} date to check if disabled
      * @return {Boolean}
      */
     isDisabledDate(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(date);
+      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(
+        date,
+      )
     },
-
     /**
      * Whether a day is highlighted
      * (only if it is not disabled already except when highlighted.includeDisabled is true)
@@ -5244,9 +3280,13 @@ var script$4 = {
      */
     isHighlightedDate(date) {
       const dateWithoutTime = this.utils.resetDateTime(date);
-      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).isDateHighlighted(dateWithoutTime);
-    },
 
+      return new HighlightedDate(
+        this.utils,
+        this.disabledDates,
+        this.highlighted,
+      ).isDateHighlighted(dateWithoutTime)
+    },
     /**
      * Whether a day is highlighted and it is the last date
      * in the highlighted range of dates
@@ -5255,9 +3295,14 @@ var script$4 = {
      */
     isHighlightEnd(date) {
       const config = this.highlightedConfig;
-      return this.isHighlightedDate(date) && config.to.year === this.utils.getFullYear(date) && config.to.month === this.utils.getMonth(date) && config.to.day === this.utils.getDate(date);
-    },
 
+      return (
+        this.isHighlightedDate(date) &&
+        config.to.year === this.utils.getFullYear(date) &&
+        config.to.month === this.utils.getMonth(date) &&
+        config.to.day === this.utils.getDate(date)
+      )
+    },
     /**
      * Whether a day is highlighted and it is the first date
      * in the highlighted range of dates
@@ -5266,18 +3311,24 @@ var script$4 = {
      */
     isHighlightStart(date) {
       const config = this.highlightedConfig;
-      return this.isHighlightedDate(date) && config.from.year === this.utils.getFullYear(date) && config.from.month === this.utils.getMonth(date) && config.from.day === this.utils.getDate(date);
-    },
 
+      return (
+        this.isHighlightedDate(date) &&
+        config.from.year === this.utils.getFullYear(date) &&
+        config.from.month === this.utils.getMonth(date) &&
+        config.from.day === this.utils.getDate(date)
+      )
+    },
     /**
      * Whether a day is selected
      * @param {Date} dObj to check if selected
      * @return {Boolean}
      */
     isSelectedDate(dObj) {
-      return this.selectedDate && this.utils.compareDates(this.selectedDate, dObj);
+      return (
+        this.selectedDate && this.utils.compareDates(this.selectedDate, dObj)
+      )
     },
-
     /**
      * Defines the objects within the days array
      * @param  {id}  id
@@ -5286,11 +3337,12 @@ var script$4 = {
      */
     // eslint-disable-next-line complexity
     makeDay(id, dObj) {
-      const isNextMonth = dObj >= this.nextPageDate;
+      const isNextMonth = dObj >= this.firstOfNextMonth;
       const isPreviousMonth = dObj < this.pageDate;
       const isSaturday = this.utils.getDay(dObj) === 6;
       const isSunday = this.utils.getDay(dObj) === 0;
       const showDate = this.showEdgeDates || !(isPreviousMonth || isNextMonth);
+
       return {
         date: showDate ? this.utils.getDate(dObj) : '',
         timestamp: dObj.valueOf(),
@@ -5304,57 +3356,38 @@ var script$4 = {
         isSaturday,
         isSunday,
         isPreviousMonth,
-        isNextMonth
-      };
+        isNextMonth,
+      }
     },
-
     /**
      * Set up a new date object to the first day of the current 'page'
      * @return Date
      */
-    newPageDate() {
+    firstCellDate() {
       const d = this.pageDate;
-      return this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
+
+      const firstOfMonth = this.useUtc
+        ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1))
+        : new Date(
+            d.getFullYear(),
+            d.getMonth(),
+            1,
+            d.getHours(),
+            d.getMinutes(),
+          );
+
+      return new Date(
+        firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth),
+      )
     },
-
-    /**
-     * Increment the current page month
-     */
-    nextMonth() {
-      if (!this.isNextDisabled) {
-        this.changeMonth(+1);
-      }
-    },
-
-    /**
-     * Decrement the page month
-     */
-    previousMonth() {
-      if (!this.isPreviousDisabled) {
-        this.changeMonth(-1);
-      }
-    },
-
-    /**
-     * Emits a selectDate event
-     * @param {Object} date
-     */
-    selectDate(date) {
-      if (date.isDisabled) {
-        this.$emit('selected-disabled', date);
-      } else {
-        this.$emit('select-date', date);
-      }
-    }
-
-  }
+  },
 };
 
 /* script */
 const __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$2 = function() {
+var __vue_render__$3 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -5364,65 +3397,84 @@ var __vue_render__$2 = function() {
     [
       _vm._t("beforeCalendarHeaderDay"),
       _vm._v(" "),
-      _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextMonth,
-            previous: _vm.previousMonth
-          }
-        },
-        [
-          _c(
-            "span",
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
             {
-              staticClass: "day__month_btn",
-              class: _vm.allowedToShowView("month") ? "up" : "",
-              on: {
-                click: function($event) {
-                  return _vm.showPickerCalendar("month")
-                }
-              }
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
             },
-            [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
-          ),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
-      ),
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "day__month_btn",
+                  class: { up: !_vm.isUpDisabled },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("set-view", "month")
+                    }
+                  }
+                },
+                [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
+              ),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
-        { class: _vm.isRtl ? "flex-rtl" : "" },
+        { class: { "flex-rtl": _vm.isRtl } },
         [
-          _vm._l(_vm.daysOfWeek, function(d) {
-            return _c(
-              "span",
-              { key: d.timestamp, staticClass: "cell day-header" },
-              [_vm._v("\n      " + _vm._s(d) + "\n    ")]
-            )
+          _vm._l(_vm.daysOfWeek, function(day) {
+            return _c("span", { key: day, staticClass: "day-header" }, [
+              _vm._v("\n      " + _vm._s(day) + "\n    ")
+            ])
           }),
           _vm._v(" "),
-          _vm._l(_vm.days, function(day) {
-            return _c(
-              "span",
-              {
-                key: day.timestamp,
-                staticClass: "cell day",
-                class: _vm.dayClasses(day),
-                on: {
-                  click: function($event) {
-                    return _vm.selectDate(day)
+          _c(
+            "div",
+            { ref: "cells" },
+            _vm._l(_vm.cells, function(cell) {
+              return _c(
+                "span",
+                {
+                  key: cell.timestamp,
+                  staticClass: "cell day",
+                  class: _vm.dayClasses(cell),
+                  on: {
+                    click: function($event) {
+                      return _vm.select(cell)
+                    }
                   }
-                }
-              },
-              [_vm._v("\n      " + _vm._s(_vm.dayCellContent(day)) + "\n    ")]
-            )
-          })
+                },
+                [
+                  _vm._t(
+                    "dayCellContent",
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.dayCellContent(cell)) +
+                          "\n        "
+                      )
+                    ],
+                    { cell: cell }
+                  )
+                ],
+                2
+              )
+            }),
+            0
+          )
         ],
         2
       ),
@@ -5432,8 +3484,8 @@ var __vue_render__$2 = function() {
     2
   )
 };
-var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
+var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
 
   /* style */
   const __vue_inject_styles__$4 = undefined;
@@ -5452,7 +3504,7 @@ __vue_render__$2._withStripped = true;
 
   
   const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$4,
     __vue_script__$4,
     __vue_scope_id__$4,
@@ -5465,89 +3517,81 @@ __vue_render__$2._withStripped = true;
   );
 
 //
-var script$5 = {
-  name: 'DatepickerMonthView',
-  mixins: [__vue_component__$3],
+
+var script$3 = {
+  name: 'PickerMonth',
+  mixins: [__vue_component__$5],
   computed: {
     /**
-     * Is the next year disabled?
-     * @return {Boolean}
-     */
-    isNextDisabled() {
-      if (!this.disabledConfig.has.from) {
-        return false;
-      }
-
-      return this.disabledConfig.from.year <= this.pageYear;
-    },
-
-    /**
-     * Is the previous year disabled?
-     * @return {Boolean}
-     */
-    isPreviousDisabled() {
-      if (!this.disabledConfig.has.to) {
-        return false;
-      }
-
-      return this.disabledConfig.to.year >= this.pageYear;
-    },
-
-    /**
-     * Set an array with all months
+     * Sets an array with all months to show this year
      * @return {Array}
      */
-    months() {
+    cells() {
       const d = this.pageDate;
-      const months = []; // set up a new date object to the beginning of the current 'page'
-
-      const dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate())) : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
+      const months = [];
+      // set up a new date object to the beginning of the current 'page'
+      const dObj = this.useUtc
+        ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate()))
+        : new Date(
+            d.getFullYear(),
+            0,
+            d.getDate(),
+            d.getHours(),
+            d.getMinutes(),
+          );
 
       for (let i = 0; i < 12; i += 1) {
         months.push({
           month: this.utils.getMonthName(i, this.translation.months),
           timestamp: dObj.valueOf(),
           isSelected: this.isSelectedMonth(dObj),
-          isDisabled: this.isDisabledMonth(dObj)
+          isDisabled: this.isDisabledMonth(dObj),
         });
         this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
       }
 
-      return months;
+      return months
     },
-
+    /**
+     * Is the next year disabled?
+     * @return {Boolean}
+     */
+    isNextDisabled() {
+      if (!this.disabledConfig.has.from) {
+        return false
+      }
+      return this.disabledConfig.from.year <= this.pageYear
+    },
+    /**
+     * Is the previous year disabled?
+     * @return {Boolean}
+     */
+    isPreviousDisabled() {
+      if (!this.disabledConfig.has.to) {
+        return false
+      }
+      return this.disabledConfig.to.year >= this.pageYear
+    },
     /**
      * Display the current page's year as the title.
      * @return {String}
      */
     pageTitleMonth() {
-      const {
-        yearSuffix
-      } = this.translation;
-      return `${this.pageYear}${yearSuffix}`;
-    }
-
+      const { yearSuffix } = this.translation;
+      return `${this.pageYear}${yearSuffix}`
+    },
   },
   methods: {
-    /**
-     * Changes the year up or down
-     * @param {Number} incrementBy
-     */
-    changeYear(incrementBy) {
-      const date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changed-year', date);
-    },
-
     /**
      * Whether a month is disabled
      * @param {Date} date
      * @return {Boolean}
      */
     isDisabledMonth(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isMonthDisabled(date);
+      return new DisabledDate(this.utils, this.disabledDates).isMonthDisabled(
+        date,
+      )
     },
-
     /**
      * Whether the selected date is in this month
      * @param {Date} date
@@ -5556,45 +3600,21 @@ var script$5 = {
     isSelectedMonth(date) {
       const month = this.utils.getMonth(date);
       const year = this.utils.getFullYear(date);
-      return this.selectedDate && year === this.utils.getFullYear(this.selectedDate) && month === this.utils.getMonth(this.selectedDate);
+
+      return (
+        this.selectedDate &&
+        year === this.utils.getFullYear(this.selectedDate) &&
+        month === this.utils.getMonth(this.selectedDate)
+      )
     },
-
-    /**
-     * Increments the year
-     */
-    nextYear() {
-      if (!this.isNextDisabled) {
-        this.changeYear(1);
-      }
-    },
-
-    /**
-     * Decrements the year
-     */
-    previousYear() {
-      if (!this.isPreviousDisabled) {
-        this.changeYear(-1);
-      }
-    },
-
-    /**
-     * Emits a selectMonth event
-     * @param {Object} month
-     */
-    selectMonth(month) {
-      if (!month.isDisabled) {
-        this.$emit('select-month', month);
-      }
-    }
-
-  }
+  },
 };
 
 /* script */
-const __vue_script__$5 = script$5;
+const __vue_script__$3 = script$3;
 
 /* template */
-var __vue_render__$3 = function() {
+var __vue_render__$2 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -5604,71 +3624,78 @@ var __vue_render__$3 = function() {
     [
       _vm._t("beforeCalendarHeaderMonth"),
       _vm._v(" "),
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
+            {
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
+            },
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "month__year_btn",
+                  class: { up: !_vm.isUpDisabled },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("set-view", "year")
+                    }
+                  }
+                },
+                [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
+              ),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextYear,
-            previous: _vm.previousYear
-          }
-        },
-        [
-          _c(
+        "div",
+        { ref: "cells" },
+        _vm._l(_vm.cells, function(cell) {
+          return _c(
             "span",
             {
-              staticClass: "month__year_btn",
-              class: _vm.allowedToShowView("year") ? "up" : "",
+              key: cell.timestamp,
+              staticClass: "cell month",
+              class: { selected: cell.isSelected, disabled: cell.isDisabled },
               on: {
                 click: function($event) {
-                  return _vm.showPickerCalendar("year")
+                  return _vm.select(cell)
                 }
               }
             },
-            [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
-          ),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
+            [_vm._v("\n      " + _vm._s(cell.month) + "\n    ")]
+          )
+        }),
+        0
       ),
-      _vm._v(" "),
-      _vm._l(_vm.months, function(month) {
-        return _c(
-          "span",
-          {
-            key: month.timestamp,
-            staticClass: "cell month",
-            class: { selected: month.isSelected, disabled: month.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectMonth(month)
-              }
-            }
-          },
-          [_vm._v("\n    " + _vm._s(month.month) + "\n  ")]
-        )
-      }),
       _vm._v(" "),
       _vm._t("calendarFooterMonth")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
+var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$5 = undefined;
+  const __vue_inject_styles__$3 = undefined;
   /* scoped */
-  const __vue_scope_id__$5 = undefined;
+  const __vue_scope_id__$3 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$5 = undefined;
+  const __vue_module_identifier__$3 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$5 = false;
+  const __vue_is_functional_template__$3 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -5677,13 +3704,13 @@ __vue_render__$3._withStripped = true;
   
 
   
-  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
-    __vue_inject_styles__$5,
-    __vue_script__$5,
-    __vue_scope_id__$5,
-    __vue_is_functional_template__$5,
-    __vue_module_identifier__$5,
+  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+    __vue_inject_styles__$3,
+    __vue_script__$3,
+    __vue_scope_id__$3,
+    __vue_is_functional_template__$3,
+    __vue_module_identifier__$3,
     false,
     undefined,
     undefined,
@@ -5691,112 +3718,103 @@ __vue_render__$3._withStripped = true;
   );
 
 //
-var script$6 = {
-  name: 'DatepickerYearView',
-  mixins: [__vue_component__$3],
+
+var script$2 = {
+  name: 'PickerYear',
+  mixins: [__vue_component__$5],
   props: {
     yearRange: {
       type: Number,
-      default: 10
-    }
+      default: 10,
+    },
   },
   computed: {
+    /**
+     * Sets an array with all years to show this decade (or yearRange)
+     * @return {Array}
+     */
+    cells() {
+      const d = this.pageDate;
+      const years = [];
+      const year = this.useUtc
+        ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange
+        : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange;
+      // set up a new date object to the beginning of the current 'page'7
+      const dObj = this.useUtc
+        ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate()))
+        : new Date(
+            year,
+            d.getMonth(),
+            d.getDate(),
+            d.getHours(),
+            d.getMinutes(),
+          );
+      for (let i = 0; i < this.yearRange; i += 1) {
+        years.push({
+          year: this.utils.getFullYear(dObj),
+          timestamp: dObj.valueOf(),
+          isSelected: this.isSelectedYear(dObj),
+          isDisabled: this.isDisabledYear(dObj),
+        });
+        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
+      }
+
+      return years
+    },
     /**
      * Is the next decade disabled?
      * @return {Boolean}
      */
     isNextDisabled() {
       if (!this.disabledConfig.has.from) {
-        return false;
+        return false
       }
-
-      return this.disabledConfig.from.year <= this.pageDecadeEnd;
+      return this.disabledConfig.from.year <= this.pageDecadeEnd
     },
-
     /**
      * Is the previous decade disabled?
      * @return {Boolean}
      */
     isPreviousDisabled() {
       if (!this.disabledConfig.has.to) {
-        return false;
+        return false
       }
-
-      return this.disabledConfig.to.year >= this.pageDecadeStart;
+      return this.disabledConfig.to.year >= this.pageDecadeStart
     },
-
     /**
      * The year at which the current yearRange starts
      * @return {Number}
      */
     pageDecadeStart() {
-      return Math.floor(this.pageYear / this.yearRange) * this.yearRange;
+      return Math.floor(this.pageYear / this.yearRange) * this.yearRange
     },
-
     /**
      * The year at which the current yearRange ends
      * @return {Number}
      */
     pageDecadeEnd() {
-      return this.pageDecadeStart + this.yearRange - 1;
+      return this.pageDecadeStart + this.yearRange - 1
     },
-
     /**
      * Display the current page's decade (or year range) as the title.
      * @return {String}
      */
     pageTitleYear() {
-      const {
-        yearSuffix
-      } = this.translation;
-      return `${this.pageDecadeStart} - ${this.pageDecadeEnd}${yearSuffix}`;
+      const { yearSuffix } = this.translation;
+      return `${this.pageDecadeStart} - ${this.pageDecadeEnd}${yearSuffix}`
     },
-
-    /**
-     * Set an array with years for a decade
-     * @return {Array}
-     */
-    years() {
-      const d = this.pageDate;
-      const years = [];
-      const year = this.useUtc ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange; // set up a new date object to the beginning of the current 'page'7
-
-      const dObj = this.useUtc ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate())) : new Date(year, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
-
-      for (let i = 0; i < this.yearRange; i += 1) {
-        years.push({
-          year: this.utils.getFullYear(dObj),
-          timestamp: dObj.valueOf(),
-          isSelected: this.isSelectedYear(dObj),
-          isDisabled: this.isDisabledYear(dObj)
-        });
-        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
-      }
-
-      return years;
-    }
-
   },
   methods: {
-    /**
-     * Changes the year up or down
-     * @param {Number} incrementBy
-     */
-    changeYear(incrementBy) {
-      const date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changed-decade', date);
-    },
-
     /**
      * Whether a year is disabled
      * @param {Date} date
      * @return {Boolean}
      */
     isDisabledYear(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isYearDisabled(date);
+      return new DisabledDate(this.utils, this.disabledDates).isYearDisabled(
+        date,
+      )
     },
-
     /**
      * Whether the selected date is in this year
      * @param {Date} date
@@ -5804,45 +3822,35 @@ var script$6 = {
      */
     isSelectedYear(date) {
       const year = this.utils.getFullYear(date);
-      return this.selectedDate && year === this.utils.getFullYear(this.selectedDate);
-    },
 
+      return (
+        this.selectedDate && year === this.utils.getFullYear(this.selectedDate)
+      )
+    },
     /**
-     * Increments the decade
+     * Increments the page (overrides nextPage in pickerMixin)
      */
-    nextDecade() {
+    nextPage() {
       if (!this.isNextDisabled) {
-        this.changeYear(this.yearRange);
+        this.changePage(this.yearRange);
       }
     },
-
     /**
-     * Decrements the decade
+     * Decrements the page (overrides previousPage in pickerMixin)
      */
-    previousDecade() {
+    previousPage() {
       if (!this.isPreviousDisabled) {
-        this.changeYear(-this.yearRange);
+        this.changePage(-this.yearRange);
       }
     },
-
-    /**
-     * Emits a selectYear event
-     * @param {Object} year
-     */
-    selectYear(year) {
-      if (!year.isDisabled) {
-        this.$emit('select-year', year);
-      }
-    }
-
-  }
+  },
 };
 
 /* script */
-const __vue_script__$6 = script$6;
+const __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$4 = function() {
+var __vue_render__$1 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -5852,61 +3860,68 @@ var __vue_render__$4 = function() {
     [
       _vm._t("beforeCalendarHeaderYear"),
       _vm._v(" "),
-      _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextDecade,
-            previous: _vm.previousDecade
-          }
-        },
-        [
-          _c("span", [
-            _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
-          ]),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
-      ),
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
+            {
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
+            },
+            [
+              _c("span", [
+                _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
+              ]),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.years, function(year) {
-        return _c(
-          "span",
-          {
-            key: year.timestamp,
-            staticClass: "cell year",
-            class: { selected: year.isSelected, disabled: year.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectYear(year)
+      _c(
+        "div",
+        { ref: "cells" },
+        _vm._l(_vm.cells, function(cell) {
+          return _c(
+            "span",
+            {
+              key: cell.timestamp,
+              staticClass: "cell year",
+              class: { selected: cell.isSelected, disabled: cell.isDisabled },
+              on: {
+                click: function($event) {
+                  return _vm.select(cell)
+                }
               }
-            }
-          },
-          [_vm._v("\n    " + _vm._s(year.year) + "\n  ")]
-        )
-      }),
+            },
+            [_vm._v("\n      " + _vm._s(cell.year) + "\n    ")]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _vm._t("calendarFooterYear")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
+var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$6 = undefined;
+  const __vue_inject_styles__$2 = undefined;
   /* scoped */
-  const __vue_scope_id__$6 = undefined;
+  const __vue_scope_id__$2 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$6 = undefined;
+  const __vue_module_identifier__$2 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$6 = false;
+  const __vue_is_functional_template__$2 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -5915,13 +3930,13 @@ __vue_render__$4._withStripped = true;
   
 
   
-  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-    __vue_inject_styles__$6,
-    __vue_script__$6,
-    __vue_scope_id__$6,
-    __vue_is_functional_template__$6,
-    __vue_module_identifier__$6,
+  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+    __vue_inject_styles__$2,
+    __vue_script__$2,
+    __vue_scope_id__$2,
+    __vue_is_functional_template__$2,
+    __vue_module_identifier__$2,
     false,
     undefined,
     undefined,
@@ -6048,72 +4063,63 @@ function getRelativePosition({
   };
 }
 
-var script$7 = {
+var script$1 = {
   name: 'Popup',
   props: {
     appendToBody: {
       type: Boolean,
-      default: true
+      default: true,
     },
     fixedPosition: {
       type: String,
-      default: ''
+      default: '',
     },
     inline: {
       type: Boolean,
-      default: false
+      default: false,
     },
     rtl: {
       type: Boolean,
-      default: false
+      default: false,
     },
     visible: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-
   data() {
     return {
-      popupRect: null
-    };
+      popupRect: null,
+    }
   },
-
   watch: {
     visible: {
       immediate: true,
-
       handler(val) {
         this.$nextTick(() => {
           if (val) {
             this.displayPopup();
           }
         });
-      }
-
-    }
+      },
+    },
   },
-
   mounted() {
     if (this.inline) {
-      return;
+      return
     }
-
     if (this.appendToBody) {
       document.body.appendChild(this.$el);
     }
   },
-
   beforeDestroy() {
     if (this.inline) {
-      return;
+      return
     }
-
     if (this.appendToBody && this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el);
     }
   },
-
   methods: {
     setTopStyle() {
       if (this.appendToBody) {
@@ -6121,58 +4127,47 @@ var script$7 = {
         this.$el.style.top = `${relativeRect.bottom + window.scrollY}px`;
       }
     },
-
     displayPopup() {
-      if (this.inline || !this.visible) return;
+      if (this.inline || !this.visible) return
       this.setTopStyle();
       const popup = this.$el;
       const relativeElement = this.$parent.$el;
-
       if (!this.popupRect) {
         this.popupRect = getPopupElementSize(popup);
       }
-
-      const {
-        width,
-        height
-      } = this.popupRect;
-      const {
-        left,
-        top
-      } = getRelativePosition({
+      const { width, height } = this.popupRect;
+      const { left, top } = getRelativePosition({
         el: popup,
         elRelative: relativeElement,
         targetWidth: width,
         targetHeight: height,
         appendToBody: this.appendToBody,
         fixedPosition: this.fixedPosition,
-        rtl: this.rtl
+        rtl: this.rtl,
       });
+
       this.$el.style.left = left;
       this.$el.style.top = top;
-    }
-
+    },
   },
-
   render() {
-    return this.$slots.default;
-  }
-
+    return this.$slots.default
+  },
 };
 
 /* script */
-const __vue_script__$7 = script$7;
+const __vue_script__$1 = script$1;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$7 = undefined;
+  const __vue_inject_styles__$1 = undefined;
   /* scoped */
-  const __vue_scope_id__$7 = undefined;
+  const __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$7 = undefined;
+  const __vue_module_identifier__$1 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$7 = undefined;
+  const __vue_is_functional_template__$1 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -6181,13 +4176,13 @@ const __vue_script__$7 = script$7;
   
 
   
-  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$7,
-    __vue_script__$7,
-    __vue_scope_id__$7,
-    __vue_is_functional_template__$7,
-    __vue_module_identifier__$7,
+    __vue_inject_styles__$1,
+    __vue_script__$1,
+    __vue_scope_id__$1,
+    __vue_is_functional_template__$1,
+    __vue_module_identifier__$1,
     false,
     undefined,
     undefined,
@@ -6196,193 +4191,208 @@ const __vue_script__$7 = script$7;
 
 //
 
-const validDate = val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number';
-
-var script$8 = {
+var script = {
   name: 'Datepicker',
   components: {
-    DateInput: __vue_component__$1,
+    DateInput: __vue_component__$7,
     PickerDay: __vue_component__$4,
-    PickerMonth: __vue_component__$5,
-    PickerYear: __vue_component__$6,
-    Popup: __vue_component__$7
+    PickerMonth: __vue_component__$3,
+    PickerYear: __vue_component__$2,
+    Popup: __vue_component__$1,
   },
-  mixins: [__vue_component__],
+  mixins: [__vue_component__$8],
   props: {
     appendToBody: {
       type: Boolean,
-      default: false
+      default: false,
     },
     calendarClass: {
       type: [String, Object, Array],
-      default: ''
+      default: '',
     },
     dayCellContent: {
       type: Function,
-      default: day => day.date
+      default: (day) => day.date,
     },
     disabledDates: {
       type: Object,
-
       default() {
-        return {};
-      }
-
+        return {}
+      },
     },
     firstDayOfWeek: {
       type: String,
-      default: 'sun'
+      default: 'sun',
     },
     fixedPosition: {
       type: String,
       default: '',
-      validator: val => {
-        const possibleValues = ['', 'bottom', 'bottom-left', 'bottom-right', 'top', 'top-left', 'top-right'];
-        return possibleValues.includes(val);
-      }
+      validator: (val) => {
+        const possibleValues = [
+          '',
+          'bottom',
+          'bottom-left',
+          'bottom-right',
+          'top',
+          'top-left',
+          'top-right',
+        ];
+        return possibleValues.includes(val)
+      },
     },
     fullMonthName: {
       type: Boolean,
-      default: false
+      default: false,
     },
     highlighted: {
       type: Object,
-
       default() {
-        return {};
-      }
-
+        return {}
+      },
     },
     initialView: {
       type: String,
-      default: ''
+      default: '',
     },
     language: {
       type: Object,
-      default: () => en
+      default: () => en,
     },
     maximumView: {
       type: String,
-      default: 'year'
+      default: 'year',
     },
     minimumView: {
       type: String,
-      default: 'day'
+      default: 'day',
     },
     showEdgeDates: {
       type: Boolean,
-      default: true
+      default: true,
     },
     showHeader: {
       type: Boolean,
-      default: true
+      default: true,
     },
     value: {
       type: [String, Date, Number],
       default: '',
-      validator: validDate
+      validator: (val) =>
+        val === null ||
+        val instanceof Date ||
+        typeof val === 'string' ||
+        typeof val === 'number',
     },
     wrapperClass: {
       type: [String, Object, Array],
-      default: ''
+      default: '',
     },
     yearPickerRange: {
       type: Number,
-      default: 10
-    }
+      default: 10,
+    },
   },
-
   data() {
-    // const startDate = this.openDate ? new Date(this.openDate) : new Date()
-    const constructedDateUtils = makeDateUtils(this.useUtc);
-    let startDate;
+    const utils = makeDateUtils(this.useUtc);
+    const startDate = utils.getNewDateObject(this.openDate || null);
+    const pageTimestamp = utils.setDate(startDate, 1);
 
-    if (this.openDate) {
-      startDate = constructedDateUtils.getNewDateObject(this.openDate);
-    } else {
-      startDate = constructedDateUtils.getNewDateObject();
-    }
-
-    const pageTimestamp = constructedDateUtils.setDate(startDate, 1);
     return {
-      /*
-       * Positioning
-       */
       calendarHeight: 0,
       calendarSlots,
-      currentPicker: '',
-
       /*
        * Vue cannot observe changes to a Date Object so date must be stored as a timestamp
        * This represents the first day of the current viewing month
        * {Number}
        */
       pageTimestamp,
-      resetTypedDate: constructedDateUtils.getNewDateObject(),
-
+      resetTypedDate: utils.getNewDateObject(),
       /*
        * Selected Date
        * {Date}
        */
       selectedDate: null,
-      utils: constructedDateUtils
-    };
-  },
-
-  computed: {
-    computedInitialView() {
-      return this.initialView ? this.initialView : this.minimumView;
-    },
-
-    isInline() {
-      return !!this.inline;
-    },
-
-    isOpen() {
-      return this.currentPicker !== '';
-    },
-
-    isRtl() {
-      return this.translation.rtl === true;
-    },
-
-    pageDate() {
-      return new Date(this.pageTimestamp);
-    },
-
-    pickerClasses() {
-      return [this.calendarClass, 'vdp-datepicker__calendar', this.isInline && 'inline', this.isRtl && this.appendToBody && 'rtl'];
-    },
-
-    translation() {
-      return this.language;
-    },
-
-    disabledDatesClass() {
-      return new DisabledDate(this.utils, this.disabledDates);
+      utils,
+      view: '',
     }
+  },
+  computed: {
+    allowedViews() {
+      const views = ['day', 'month', 'year'];
 
+      return views.filter((view) => this.allowedToShowView(view))
+    },
+    computedInitialView() {
+      return this.initialView || this.minimumView
+    },
+    isInline() {
+      return !!this.inline
+    },
+    isOpen() {
+      return this.view !== ''
+    },
+    isRtl() {
+      return this.translation.rtl
+    },
+    isUpDisabled() {
+      return !this.allowedToShowView(this.nextView.up)
+    },
+    nextView() {
+      const isCurrentView = (view) => view === this.view;
+      const viewIndex = this.allowedViews.findIndex(isCurrentView);
+      const nextViewDown = (index) => {
+        return index <= 0 ? undefined : this.allowedViews[index - 1]
+      };
+      const nextViewUp = (index) => {
+        if (index < 0) {
+          return undefined
+        }
+
+        if (index === this.allowedViews.length - 1) {
+          return 'decade'
+        }
+
+        return this.allowedViews[index + 1]
+      };
+
+      return {
+        up: nextViewUp(viewIndex),
+        down: nextViewDown(viewIndex),
+      }
+    },
+    pageDate() {
+      return new Date(this.pageTimestamp)
+    },
+    picker() {
+      const view = this.view || this.computedInitialView;
+      return `Picker${this.ucFirst(view)}`
+    },
+    pickerClasses() {
+      return [
+        this.calendarClass,
+        this.isInline && 'inline',
+        this.isRtl && this.appendToBody && 'rtl',
+      ]
+    },
+    translation() {
+      return this.language
+    },
   },
   watch: {
     initialView() {
       this.setInitialView();
     },
-
     openDate() {
       this.setPageDate();
     },
-
     value(value) {
       const parsedValue = this.parseValue(value);
       this.setValue(parsedValue);
-    }
-
+    },
   },
-
   mounted() {
     this.init();
   },
-
   methods: {
     /**
      * Are we allowed to show a specific picker view?
@@ -6394,9 +4404,9 @@ var script$8 = {
       const minimumViewIndex = views.indexOf(this.minimumView);
       const maximumViewIndex = views.indexOf(this.maximumView);
       const viewIndex = views.indexOf(view);
-      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex;
-    },
 
+      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex
+    },
     /**
      * Clear the selected date
      */
@@ -6407,38 +4417,73 @@ var script$8 = {
       this.$emit('input', null);
       this.$emit('cleared');
     },
-
     /**
      * Close the calendar views
      */
     close() {
       if (!this.isInline) {
-        this.currentPicker = '';
+        this.view = '';
         this.$emit('closed');
       }
     },
-
     /**
-     * Handles a month change from the day picker
+     * Set the new pageDate and emit `changed-<view>` event
      */
-    handleChangedMonthFromDayPicker(date) {
-      this.setPageDate(date);
-      this.$emit('changed-month', date);
+    handlePageChange(pageDate) {
+      this.setPageDate(pageDate);
+      this.$emit(`changed-${this.nextView.up}`, pageDate);
     },
+    /**
+     * Emits a 'blur' event
+     */
+    handleInputBlur() {
+      this.$emit('blur');
+    },
+    /**
+     * Emits a 'focus' event
+     */
+    handleInputFocus() {
+      this.$emit('focus');
+    },
+    /**
+     * Set the date, or go to the next view down
+     */
+    handleSelect(cell) {
+      if (this.allowedToShowView(this.nextView.down)) {
+        this.setPageDate(new Date(cell.timestamp));
+        this.$emit(`changed-${this.view}`, cell);
+        this.setView(this.nextView.down);
+        return
+      }
 
+      this.resetTypedDate = this.utils.getNewDateObject();
+      this.selectDate(cell.timestamp);
+      this.close();
+    },
+    /**
+     * Emit a 'selected-disabled' event
+     */
+    handleSelectDisabled(cell) {
+      this.$emit('selected-disabled', cell);
+    },
+    /**
+     * Set the date from a 'typed-date' event
+     */
+    handleTypedDate(date) {
+      this.selectDate(date.valueOf());
+    },
     /**
      * Initiate the component
      */
     init() {
       if (this.value) {
         let parsedValue = this.parseValue(this.value);
-        const isDateDisabled = parsedValue && this.disabledDatesClass.isDateDisabled(parsedValue);
+        const isDateDisabled = parsedValue && this.isDateDisabled(parsedValue);
 
         if (isDateDisabled) {
           parsedValue = null;
           this.$emit('input', parsedValue);
         }
-
         this.setValue(parsedValue);
       }
 
@@ -6446,21 +4491,37 @@ var script$8 = {
         this.setInitialView();
       }
     },
-
     /**
-     * Emits a 'blur' event
+     * Returns true if a date is disabled
+     * @param {Date} date
      */
-    onBlur() {
-      this.$emit('blur');
+    isDateDisabled(date) {
+      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(
+        date,
+      )
     },
-
     /**
-     * Emits a 'focus' event
+     * Opens the calendar with the relevant view: 'day', 'month', or 'year'
      */
-    onFocus() {
-      this.$emit('focus');
+    open() {
+      if (this.disabled || this.isInline) {
+        return
+      }
+      this.setInitialView();
+      this.$emit('opened');
     },
-
+    /**
+     * Parse a datepicker value from string/number to date
+     * @param {Date|String|Number|null} date
+     */
+    parseValue(date) {
+      let dateTemp = date;
+      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
+        const parsed = new Date(dateTemp);
+        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
+      }
+      return dateTemp
+    },
     /**
      * Called in the event that the user navigates to date pages and
      * closes the picker without selecting a date.
@@ -6468,24 +4529,21 @@ var script$8 = {
     resetDefaultPageDate() {
       if (this.selectedDate === null) {
         this.setPageDate();
-        return;
+        return
       }
-
       this.setPageDate(this.selectedDate);
     },
-
     /**
-     * Set the selected date
+     * Select the date
      * @param {Number} timestamp
      */
-    setDate(timestamp) {
+    selectDate(timestamp) {
       const date = new Date(timestamp);
       this.selectedDate = date;
       this.setPageDate(date);
       this.$emit('selected', date);
       this.$emit('input', date);
     },
-
     /**
      * Sets the initial picker page view: day, month or year
      */
@@ -6493,50 +4551,28 @@ var script$8 = {
       const initialView = this.computedInitialView;
 
       if (!this.allowedToShowView(initialView)) {
-        throw new Error(`initialView '${this.initialView}' cannot be rendered based on minimum '${this.minimumView}' and maximum '${this.maximumView}'`);
+        throw new Error(
+          `initialView '${this.initialView}' cannot be rendered based on minimum '${this.minimumView}' and maximum '${this.maximumView}'`,
+        )
       }
 
-      switch (initialView) {
-        case 'year':
-          this.showSpecificCalendar('Year');
-          break;
-
-        case 'month':
-          this.showSpecificCalendar('Month');
-          break;
-
-        default:
-          this.showSpecificCalendar('Day');
-          break;
-      }
+      this.setView(initialView);
     },
-
     /**
      * Sets the date that the calendar should open on
      */
     setPageDate(date) {
       let dateTemp = date;
-
       if (!dateTemp) {
         if (this.openDate) {
           dateTemp = new Date(this.openDate);
         } else {
           dateTemp = new Date();
         }
-
         dateTemp = this.utils.resetDateTime(dateTemp);
       }
-
       this.pageTimestamp = this.utils.setDate(new Date(dateTemp), 1);
     },
-
-    /**
-     * Set the date from a typedDate event
-     */
-    setTypedDate(date) {
-      this.setDate(date.valueOf());
-    },
-
     /**
      * Set the datepicker value
      * @param {Date|String|Number|null} date
@@ -6545,102 +4581,32 @@ var script$8 = {
       if (!date) {
         this.setPageDate();
         this.selectedDate = null;
-        return;
+        return
       }
-
       this.selectedDate = date;
       this.setPageDate(date);
     },
-
     /**
-     * parse a datepicker value from string/number to date
-     * @param {Date|String|Number|null} date
+     * Set the picker view
      */
-    parseValue(date) {
-      let dateTemp = date;
-
-      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
-        const parsed = new Date(dateTemp);
-        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
-      }
-
-      return dateTemp;
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDate(date) {
-      this.resetTypedDate = this.utils.getNewDateObject();
-      this.close();
-      this.setDate(date.timestamp);
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDisabledDate(date) {
-      this.$emit('selected-disabled', date);
-    },
-
-    /**
-     * @param {Object} month
-     */
-    selectMonth(month) {
-      const date = new Date(month.timestamp);
-
-      if (this.allowedToShowView('day')) {
-        this.setPageDate(date);
-        this.$emit('changed-month', month);
-        this.showSpecificCalendar('Day');
-      } else {
-        this.selectDate(month);
+    setView(view) {
+      if (this.allowedToShowView(view)) {
+        this.view = view;
       }
     },
-
     /**
-     * @param {Object} year
+     * Capitalizes the first letter
      */
-    selectYear(year) {
-      const date = new Date(year.timestamp);
-
-      if (this.allowedToShowView('month')) {
-        this.setPageDate(date);
-        this.$emit('changed-year', year);
-        this.showSpecificCalendar('Month');
-      } else {
-        this.selectDate(year);
-      }
+    ucFirst(str) {
+      return str[0].toUpperCase() + str.substring(1)
     },
-
-    /**
-     * Shows the calendar at the relevant view: 'day', 'month', or 'year'
-     */
-    showCalendar() {
-      if (this.disabled || this.isInline) {
-        return;
-      }
-
-      this.setInitialView();
-      this.$emit('opened');
-    },
-
-    /**
-     * Show a specific picker
-     */
-    showSpecificCalendar(type) {
-      if (this.allowedToShowView(type.toLowerCase())) {
-        this.currentPicker = `Picker${type}`;
-      }
-    }
-
-  }
+  },
 };
 
 /* script */
-const __vue_script__$8 = script$8;
+const __vue_script__ = script;
 /* template */
-var __vue_render__$5 = function() {
+var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -6648,7 +4614,7 @@ var __vue_render__$5 = function() {
     "div",
     {
       staticClass: "vdp-datepicker",
-      class: [_vm.wrapperClass, _vm.isRtl ? "rtl" : ""]
+      class: [_vm.wrapperClass, { rtl: _vm.isRtl }]
     },
     [
       _c(
@@ -6685,12 +4651,12 @@ var __vue_render__$5 = function() {
             "use-utc": _vm.useUtc
           },
           on: {
-            blur: _vm.onBlur,
+            blur: _vm.handleInputBlur,
             "clear-date": _vm.clearDate,
-            "close-calendar": _vm.close,
-            focus: _vm.onFocus,
-            "show-calendar": _vm.showCalendar,
-            "typed-date": _vm.setTypedDate
+            close: _vm.close,
+            focus: _vm.handleInputFocus,
+            open: _vm.open,
+            "typed-date": _vm.handleTypedDate
           }
         },
         [
@@ -6718,93 +4684,102 @@ var __vue_render__$5 = function() {
           }
         },
         [
-          _vm.isOpen
-            ? _c(
-                "div",
+          _c(
+            "div",
+            {
+              directives: [
                 {
-                  ref: "datepicker",
-                  class: _vm.pickerClasses,
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isOpen,
+                  expression: "isOpen"
+                }
+              ],
+              ref: "datepicker",
+              staticClass: "vdp-datepicker__calendar",
+              class: _vm.pickerClasses,
+              on: {
+                mousedown: function($event) {
+                  $event.preventDefault();
+                }
+              }
+            },
+            [
+              _vm._t("beforeCalendarHeader"),
+              _vm._v(" "),
+              _c(
+                _vm.picker,
+                {
+                  tag: "Component",
+                  attrs: {
+                    "day-cell-content": _vm.dayCellContent,
+                    "disabled-dates": _vm.disabledDates,
+                    "first-day-of-week": _vm.firstDayOfWeek,
+                    highlighted: _vm.highlighted,
+                    "is-rtl": _vm.isRtl,
+                    "is-up-disabled": _vm.isUpDisabled,
+                    "page-date": _vm.pageDate,
+                    "selected-date": _vm.selectedDate,
+                    "show-edge-dates": _vm.showEdgeDates,
+                    "show-full-month-name": _vm.fullMonthName,
+                    "show-header": _vm.showHeader,
+                    translation: _vm.translation,
+                    "use-utc": _vm.useUtc,
+                    "year-range": _vm.yearPickerRange
+                  },
                   on: {
-                    mousedown: function($event) {
-                      $event.preventDefault();
-                    }
-                  }
+                    "page-change": _vm.handlePageChange,
+                    select: _vm.handleSelect,
+                    "select-disabled": _vm.handleSelectDisabled,
+                    "set-view": _vm.setView
+                  },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "dayCellContent",
+                        fn: function(ref) {
+                          var cell = ref.cell;
+                          return [
+                            cell
+                              ? _vm._t("dayCellContent", null, { cell: cell })
+                              : _vm._e()
+                          ]
+                        }
+                      }
+                    ],
+                    null,
+                    true
+                  )
                 },
                 [
-                  _vm.isOpen
-                    ? [
-                        _vm._t("beforeCalendarHeader"),
-                        _vm._v(" "),
-                        _c(
-                          _vm.currentPicker,
-                          {
-                            tag: "Component",
-                            attrs: {
-                              "allowed-to-show-view": _vm.allowedToShowView,
-                              "day-cell-content": _vm.dayCellContent,
-                              "disabled-dates": _vm.disabledDates,
-                              "first-day-of-week": _vm.firstDayOfWeek,
-                              highlighted: _vm.highlighted,
-                              "is-rtl": _vm.isRtl,
-                              "page-date": _vm.pageDate,
-                              "page-timestamp": _vm.pageTimestamp,
-                              "selected-date": _vm.selectedDate,
-                              "show-edge-dates": _vm.showEdgeDates,
-                              "show-full-month-name": _vm.fullMonthName,
-                              "show-header": _vm.showHeader,
-                              translation: _vm.translation,
-                              "use-utc": _vm.useUtc,
-                              "year-range": _vm.yearPickerRange
-                            },
-                            on: {
-                              "select-date": _vm.selectDate,
-                              "changed-month":
-                                _vm.handleChangedMonthFromDayPicker,
-                              "selected-disabled": _vm.selectDisabledDate,
-                              "select-month": _vm.selectMonth,
-                              "changed-year": _vm.setPageDate,
-                              "show-month-calendar": function($event) {
-                                return _vm.showSpecificCalendar("Month")
-                              },
-                              "select-year": _vm.selectYear,
-                              "changed-decade": _vm.setPageDate,
-                              "show-year-calendar": function($event) {
-                                return _vm.showSpecificCalendar("Year")
-                              }
-                            }
-                          },
-                          [
-                            _vm._l(_vm.calendarSlots, function(slotKey) {
-                              return [_vm._t(slotKey, null, { slot: slotKey })]
-                            })
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _vm._t("calendarFooter")
-                      ]
-                    : _vm._e()
+                  _vm._l(_vm.calendarSlots, function(slotKey) {
+                    return [_vm._t(slotKey, null, { slot: slotKey })]
+                  })
                 ],
                 2
-              )
-            : _vm._e()
+              ),
+              _vm._v(" "),
+              _vm._t("calendarFooter")
+            ],
+            2
+          )
         ]
       )
     ],
     1
   )
 };
-var __vue_staticRenderFns__$5 = [];
-__vue_render__$5._withStripped = true;
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$8 = undefined;
+  const __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__$8 = undefined;
+  const __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__$8 = undefined;
+  const __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__$8 = false;
+  const __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -6813,42 +4788,509 @@ __vue_render__$5._withStripped = true;
   
 
   
-  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
-    __vue_inject_styles__$8,
-    __vue_script__$8,
-    __vue_scope_id__$8,
-    __vue_is_functional_template__$8,
-    __vue_module_identifier__$8,
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
     false,
     undefined,
     undefined,
     undefined
   );
 
-/* harmony default export */ var Datepicker_esm = (__vue_component__$8);
+/* harmony default export */ var Datepicker_esm = (__vue_component__);
 //# sourceMappingURL=Datepicker.esm.js.map
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/Language.esm.js
+class Language_esm_Language {
+  // eslint-disable-next-line max-params
+  constructor(language, months, monthsAbbr, days, rtl = false, ymd = false, yearSuffix = '') {
+    this.language = language;
+    this.months = months;
+    this.monthsAbbr = monthsAbbr;
+    this.days = days;
+    this.rtl = rtl;
+    this.ymd = ymd;
+    this.yearSuffix = yearSuffix;
+  }
+  /* eslint-disable no-underscore-dangle */
+
+
+  get language() {
+    return this._language;
+  }
+
+  set language(language) {
+    if (typeof language !== 'string') {
+      throw new TypeError('Language must be a string');
+    }
+
+    this._language = language;
+  }
+
+  get months() {
+    return this._months;
+  }
+
+  set months(months) {
+    if (months.length !== 12) {
+      throw new RangeError(`There must be 12 months for ${this.language} language`);
+    }
+
+    this._months = months;
+  }
+
+  get monthsAbbr() {
+    return this._monthsAbbr;
+  }
+
+  set monthsAbbr(monthsAbbr) {
+    if (monthsAbbr.length !== 12) {
+      throw new RangeError(`There must be 12 abbreviated months for ${this.language} language`);
+    }
+
+    this._monthsAbbr = monthsAbbr;
+  }
+
+  get days() {
+    return this._days;
+  }
+
+  set days(days) {
+    if (days.length !== 7) {
+      throw new RangeError(`There must be 7 days for ${this.language} language`);
+    }
+
+    this._days = days;
+  }
+
+  getDaysStartingOn(firstDayOfWeek) {
+    const firstDays = this._days.slice(firstDayOfWeek);
+
+    const lastDays = this._days.slice(0, firstDayOfWeek);
+
+    return firstDays.concat(lastDays);
+  }
+
+  getMonthByAbbrName(name) {
+    const monthValue = this._monthsAbbr.findIndex(month => month === name) + 1;
+    return monthValue < 10 ? `0${monthValue}` : `${monthValue}`;
+  }
+
+  getMonthByName(name) {
+    const monthValue = this._months.findIndex(month => month === name) + 1;
+    return monthValue < 10 ? `0${monthValue}` : `${monthValue}`;
+  }
+
+}
+
+/* harmony default export */ var Language_esm = (Language_esm_Language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/af.esm.js
+
+
+var af = new Language_esm('Afrikaans', ['Januarie', 'Februarie', 'Maart', 'April', 'Mei', 'Junie', 'Julie', 'Augustus', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['So.', 'Ma.', 'Di.', 'Wo.', 'Do.', 'Vr.', 'Sa.']);
+
+/* harmony default export */ var af_esm = (af);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ar.esm.js
+
+
+const language = new Language_esm('Arabic', ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوڤمبر', 'ديسمبر'], ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوڤمبر', 'ديسمبر'], ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'], true);
+
+/* harmony default export */ var ar_esm = (language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/bg.esm.js
+
+
+var bg = new Language_esm('Bulgarian', ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември'], ['Ян', 'Фев', 'Мар', 'Апр', 'Май', 'Юни', 'Юли', 'Авг', 'Сеп', 'Окт', 'Ное', 'Дек'], ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
+
+/* harmony default export */ var bg_esm = (bg);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/bs.esm.js
+
+
+var bs = new Language_esm('Bosnian', ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub']);
+
+/* harmony default export */ var bs_esm = (bs);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ca.esm.js
+
+
+var ca = new Language_esm('Catalan', ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'], ['Gen', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Des'], ['Diu', 'Dil', 'Dmr', 'Dmc', 'Dij', 'Div', 'Dis']);
+
+/* harmony default export */ var ca_esm = (ca);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/cs.esm.js
+
+
+var cs = new Language_esm('Czech', ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'], ['led', 'úno', 'bře', 'dub', 'kvě', 'čer', 'čec', 'srp', 'zář', 'říj', 'lis', 'pro'], ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so']);
+
+/* harmony default export */ var cs_esm = (cs);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/da.esm.js
+
+
+var da = new Language_esm('Danish', ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sø', 'Ma', 'Ti', 'On', 'To', 'Fr', 'Lø']);
+
+/* harmony default export */ var da_esm = (da);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/de.esm.js
+
+
+var de = new Language_esm('German', ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'], ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'], ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.']);
+
+/* harmony default export */ var de_esm = (de);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ee.esm.js
+
+
+var ee = new Language_esm('Estonian', ['Jaanuar', 'Veebruar', 'Märts', 'Aprill', 'Mai', 'Juuni', 'Juuli', 'August', 'September', 'Oktoober', 'November', 'Detsember'], ['Jaan', 'Veebr', 'Märts', 'Apr', 'Mai', 'Juuni', 'Juuli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dets'], ['P', 'E', 'T', 'K', 'N', 'R', 'L']);
+
+/* harmony default export */ var ee_esm = (ee);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/el.esm.js
+
+
+var el = new Language_esm('Greek', ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάϊος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'], ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'], ['Κυρ', 'Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σατ']);
+
+/* harmony default export */ var el_esm = (el);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/en.esm.js
+
+
+var en_esm_en = new Language_esm('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+
+/* harmony default export */ var en_esm = (en_esm_en);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/es.esm.js
+
+
+var es = new Language_esm('Spanish', ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'], ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'], ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']);
+
+/* harmony default export */ var es_esm = (es);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fa.esm.js
+
+
+var fa = new Language_esm('Persian', ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'], ['فرو', 'ارد', 'خرد', 'تیر', 'مرد', 'شهر', 'مهر', 'آبا', 'آذر', 'دی', 'بهم', 'اسف'], ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه']);
+
+/* harmony default export */ var fa_esm = (fa);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fi.esm.js
+
+
+var fi = new Language_esm('Finish', ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu'], ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'], ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']);
+
+/* harmony default export */ var fi_esm = (fi);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fo.esm.js
+
+
+var fo = new Language_esm('Faroese', ['Januar', 'Februar', 'Mars', 'Apríl', 'Mai', 'Juni', 'Juli', 'August', 'Septembur', 'Oktobur', 'Novembur', 'Desembur'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['Sun', 'Mán', 'Týs', 'Mik', 'Hós', 'Frí', 'Ley']);
+
+/* harmony default export */ var fo_esm = (fo);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fr.esm.js
+
+
+var fr = new Language_esm('French', ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'], ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'], ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']);
+
+/* harmony default export */ var fr_esm = (fr);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ge.esm.js
+
+
+var ge = new Language_esm('Georgia', ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი', 'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი'], ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'], ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ']);
+
+/* harmony default export */ var ge_esm = (ge);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/he.esm.js
+
+
+const he_esm_language = new Language_esm('Hebrew', ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'], ['ינו', 'פבר', 'מרץ', 'אפר', 'מאי', 'יונ', 'יול', 'אוג', 'ספט', 'אוק', 'נוב', 'דצמ'], ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'], true);
+
+/* harmony default export */ var he_esm = (he_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/hr.esm.js
+
+
+var hr = new Language_esm('Croatian', ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj', 'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'], ['Sij', 'Velj', 'Ožu', 'Tra', 'Svi', 'Lip', 'Srp', 'Kol', 'Ruj', 'Lis', 'Stu', 'Pro'], ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub']);
+
+/* harmony default export */ var hr_esm = (hr);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/hu.esm.js
+
+
+var hu = new Language_esm('Hungarian', ['Január', 'Február', 'Március', 'Április', 'Május', 'Június', 'Július', 'Augusztus', 'Szeptember', 'Október', 'November', 'December'], ['Jan', 'Febr', 'Márc', 'Ápr', 'Máj', 'Jún', 'Júl', 'Aug', 'Szept', 'Okt', 'Nov', 'Dec'], ['Vas', 'Hét', 'Ke', 'Sze', 'Csü', 'Pén', 'Szo']);
+
+/* harmony default export */ var hu_esm = (hu);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/id.esm.js
+
+
+var id = new Language_esm('Indonesian', ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'], ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab']);
+
+/* harmony default export */ var id_esm = (id);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/is.esm.js
+
+
+var is = new Language_esm('Icelandic', ['Janúar', 'Febrúar', 'Mars', 'Apríl', 'Maí', 'Júní', 'Júlí', 'Ágúst', 'September', 'Október', 'Nóvember', 'Desember'], ['Jan', 'Feb', 'Mars', 'Apr', 'Maí', 'Jún', 'Júl', 'Ágú', 'Sep', 'Okt', 'Nóv', 'Des'], ['Sun', 'Mán', 'Þri', 'Mið', 'Fim', 'Fös', 'Lau']);
+
+/* harmony default export */ var is_esm = (is);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/it.esm.js
+
+
+var it = new Language_esm('Italian', ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'], ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'], ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']);
+
+/* harmony default export */ var it_esm = (it);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ja.esm.js
+
+
+const ja_esm_language = new Language_esm('Japanese', ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'], ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'], ['日', '月', '火', '水', '木', '金', '土'], false, true, '年');
+
+/* harmony default export */ var ja_esm = (ja_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/kk.esm.js
+
+
+var kk = new Language_esm('Kazakh', ['Қаңтар', 'Ақпан', 'Наурыз', 'Сәуір', 'Мамыр', 'Маусым', 'Шілде', 'Тамыз', 'Қыркүйек', 'Қазан', 'Қараша', 'Желтоқсан'], ['Қаң', 'Ақп', 'Нау', 'Сәу', 'Мам', 'Мау', 'Шіл', 'Там', 'Қыр', 'Қаз', 'Қар', 'Жел'], ['Жк', 'Дй', 'Сй', 'Ср', 'Бй', 'Жм', 'Сн']);
+
+/* harmony default export */ var kk_esm = (kk);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ko.esm.js
+
+
+const ko_esm_language = new Language_esm('Korean', ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], ['일', '월', '화', '수', '목', '금', '토'], false, false, '년');
+
+/* harmony default export */ var ko_esm = (ko_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lb.esm.js
+
+
+var lb = new Language_esm('Luxembourgish', ['Januar', 'Februar', 'Mäerz', 'Abrëll', 'Mäi', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'], ['Jan', 'Feb', 'Mäe', 'Abr', 'Mäi', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'], ['So.', 'Mé.', 'Dë.', 'Më.', 'Do.', 'Fr.', 'Sa.']);
+
+/* harmony default export */ var lb_esm = (lb);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lt.esm.js
+
+
+const lt_esm_language = new Language_esm('Lithuanian', ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjūtis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'], ['Sau', 'Vas', 'Kov', 'Bal', 'Geg', 'Bir', 'Lie', 'Rugp', 'Rugs', 'Spa', 'Lap', 'Gru'], ['Sek', 'Pir', 'Ant', 'Tre', 'Ket', 'Pen', 'Šeš'], false, true);
+
+/* harmony default export */ var lt_esm = (lt_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lv.esm.js
+
+
+var lv = new Language_esm('Latvian', ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jūn', 'Jūl', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sv', 'Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se']);
+
+/* harmony default export */ var lv_esm = (lv);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/mn.esm.js
+
+
+const mn_esm_language = new Language_esm('Mongolia', ['1 дүгээр сар', '2 дугаар сар', '3 дугаар сар', '4 дүгээр сар', '5 дугаар сар', '6 дугаар сар', '7 дугаар сар', '8 дугаар сар', '9 дүгээр сар', '10 дугаар сар', '11 дүгээр сар', '12 дугаар сар'], ['1-р сар', '2-р сар', '3-р сар', '4-р сар', '5-р сар', '6-р сар', '7-р сар', '8-р сар', '9-р сар', '10-р сар', '11-р сар', '12-р сар'], ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'], false, true);
+
+/* harmony default export */ var mn_esm = (mn_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/nb-NO.esm.js
+
+
+var nbNO = new Language_esm('Norwegian Bokmål', ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['Sø', 'Ma', 'Ti', 'On', 'To', 'Fr', 'Lø']);
+
+/* harmony default export */ var nb_NO_esm = (nbNO);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/nl.esm.js
+
+
+var nl = new Language_esm('Dutch', ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'], ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'], ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za']);
+
+/* harmony default export */ var nl_esm = (nl);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/pl.esm.js
+
+
+var pl = new Language_esm('Polish', ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'], ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'], ['Nd', 'Pn', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob']);
+
+/* harmony default export */ var pl_esm = (pl);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/pt-BR.esm.js
+
+
+var ptBR = new Language_esm('Brazilian', ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'], ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']);
+
+/* harmony default export */ var pt_BR_esm = (ptBR);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ro.esm.js
+
+
+var ro = new Language_esm('Romanian', ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'], ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Noi', 'Dec'], ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']);
+
+/* harmony default export */ var ro_esm = (ro);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ru.esm.js
+
+
+var ru = new Language_esm('Russian', ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'], ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'], ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
+
+/* harmony default export */ var ru_esm = (ru);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sk.esm.js
+
+
+var sk = new Language_esm('Slovakian', ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'], ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'], ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so']);
+
+/* harmony default export */ var sk_esm = (sk);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sl-SI.esm.js
+
+
+var slSI = new Language_esm('Sloveian', ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Tor', 'Sre', 'Čet', 'Pet', 'Sob']);
+
+/* harmony default export */ var sl_SI_esm = (slSI);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sq.esm.js
+
+
+var sq = new Language_esm('Albanian', ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor', 'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'], ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer', 'Korr', 'Gus', 'Sht', 'Tet', 'Nën', 'Dhj'], ['D', 'Ha', 'Ma', 'Mr', 'Ej', 'Pr', 'Sh']);
+
+/* harmony default export */ var sq_esm = (sq);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sr.esm.js
+
+
+var sr = new Language_esm('Serbian', ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub']);
+
+/* harmony default export */ var sr_esm = (sr);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sr-CYRL.esm.js
+
+
+var srCYRL = new Language_esm('Serbian in Cyrillic script', ['Јануар', 'Фебруар', 'Март', 'Април', 'Мај', 'Јун', 'Јул', 'Август', 'Септембар', 'Октобар', 'Новембар', 'Децембар'], ['Јан', 'Феб', 'Мар', 'Апр', 'Мај', 'Јун', 'Јул', 'Авг', 'Сеп', 'Окт', 'Нов', 'Дец'], ['Нед', 'Пон', 'Уто', 'Сре', 'Чет', 'Пет', 'Суб']);
+
+/* harmony default export */ var sr_CYRL_esm = (srCYRL);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sv.esm.js
+
+
+var sv = new Language_esm('Swedish', ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör']);
+
+/* harmony default export */ var sv_esm = (sv);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/th.esm.js
+
+
+var th = new Language_esm('Thai', ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'], ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'], ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส']);
+
+/* harmony default export */ var th_esm = (th);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/tr.esm.js
+
+
+var tr = new Language_esm('Turkish', ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'], ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'], ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt']);
+
+/* harmony default export */ var tr_esm = (tr);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/uk.esm.js
+
+
+var uk = new Language_esm('Ukraine', ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'], ['Січ', 'Лют', 'Бер', 'Квіт', 'Трав', 'Чер', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд'], ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
+
+/* harmony default export */ var uk_esm = (uk);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ur.esm.js
+
+
+const ur_esm_language = new Language_esm('Urdu', ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر'], ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر'], ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'], true);
+
+/* harmony default export */ var ur_esm = (ur_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/vi.esm.js
+
+
+var vi = new Language_esm('Vietnamese', ['Tháng 01', 'Tháng 02', 'Tháng 03', 'Tháng 04', 'Tháng 05', 'Tháng 06', 'Tháng 07', 'Tháng 08', 'Tháng 09', 'Tháng 10', 'Tháng 11', 'Tháng 12'], ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'], ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']);
+
+/* harmony default export */ var vi_esm = (vi);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/zh.esm.js
+
+
+const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], ['日', '一', '二', '三', '四', '五', '六'], false, false, '年');
+
+/* harmony default export */ var zh_esm = (zh_esm_language);
+
+// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/index.esm.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ var VueFormulateDatepickervue_type_script_lang_js_ = ({
   name: "VueFormulateDatapicker",
@@ -6860,7 +5302,7 @@ __vue_render__$5._withStripped = true;
   },
   data: function data() {
     return {
-      language: {},
+      language: index_esm_namespaceObject[this.context.attributes.language],
       date: null
     };
   },
@@ -6878,20 +5320,6 @@ __vue_render__$5._withStripped = true;
       }).format(d);
       this.context.model = "".concat(year, "-").concat(month, "-").concat(day);
     }
-  },
-  methods: {
-    getLanguage: function getLanguage() {
-      var _this$context$attribu,
-          _this = this;
-
-      var lang = (_this$context$attribu = this.context.attributes.language) !== null && _this$context$attribu !== void 0 ? _this$context$attribu : "en";
-      __webpack_require__("2bcf")("./".concat(lang, ".js")).then(function (result) {
-        _this.language = result.default;
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getLanguage();
   },
   components: {
     Datepicker: Datepicker_esm
@@ -7057,48 +5485,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "fdbc":
-/***/ (function(module, exports) {
-
-// iterable DOM collections
-// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
-module.exports = {
-  CSSRuleList: 0,
-  CSSStyleDeclaration: 0,
-  CSSValueList: 0,
-  ClientRectList: 0,
-  DOMRectList: 0,
-  DOMStringList: 0,
-  DOMTokenList: 1,
-  DataTransferItemList: 0,
-  FileList: 0,
-  HTMLAllCollection: 0,
-  HTMLCollection: 0,
-  HTMLFormElement: 0,
-  HTMLSelectElement: 0,
-  MediaList: 0,
-  MimeTypeArray: 0,
-  NamedNodeMap: 0,
-  NodeList: 1,
-  PaintRequestList: 0,
-  Plugin: 0,
-  PluginArray: 0,
-  SVGLengthList: 0,
-  SVGNumberList: 0,
-  SVGPathSegList: 0,
-  SVGPointList: 0,
-  SVGStringList: 0,
-  SVGTransformList: 0,
-  SourceBufferList: 0,
-  StyleSheetList: 0,
-  TextTrackCueList: 0,
-  TextTrackList: 0,
-  TouchList: 0
-};
-
-
-/***/ }),
-
 /***/ "fdbf":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7108,16 +5494,6 @@ var NATIVE_SYMBOL = __webpack_require__("4930");
 module.exports = NATIVE_SYMBOL
   && !Symbol.sham
   && typeof Symbol.iterator == 'symbol';
-
-
-/***/ }),
-
-/***/ "fea9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-
-module.exports = global.Promise;
 
 
 /***/ })

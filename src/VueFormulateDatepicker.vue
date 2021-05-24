@@ -13,7 +13,7 @@
 
 <script>
 import Datepicker from "@sum.cumo/vue-datepicker";
-
+import * as lang from "@sum.cumo/vue-datepicker/dist/locale/index.esm";
 export default {
   name: "VueFormulateDatapicker",
   props: {
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      language: {},
+      language: lang[this.context.attributes.language],
       date: null,
     };
   },
@@ -36,19 +36,6 @@ export default {
       let day = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
       this.context.model = `${year}-${month}-${day}`;
     },
-  },
-  methods: {
-    getLanguage() {
-      let lang = this.context.attributes.language ?? "en";
-      import(
-        `@sum.cumo/vue-datepicker/src/locale/translations/${lang}.js`
-      ).then((result) => {
-        this.language = result.default;
-      });
-    },
-  },
-  mounted() {
-    this.getLanguage();
   },
   components: { Datepicker },
 };
