@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       language: lang[this.context.attributes.language],
-      date: null,
+      date: this.context.model,
     };
   },
   watch: {
