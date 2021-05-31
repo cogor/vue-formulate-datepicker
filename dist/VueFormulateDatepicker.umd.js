@@ -1335,58 +1335,6 @@ module.exports = function (key) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// NAMESPACE OBJECT: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/index.esm.js
-var index_esm_namespaceObject = {};
-__webpack_require__.r(index_esm_namespaceObject);
-__webpack_require__.d(index_esm_namespaceObject, "af", function() { return af_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ar", function() { return ar_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "bg", function() { return bg_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "bs", function() { return bs_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ca", function() { return ca_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "cs", function() { return cs_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "da", function() { return da_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "de", function() { return de_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ee", function() { return ee_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "el", function() { return el_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "en", function() { return en_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "es", function() { return es_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "fa", function() { return fa_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "fi", function() { return fi_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "fo", function() { return fo_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "fr", function() { return fr_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ge", function() { return ge_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "he", function() { return he_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "hr", function() { return hr_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "hu", function() { return hu_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "id", function() { return id_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "is", function() { return is_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "it", function() { return it_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ja", function() { return ja_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "kk", function() { return kk_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ko", function() { return ko_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "lb", function() { return lb_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "lt", function() { return lt_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "lv", function() { return lv_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "mn", function() { return mn_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "nbNO", function() { return nb_NO_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "nl", function() { return nl_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "pl", function() { return pl_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ptBR", function() { return pt_BR_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ro", function() { return ro_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ru", function() { return ru_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "sk", function() { return sk_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "slSI", function() { return sl_SI_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "sq", function() { return sq_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "sr", function() { return sr_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "srCYRL", function() { return sr_CYRL_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "sv", function() { return sv_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "th", function() { return th_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "tr", function() { return tr_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "uk", function() { return uk_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "ur", function() { return ur_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "vi", function() { return vi_esm; });
-__webpack_require__.d(index_esm_namespaceObject, "zh", function() { return zh_esm; });
-
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
@@ -1411,12 +1359,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62f27113-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=c2f8bd7e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62f27113-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=1fb58962&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=c2f8bd7e&
+// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=1fb58962&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -4889,391 +4837,12 @@ class Language_esm_Language {
 
 /* harmony default export */ var Language_esm = (Language_esm_Language);
 
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/af.esm.js
-
-
-var af = new Language_esm('Afrikaans', ['Januarie', 'Februarie', 'Maart', 'April', 'Mei', 'Junie', 'Julie', 'Augustus', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['So.', 'Ma.', 'Di.', 'Wo.', 'Do.', 'Vr.', 'Sa.']);
-
-/* harmony default export */ var af_esm = (af);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ar.esm.js
-
-
-const language = new Language_esm('Arabic', ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوڤمبر', 'ديسمبر'], ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوڤمبر', 'ديسمبر'], ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'], true);
-
-/* harmony default export */ var ar_esm = (language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/bg.esm.js
-
-
-var bg = new Language_esm('Bulgarian', ['Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември'], ['Ян', 'Фев', 'Мар', 'Апр', 'Май', 'Юни', 'Юли', 'Авг', 'Сеп', 'Окт', 'Ное', 'Дек'], ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
-
-/* harmony default export */ var bg_esm = (bg);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/bs.esm.js
-
-
-var bs = new Language_esm('Bosnian', ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub']);
-
-/* harmony default export */ var bs_esm = (bs);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ca.esm.js
-
-
-var ca = new Language_esm('Catalan', ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'], ['Gen', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Des'], ['Diu', 'Dil', 'Dmr', 'Dmc', 'Dij', 'Div', 'Dis']);
-
-/* harmony default export */ var ca_esm = (ca);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/cs.esm.js
-
-
-var cs = new Language_esm('Czech', ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'], ['led', 'úno', 'bře', 'dub', 'kvě', 'čer', 'čec', 'srp', 'zář', 'říj', 'lis', 'pro'], ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so']);
-
-/* harmony default export */ var cs_esm = (cs);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/da.esm.js
-
-
-var da = new Language_esm('Danish', ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sø', 'Ma', 'Ti', 'On', 'To', 'Fr', 'Lø']);
-
-/* harmony default export */ var da_esm = (da);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/de.esm.js
-
-
-var de = new Language_esm('German', ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'], ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'], ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.']);
-
-/* harmony default export */ var de_esm = (de);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ee.esm.js
-
-
-var ee = new Language_esm('Estonian', ['Jaanuar', 'Veebruar', 'Märts', 'Aprill', 'Mai', 'Juuni', 'Juuli', 'August', 'September', 'Oktoober', 'November', 'Detsember'], ['Jaan', 'Veebr', 'Märts', 'Apr', 'Mai', 'Juuni', 'Juuli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dets'], ['P', 'E', 'T', 'K', 'N', 'R', 'L']);
-
-/* harmony default export */ var ee_esm = (ee);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/el.esm.js
-
-
-var el = new Language_esm('Greek', ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάϊος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'], ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'], ['Κυρ', 'Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σατ']);
-
-/* harmony default export */ var el_esm = (el);
-
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/en.esm.js
 
 
 var en_esm_en = new Language_esm('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
 
 /* harmony default export */ var en_esm = (en_esm_en);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/es.esm.js
-
-
-var es = new Language_esm('Spanish', ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'], ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'], ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']);
-
-/* harmony default export */ var es_esm = (es);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fa.esm.js
-
-
-var fa = new Language_esm('Persian', ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'], ['فرو', 'ارد', 'خرد', 'تیر', 'مرد', 'شهر', 'مهر', 'آبا', 'آذر', 'دی', 'بهم', 'اسف'], ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه']);
-
-/* harmony default export */ var fa_esm = (fa);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fi.esm.js
-
-
-var fi = new Language_esm('Finish', ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu'], ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'], ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']);
-
-/* harmony default export */ var fi_esm = (fi);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fo.esm.js
-
-
-var fo = new Language_esm('Faroese', ['Januar', 'Februar', 'Mars', 'Apríl', 'Mai', 'Juni', 'Juli', 'August', 'Septembur', 'Oktobur', 'Novembur', 'Desembur'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['Sun', 'Mán', 'Týs', 'Mik', 'Hós', 'Frí', 'Ley']);
-
-/* harmony default export */ var fo_esm = (fo);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/fr.esm.js
-
-
-var fr = new Language_esm('French', ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'], ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'], ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']);
-
-/* harmony default export */ var fr_esm = (fr);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ge.esm.js
-
-
-var ge = new Language_esm('Georgia', ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი', 'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი'], ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'], ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ']);
-
-/* harmony default export */ var ge_esm = (ge);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/he.esm.js
-
-
-const he_esm_language = new Language_esm('Hebrew', ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'], ['ינו', 'פבר', 'מרץ', 'אפר', 'מאי', 'יונ', 'יול', 'אוג', 'ספט', 'אוק', 'נוב', 'דצמ'], ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'], true);
-
-/* harmony default export */ var he_esm = (he_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/hr.esm.js
-
-
-var hr = new Language_esm('Croatian', ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj', 'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'], ['Sij', 'Velj', 'Ožu', 'Tra', 'Svi', 'Lip', 'Srp', 'Kol', 'Ruj', 'Lis', 'Stu', 'Pro'], ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub']);
-
-/* harmony default export */ var hr_esm = (hr);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/hu.esm.js
-
-
-var hu = new Language_esm('Hungarian', ['Január', 'Február', 'Március', 'Április', 'Május', 'Június', 'Július', 'Augusztus', 'Szeptember', 'Október', 'November', 'December'], ['Jan', 'Febr', 'Márc', 'Ápr', 'Máj', 'Jún', 'Júl', 'Aug', 'Szept', 'Okt', 'Nov', 'Dec'], ['Vas', 'Hét', 'Ke', 'Sze', 'Csü', 'Pén', 'Szo']);
-
-/* harmony default export */ var hu_esm = (hu);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/id.esm.js
-
-
-var id = new Language_esm('Indonesian', ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'], ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab']);
-
-/* harmony default export */ var id_esm = (id);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/is.esm.js
-
-
-var is = new Language_esm('Icelandic', ['Janúar', 'Febrúar', 'Mars', 'Apríl', 'Maí', 'Júní', 'Júlí', 'Ágúst', 'September', 'Október', 'Nóvember', 'Desember'], ['Jan', 'Feb', 'Mars', 'Apr', 'Maí', 'Jún', 'Júl', 'Ágú', 'Sep', 'Okt', 'Nóv', 'Des'], ['Sun', 'Mán', 'Þri', 'Mið', 'Fim', 'Fös', 'Lau']);
-
-/* harmony default export */ var is_esm = (is);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/it.esm.js
-
-
-var it = new Language_esm('Italian', ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'], ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'], ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']);
-
-/* harmony default export */ var it_esm = (it);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ja.esm.js
-
-
-const ja_esm_language = new Language_esm('Japanese', ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'], ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'], ['日', '月', '火', '水', '木', '金', '土'], false, true, '年');
-
-/* harmony default export */ var ja_esm = (ja_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/kk.esm.js
-
-
-var kk = new Language_esm('Kazakh', ['Қаңтар', 'Ақпан', 'Наурыз', 'Сәуір', 'Мамыр', 'Маусым', 'Шілде', 'Тамыз', 'Қыркүйек', 'Қазан', 'Қараша', 'Желтоқсан'], ['Қаң', 'Ақп', 'Нау', 'Сәу', 'Мам', 'Мау', 'Шіл', 'Там', 'Қыр', 'Қаз', 'Қар', 'Жел'], ['Жк', 'Дй', 'Сй', 'Ср', 'Бй', 'Жм', 'Сн']);
-
-/* harmony default export */ var kk_esm = (kk);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ko.esm.js
-
-
-const ko_esm_language = new Language_esm('Korean', ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], ['일', '월', '화', '수', '목', '금', '토'], false, false, '년');
-
-/* harmony default export */ var ko_esm = (ko_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lb.esm.js
-
-
-var lb = new Language_esm('Luxembourgish', ['Januar', 'Februar', 'Mäerz', 'Abrëll', 'Mäi', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'], ['Jan', 'Feb', 'Mäe', 'Abr', 'Mäi', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'], ['So.', 'Mé.', 'Dë.', 'Më.', 'Do.', 'Fr.', 'Sa.']);
-
-/* harmony default export */ var lb_esm = (lb);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lt.esm.js
-
-
-const lt_esm_language = new Language_esm('Lithuanian', ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjūtis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'], ['Sau', 'Vas', 'Kov', 'Bal', 'Geg', 'Bir', 'Lie', 'Rugp', 'Rugs', 'Spa', 'Lap', 'Gru'], ['Sek', 'Pir', 'Ant', 'Tre', 'Ket', 'Pen', 'Šeš'], false, true);
-
-/* harmony default export */ var lt_esm = (lt_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/lv.esm.js
-
-
-var lv = new Language_esm('Latvian', ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jūn', 'Jūl', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sv', 'Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se']);
-
-/* harmony default export */ var lv_esm = (lv);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/mn.esm.js
-
-
-const mn_esm_language = new Language_esm('Mongolia', ['1 дүгээр сар', '2 дугаар сар', '3 дугаар сар', '4 дүгээр сар', '5 дугаар сар', '6 дугаар сар', '7 дугаар сар', '8 дугаар сар', '9 дүгээр сар', '10 дугаар сар', '11 дүгээр сар', '12 дугаар сар'], ['1-р сар', '2-р сар', '3-р сар', '4-р сар', '5-р сар', '6-р сар', '7-р сар', '8-р сар', '9-р сар', '10-р сар', '11-р сар', '12-р сар'], ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'], false, true);
-
-/* harmony default export */ var mn_esm = (mn_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/nb-NO.esm.js
-
-
-var nbNO = new Language_esm('Norwegian Bokmål', ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'], ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'], ['Sø', 'Ma', 'Ti', 'On', 'To', 'Fr', 'Lø']);
-
-/* harmony default export */ var nb_NO_esm = (nbNO);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/nl.esm.js
-
-
-var nl = new Language_esm('Dutch', ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'], ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'], ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za']);
-
-/* harmony default export */ var nl_esm = (nl);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/pl.esm.js
-
-
-var pl = new Language_esm('Polish', ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'], ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'], ['Nd', 'Pn', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob']);
-
-/* harmony default export */ var pl_esm = (pl);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/pt-BR.esm.js
-
-
-var ptBR = new Language_esm('Brazilian', ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'], ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']);
-
-/* harmony default export */ var pt_BR_esm = (ptBR);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ro.esm.js
-
-
-var ro = new Language_esm('Romanian', ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'], ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Noi', 'Dec'], ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']);
-
-/* harmony default export */ var ro_esm = (ro);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ru.esm.js
-
-
-var ru = new Language_esm('Russian', ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'], ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'], ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
-
-/* harmony default export */ var ru_esm = (ru);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sk.esm.js
-
-
-var sk = new Language_esm('Slovakian', ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'], ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'], ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so']);
-
-/* harmony default export */ var sk_esm = (sk);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sl-SI.esm.js
-
-
-var slSI = new Language_esm('Sloveian', ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Tor', 'Sre', 'Čet', 'Pet', 'Sob']);
-
-/* harmony default export */ var sl_SI_esm = (slSI);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sq.esm.js
-
-
-var sq = new Language_esm('Albanian', ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor', 'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'], ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer', 'Korr', 'Gus', 'Sht', 'Tet', 'Nën', 'Dhj'], ['D', 'Ha', 'Ma', 'Mr', 'Ej', 'Pr', 'Sh']);
-
-/* harmony default export */ var sq_esm = (sq);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sr.esm.js
-
-
-var sr = new Language_esm('Serbian', ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], ['Ned', 'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub']);
-
-/* harmony default export */ var sr_esm = (sr);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sr-CYRL.esm.js
-
-
-var srCYRL = new Language_esm('Serbian in Cyrillic script', ['Јануар', 'Фебруар', 'Март', 'Април', 'Мај', 'Јун', 'Јул', 'Август', 'Септембар', 'Октобар', 'Новембар', 'Децембар'], ['Јан', 'Феб', 'Мар', 'Апр', 'Мај', 'Јун', 'Јул', 'Авг', 'Сеп', 'Окт', 'Нов', 'Дец'], ['Нед', 'Пон', 'Уто', 'Сре', 'Чет', 'Пет', 'Суб']);
-
-/* harmony default export */ var sr_CYRL_esm = (srCYRL);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/sv.esm.js
-
-
-var sv = new Language_esm('Swedish', ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör']);
-
-/* harmony default export */ var sv_esm = (sv);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/th.esm.js
-
-
-var th = new Language_esm('Thai', ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'], ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'], ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส']);
-
-/* harmony default export */ var th_esm = (th);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/tr.esm.js
-
-
-var tr = new Language_esm('Turkish', ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'], ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'], ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt']);
-
-/* harmony default export */ var tr_esm = (tr);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/uk.esm.js
-
-
-var uk = new Language_esm('Ukraine', ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'], ['Січ', 'Лют', 'Бер', 'Квіт', 'Трав', 'Чер', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд'], ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']);
-
-/* harmony default export */ var uk_esm = (uk);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/ur.esm.js
-
-
-const ur_esm_language = new Language_esm('Urdu', ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر'], ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر'], ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'], true);
-
-/* harmony default export */ var ur_esm = (ur_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/vi.esm.js
-
-
-var vi = new Language_esm('Vietnamese', ['Tháng 01', 'Tháng 02', 'Tháng 03', 'Tháng 04', 'Tháng 05', 'Tháng 06', 'Tháng 07', 'Tháng 08', 'Tháng 09', 'Tháng 10', 'Tháng 11', 'Tháng 12'], ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'], ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']);
-
-/* harmony default export */ var vi_esm = (vi);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/translations/zh.esm.js
-
-
-const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], ['日', '一', '二', '三', '四', '五', '六'], false, false, '年');
-
-/* harmony default export */ var zh_esm = (zh_esm_language);
-
-// CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/index.esm.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=script&lang=js&
 
@@ -5302,7 +4871,6 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
   },
   data: function data() {
     return {
-      language: index_esm_namespaceObject[this.context.attributes.language],
       date: this.context.model
     };
   },
@@ -5319,6 +4887,13 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
         day: "2-digit"
       }).format(d);
       this.context.model = "".concat(year, "-").concat(month, "-").concat(day);
+    }
+  },
+  computed: {
+    language: function language() {
+      if (this.context.attributes.language && this.context.attributes.language !== "en") {
+        return this.context.attributes.language;
+      } else return en_esm;
     }
   },
   components: {
