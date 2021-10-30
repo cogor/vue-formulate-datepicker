@@ -96,15 +96,31 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "00ee":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var test = {};
+
+test[TO_STRING_TAG] = 'z';
+
+module.exports = String(test) === '[object z]';
+
+
+/***/ }),
+
 /***/ "06cf":
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__("83ab");
+var call = __webpack_require__("c65b");
 var propertyIsEnumerableModule = __webpack_require__("d1e7");
 var createPropertyDescriptor = __webpack_require__("5c6c");
 var toIndexedObject = __webpack_require__("fc6a");
-var toPrimitive = __webpack_require__("c04e");
-var has = __webpack_require__("5135");
+var toPropertyKey = __webpack_require__("a04b");
+var hasOwn = __webpack_require__("1a2d");
 var IE8_DOM_DEFINE = __webpack_require__("0cfb");
 
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -114,11 +130,55 @@ var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
   O = toIndexedObject(O);
-  P = toPrimitive(P, true);
+  P = toPropertyKey(P);
   if (IE8_DOM_DEFINE) try {
     return $getOwnPropertyDescriptor(O, P);
   } catch (error) { /* empty */ }
-  if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
+  if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "07fa":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toLength = __webpack_require__("50c4");
+
+// `LengthOfArrayLike` abstract operation
+// https://tc39.es/ecma262/#sec-lengthofarraylike
+module.exports = function (obj) {
+  return toLength(obj.length);
+};
+
+
+/***/ }),
+
+/***/ "0b42":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var isArray = __webpack_require__("e8b5");
+var isConstructor = __webpack_require__("68ee");
+var isObject = __webpack_require__("861d");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var SPECIES = wellKnownSymbol('species');
+var Array = global.Array;
+
+// a part of `ArraySpeciesCreate` abstract operation
+// https://tc39.es/ecma262/#sec-arrayspeciescreate
+module.exports = function (originalArray) {
+  var C;
+  if (isArray(originalArray)) {
+    C = originalArray.constructor;
+    // cross-realm fallback
+    if (isConstructor(C) && (C === Array || isArray(C.prototype))) C = undefined;
+    else if (isObject(C)) {
+      C = C[SPECIES];
+      if (C === null) C = undefined;
+    }
+  } return C === undefined ? Array : C;
 };
 
 
@@ -142,8 +202,59 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "1d80":
+/***/ "0d51":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+
+var String = global.String;
+
+module.exports = function (argument) {
+  try {
+    return String(argument);
+  } catch (error) {
+    return 'Object';
+  }
+};
+
+
+/***/ }),
+
+/***/ "1626":
 /***/ (function(module, exports) {
+
+// `IsCallable` abstract operation
+// https://tc39.es/ecma262/#sec-iscallable
+module.exports = function (argument) {
+  return typeof argument == 'function';
+};
+
+
+/***/ }),
+
+/***/ "1a2d":
+/***/ (function(module, exports, __webpack_require__) {
+
+var uncurryThis = __webpack_require__("e330");
+var toObject = __webpack_require__("7b0b");
+
+var hasOwnProperty = uncurryThis({}.hasOwnProperty);
+
+// `HasOwnProperty` abstract operation
+// https://tc39.es/ecma262/#sec-hasownproperty
+module.exports = Object.hasOwn || function hasOwn(it, key) {
+  return hasOwnProperty(toObject(it), key);
+};
+
+
+/***/ }),
+
+/***/ "1d80":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+
+var TypeError = global.TypeError;
 
 // `RequireObjectCoercible` abstract operation
 // https://tc39.es/ecma262/#sec-requireobjectcoercible
@@ -184,7 +295,7 @@ module.exports = function (METHOD_NAME) {
 /***/ "23cb":
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__("a691");
+var toIntegerOrInfinity = __webpack_require__("5926");
 
 var max = Math.max;
 var min = Math.min;
@@ -193,7 +304,7 @@ var min = Math.min;
 // Let integer be ? ToInteger(index).
 // If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
 module.exports = function (index, length) {
-  var integer = toInteger(index);
+  var integer = toIntegerOrInfinity(index);
   return integer < 0 ? max(integer + length, 0) : min(integer, length);
 };
 
@@ -224,6 +335,7 @@ var isForced = __webpack_require__("94ca");
   options.sham        - add a flag to not completely full polyfills
   options.enumerable  - export as enumerable property
   options.noTargetGet - prevent calling a getter on target
+  options.name        - the .name of the function if it does not match the key
 */
 module.exports = function (options, source) {
   var TARGET = options.target;
@@ -246,7 +358,7 @@ module.exports = function (options, source) {
     FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
     // contained in target
     if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty === typeof targetProperty) continue;
+      if (typeof sourceProperty == typeof targetProperty) continue;
       copyConstructorProperties(sourceProperty, targetProperty);
     }
     // add a flag to not completely full polyfills
@@ -286,22 +398,29 @@ var global = __webpack_require__("da84");
 var userAgent = __webpack_require__("342f");
 
 var process = global.process;
-var versions = process && process.versions;
+var Deno = global.Deno;
+var versions = process && process.versions || Deno && Deno.version;
 var v8 = versions && versions.v8;
 var match, version;
 
 if (v8) {
   match = v8.split('.');
-  version = match[0] + match[1];
-} else if (userAgent) {
+  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+  // but their correct versions are not interesting for us
+  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+}
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+// so check `userAgent` even if `.v8` exists, but 0
+if (!version && userAgent) {
   match = userAgent.match(/Edge\/(\d+)/);
   if (!match || match[1] >= 74) {
     match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = match[1];
+    if (match) version = +match[1];
   }
 }
 
-module.exports = version && +version;
+module.exports = version;
 
 
 /***/ }),
@@ -316,12 +435,12 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
-/***/ "428f":
+/***/ "3a9b":
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__("da84");
+var uncurryThis = __webpack_require__("e330");
 
-module.exports = global;
+module.exports = uncurryThis({}.isPrototypeOf);
 
 
 /***/ }),
@@ -329,10 +448,13 @@ module.exports = global;
 /***/ "44ad":
 /***/ (function(module, exports, __webpack_require__) {
 
+var global = __webpack_require__("da84");
+var uncurryThis = __webpack_require__("e330");
 var fails = __webpack_require__("d039");
 var classof = __webpack_require__("c6b6");
 
-var split = ''.split;
+var Object = global.Object;
+var split = uncurryThis(''.split);
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 module.exports = fails(function () {
@@ -340,8 +462,31 @@ module.exports = fails(function () {
   // eslint-disable-next-line no-prototype-builtins -- safe
   return !Object('z').propertyIsEnumerable(0);
 }) ? function (it) {
-  return classof(it) == 'String' ? split.call(it, '') : Object(it);
+  return classof(it) == 'String' ? split(it, '') : Object(it);
 } : Object;
+
+
+/***/ }),
+
+/***/ "485a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var call = __webpack_require__("c65b");
+var isCallable = __webpack_require__("1626");
+var isObject = __webpack_require__("861d");
+
+var TypeError = global.TypeError;
+
+// `OrdinaryToPrimitive` abstract operation
+// https://tc39.es/ecma262/#sec-ordinarytoprimitive
+module.exports = function (input, pref) {
+  var fn, val;
+  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+  if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
+  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
 
 
 /***/ }),
@@ -349,17 +494,18 @@ module.exports = fails(function () {
 /***/ "4930":
 /***/ (function(module, exports, __webpack_require__) {
 
-var IS_NODE = __webpack_require__("605d");
+/* eslint-disable es/no-symbol -- required for testing */
 var V8_VERSION = __webpack_require__("2d00");
 var fails = __webpack_require__("d039");
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
-  // eslint-disable-next-line es/no-symbol -- required for testing
-  return !Symbol.sham &&
-    // Chrome 38 Symbol has incorrect toString conversion
+  var symbol = Symbol();
+  // Chrome 38 Symbol has incorrect toString conversion
+  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+  return !String(symbol) || !(Object(symbol) instanceof Symbol) ||
     // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    (IS_NODE ? V8_VERSION === 38 : V8_VERSION > 37 && V8_VERSION < 41);
+    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
 });
 
 
@@ -369,14 +515,14 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var toIndexedObject = __webpack_require__("fc6a");
-var toLength = __webpack_require__("50c4");
 var toAbsoluteIndex = __webpack_require__("23cb");
+var lengthOfArrayLike = __webpack_require__("07fa");
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIndexedObject($this);
-    var length = toLength(O.length);
+    var length = lengthOfArrayLike(O);
     var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
@@ -407,28 +553,14 @@ module.exports = {
 /***/ "50c4":
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__("a691");
+var toIntegerOrInfinity = __webpack_require__("5926");
 
 var min = Math.min;
 
 // `ToLength` abstract operation
 // https://tc39.es/ecma262/#sec-tolength
 module.exports = function (argument) {
-  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-
-/***/ }),
-
-/***/ "5135":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toObject = __webpack_require__("7b0b");
-
-var hasOwnProperty = {}.hasOwnProperty;
-
-module.exports = function hasOwn(it, key) {
-  return hasOwnProperty.call(toObject(it), key);
+  return argument > 0 ? min(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
 
 
@@ -443,7 +575,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.11.0',
+  version: '3.19.0',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -455,15 +587,53 @@ var store = __webpack_require__("c6cd");
 /***/ (function(module, exports, __webpack_require__) {
 
 var getBuiltIn = __webpack_require__("d066");
+var uncurryThis = __webpack_require__("e330");
 var getOwnPropertyNamesModule = __webpack_require__("241c");
 var getOwnPropertySymbolsModule = __webpack_require__("7418");
 var anObject = __webpack_require__("825a");
+
+var concat = uncurryThis([].concat);
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   var keys = getOwnPropertyNamesModule.f(anObject(it));
   var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
+  return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
+};
+
+
+/***/ }),
+
+/***/ "5926":
+/***/ (function(module, exports) {
+
+var ceil = Math.ceil;
+var floor = Math.floor;
+
+// `ToIntegerOrInfinity` abstract operation
+// https://tc39.es/ecma262/#sec-tointegerorinfinity
+module.exports = function (argument) {
+  var number = +argument;
+  // eslint-disable-next-line no-self-compare -- safe
+  return number !== number || number === 0 ? 0 : (number > 0 ? floor : ceil)(number);
+};
+
+
+/***/ }),
+
+/***/ "59ed":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var isCallable = __webpack_require__("1626");
+var tryToString = __webpack_require__("0d51");
+
+var TypeError = global.TypeError;
+
+// `Assert: IsCallable(argument) is true`
+module.exports = function (argument) {
+  if (isCallable(argument)) return argument;
+  throw TypeError(tryToString(argument) + ' is not a function');
 };
 
 
@@ -484,13 +654,26 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "605d":
+/***/ "5e77":
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__("c6b6");
-var global = __webpack_require__("da84");
+var DESCRIPTORS = __webpack_require__("83ab");
+var hasOwn = __webpack_require__("1a2d");
 
-module.exports = classof(global.process) == 'process';
+var FunctionPrototype = Function.prototype;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+
+var EXISTS = hasOwn(FunctionPrototype, 'name');
+// additional protection from minified / mangled / dropped function names
+var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
+var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
+
+module.exports = {
+  EXISTS: EXISTS,
+  PROPER: PROPER,
+  CONFIGURABLE: CONFIGURABLE
+};
 
 
 /***/ }),
@@ -498,26 +681,63 @@ module.exports = classof(global.process) == 'process';
 /***/ "65f0":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__("861d");
-var isArray = __webpack_require__("e8b5");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var SPECIES = wellKnownSymbol('species');
+var arraySpeciesConstructor = __webpack_require__("0b42");
 
 // `ArraySpeciesCreate` abstract operation
 // https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
-  var C;
-  if (isArray(originalArray)) {
-    C = originalArray.constructor;
-    // cross-realm fallback
-    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
-    else if (isObject(C)) {
-      C = C[SPECIES];
-      if (C === null) C = undefined;
-    }
-  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
+  return new (arraySpeciesConstructor(originalArray))(length === 0 ? 0 : length);
 };
+
+
+/***/ }),
+
+/***/ "68ee":
+/***/ (function(module, exports, __webpack_require__) {
+
+var uncurryThis = __webpack_require__("e330");
+var fails = __webpack_require__("d039");
+var isCallable = __webpack_require__("1626");
+var classof = __webpack_require__("f5df");
+var getBuiltIn = __webpack_require__("d066");
+var inspectSource = __webpack_require__("8925");
+
+var noop = function () { /* empty */ };
+var empty = [];
+var construct = getBuiltIn('Reflect', 'construct');
+var constructorRegExp = /^\s*(?:class|function)\b/;
+var exec = uncurryThis(constructorRegExp.exec);
+var INCORRECT_TO_STRING = !constructorRegExp.exec(noop);
+
+var isConstructorModern = function (argument) {
+  if (!isCallable(argument)) return false;
+  try {
+    construct(noop, empty, argument);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
+var isConstructorLegacy = function (argument) {
+  if (!isCallable(argument)) return false;
+  switch (classof(argument)) {
+    case 'AsyncFunction':
+    case 'GeneratorFunction':
+    case 'AsyncGeneratorFunction': return false;
+    // we can't check .prototype since constructors produced by .bind haven't it
+  } return INCORRECT_TO_STRING || !!exec(constructorRegExp, inspectSource(argument));
+};
+
+// `IsConstructor` abstract operation
+// https://tc39.es/ecma262/#sec-isconstructor
+module.exports = !construct || fails(function () {
+  var called;
+  return isConstructorModern(isConstructorModern.call)
+    || !isConstructorModern(Object)
+    || !isConstructorModern(function () { called = true; })
+    || called;
+}) ? isConstructorLegacy : isConstructorModern;
 
 
 /***/ }),
@@ -527,14 +747,16 @@ module.exports = function (originalArray, length) {
 
 var NATIVE_WEAK_MAP = __webpack_require__("7f9a");
 var global = __webpack_require__("da84");
+var uncurryThis = __webpack_require__("e330");
 var isObject = __webpack_require__("861d");
 var createNonEnumerableProperty = __webpack_require__("9112");
-var objectHas = __webpack_require__("5135");
+var hasOwn = __webpack_require__("1a2d");
 var shared = __webpack_require__("c6cd");
 var sharedKey = __webpack_require__("f772");
 var hiddenKeys = __webpack_require__("d012");
 
 var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
+var TypeError = global.TypeError;
 var WeakMap = global.WeakMap;
 var set, get, has;
 
@@ -551,37 +773,37 @@ var getterFor = function (TYPE) {
   };
 };
 
-if (NATIVE_WEAK_MAP) {
+if (NATIVE_WEAK_MAP || shared.state) {
   var store = shared.state || (shared.state = new WeakMap());
-  var wmget = store.get;
-  var wmhas = store.has;
-  var wmset = store.set;
+  var wmget = uncurryThis(store.get);
+  var wmhas = uncurryThis(store.has);
+  var wmset = uncurryThis(store.set);
   set = function (it, metadata) {
-    if (wmhas.call(store, it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+    if (wmhas(store, it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
     metadata.facade = it;
-    wmset.call(store, it, metadata);
+    wmset(store, it, metadata);
     return metadata;
   };
   get = function (it) {
-    return wmget.call(store, it) || {};
+    return wmget(store, it) || {};
   };
   has = function (it) {
-    return wmhas.call(store, it);
+    return wmhas(store, it);
   };
 } else {
   var STATE = sharedKey('state');
   hiddenKeys[STATE] = true;
   set = function (it, metadata) {
-    if (objectHas(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
     metadata.facade = it;
     createNonEnumerableProperty(it, STATE, metadata);
     return metadata;
   };
   get = function (it) {
-    return objectHas(it, STATE) ? it[STATE] : {};
+    return hasOwn(it, STATE) ? it[STATE] : {};
   };
   has = function (it) {
-    return objectHas(it, STATE);
+    return hasOwn(it, STATE);
   };
 }
 
@@ -600,11 +822,13 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
+var isCallable = __webpack_require__("1626");
+var hasOwn = __webpack_require__("1a2d");
 var createNonEnumerableProperty = __webpack_require__("9112");
-var has = __webpack_require__("5135");
 var setGlobal = __webpack_require__("ce4e");
 var inspectSource = __webpack_require__("8925");
 var InternalStateModule = __webpack_require__("69f3");
+var CONFIGURABLE_FUNCTION_NAME = __webpack_require__("5e77").CONFIGURABLE;
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -614,14 +838,18 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
+  var name = options && options.name !== undefined ? options.name : key;
   var state;
-  if (typeof value == 'function') {
-    if (typeof key == 'string' && !has(value, 'name')) {
-      createNonEnumerableProperty(value, 'name', key);
+  if (isCallable(value)) {
+    if (String(name).slice(0, 7) === 'Symbol(') {
+      name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
+    }
+    if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
+      createNonEnumerableProperty(value, 'name', name);
     }
     state = enforceInternalState(value);
     if (!state.source) {
-      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
+      state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
     }
   }
   if (O === global) {
@@ -637,7 +865,7 @@ var TEMPLATE = String(String).split('String');
   else createNonEnumerableProperty(O, key, value);
 // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
 })(Function.prototype, 'toString', function toString() {
-  return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
+  return isCallable(this) && getInternalState(this).source || inspectSource(this);
 });
 
 
@@ -672,7 +900,10 @@ module.exports = [
 /***/ "7b0b":
 /***/ (function(module, exports, __webpack_require__) {
 
+var global = __webpack_require__("da84");
 var requireObjectCoercible = __webpack_require__("1d80");
+
+var Object = global.Object;
 
 // `ToObject` abstract operation
 // https://tc39.es/ecma262/#sec-toobject
@@ -687,11 +918,12 @@ module.exports = function (argument) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
+var isCallable = __webpack_require__("1626");
 var inspectSource = __webpack_require__("8925");
 
 var WeakMap = global.WeakMap;
 
-module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
+module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));
 
 
 /***/ }),
@@ -699,12 +931,16 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 /***/ "825a":
 /***/ (function(module, exports, __webpack_require__) {
 
+var global = __webpack_require__("da84");
 var isObject = __webpack_require__("861d");
 
-module.exports = function (it) {
-  if (!isObject(it)) {
-    throw TypeError(String(it) + ' is not an object');
-  } return it;
+var String = global.String;
+var TypeError = global.TypeError;
+
+// `Assert: Type(argument) is Object`
+module.exports = function (argument) {
+  if (isObject(argument)) return argument;
+  throw TypeError(String(argument) + ' is not an object');
 };
 
 
@@ -729,12 +965,12 @@ module.exports = !fails(function () {
 
 "use strict";
 
-var toPrimitive = __webpack_require__("c04e");
+var toPropertyKey = __webpack_require__("a04b");
 var definePropertyModule = __webpack_require__("9bf2");
 var createPropertyDescriptor = __webpack_require__("5c6c");
 
 module.exports = function (object, key, value) {
-  var propertyKey = toPrimitive(key);
+  var propertyKey = toPropertyKey(key);
   if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value));
   else object[propertyKey] = value;
 };
@@ -743,10 +979,12 @@ module.exports = function (object, key, value) {
 /***/ }),
 
 /***/ "861d":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var isCallable = __webpack_require__("1626");
 
 module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
+  return typeof it == 'object' ? it !== null : isCallable(it);
 };
 
 
@@ -840,14 +1078,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ "8925":
 /***/ (function(module, exports, __webpack_require__) {
 
+var uncurryThis = __webpack_require__("e330");
+var isCallable = __webpack_require__("1626");
 var store = __webpack_require__("c6cd");
 
-var functionToString = Function.toString;
+var functionToString = uncurryThis(Function.toString);
 
-// this helper broken in `3.4.1-3.4.4`, so we can't use `shared` helper
-if (typeof store.inspectSource != 'function') {
+// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+if (!isCallable(store.inspectSource)) {
   store.inspectSource = function (it) {
-    return functionToString.call(it);
+    return functionToString(it);
   };
 }
 
@@ -857,13 +1097,16 @@ module.exports = store.inspectSource;
 /***/ }),
 
 /***/ "90e3":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var uncurryThis = __webpack_require__("e330");
 
 var id = 0;
 var postfix = Math.random();
+var toString = uncurryThis(1.0.toString);
 
 module.exports = function (key) {
-  return 'Symbol(' + String(key === undefined ? '' : key) + ')_' + (++id + postfix).toString(36);
+  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
 };
 
 
@@ -890,6 +1133,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__("d039");
+var isCallable = __webpack_require__("1626");
 
 var replacement = /#|\.prototype\./;
 
@@ -897,7 +1141,7 @@ var isForced = function (feature, detection) {
   var value = data[normalize(feature)];
   return value == POLYFILL ? true
     : value == NATIVE ? false
-    : typeof detection == 'function' ? fails(detection)
+    : isCallable(detection) ? fails(detection)
     : !!detection;
 };
 
@@ -920,11 +1164,12 @@ module.exports = isForced;
 "use strict";
 
 var $ = __webpack_require__("23e7");
+var global = __webpack_require__("da84");
 var fails = __webpack_require__("d039");
 var isArray = __webpack_require__("e8b5");
 var isObject = __webpack_require__("861d");
 var toObject = __webpack_require__("7b0b");
-var toLength = __webpack_require__("50c4");
+var lengthOfArrayLike = __webpack_require__("07fa");
 var createProperty = __webpack_require__("8418");
 var arraySpeciesCreate = __webpack_require__("65f0");
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
@@ -934,6 +1179,7 @@ var V8_VERSION = __webpack_require__("2d00");
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
+var TypeError = global.TypeError;
 
 // We can't use this feature detection in V8 since it causes
 // deoptimization and serious performance degradation
@@ -967,7 +1213,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
     for (i = -1, length = arguments.length; i < length; i++) {
       E = i === -1 ? O : arguments[i];
       if (isConcatSpreadable(E)) {
-        len = toLength(E.length);
+        len = lengthOfArrayLike(E);
         if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
         for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
       } else {
@@ -986,11 +1232,13 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 /***/ "9bf2":
 /***/ (function(module, exports, __webpack_require__) {
 
+var global = __webpack_require__("da84");
 var DESCRIPTORS = __webpack_require__("83ab");
 var IE8_DOM_DEFINE = __webpack_require__("0cfb");
 var anObject = __webpack_require__("825a");
-var toPrimitive = __webpack_require__("c04e");
+var toPropertyKey = __webpack_require__("a04b");
 
+var TypeError = global.TypeError;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
 
@@ -998,7 +1246,7 @@ var $defineProperty = Object.defineProperty;
 // https://tc39.es/ecma262/#sec-object.defineproperty
 exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
-  P = toPrimitive(P, true);
+  P = toPropertyKey(P);
   anObject(Attributes);
   if (IE8_DOM_DEFINE) try {
     return $defineProperty(O, P, Attributes);
@@ -1011,16 +1259,17 @@ exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attrib
 
 /***/ }),
 
-/***/ "a691":
-/***/ (function(module, exports) {
+/***/ "a04b":
+/***/ (function(module, exports, __webpack_require__) {
 
-var ceil = Math.ceil;
-var floor = Math.floor;
+var toPrimitive = __webpack_require__("c04e");
+var isSymbol = __webpack_require__("d9b5");
 
-// `ToInteger` abstract operation
-// https://tc39.es/ecma262/#sec-tointeger
+// `ToPropertyKey` abstract operation
+// https://tc39.es/ecma262/#sec-topropertykey
 module.exports = function (argument) {
-  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
+  var key = toPrimitive(argument, 'string');
+  return isSymbol(key) ? key : key + '';
 };
 
 
@@ -1031,21 +1280,25 @@ module.exports = function (argument) {
 
 var global = __webpack_require__("da84");
 var shared = __webpack_require__("5692");
-var has = __webpack_require__("5135");
+var hasOwn = __webpack_require__("1a2d");
 var uid = __webpack_require__("90e3");
 var NATIVE_SYMBOL = __webpack_require__("4930");
 var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
 
 var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
+var symbolFor = Symbol && Symbol['for'];
 var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
 
 module.exports = function (name) {
-  if (!has(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
-    if (NATIVE_SYMBOL && has(Symbol, name)) {
+  if (!hasOwn(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
+    var description = 'Symbol.' + name;
+    if (NATIVE_SYMBOL && hasOwn(Symbol, name)) {
       WellKnownSymbolsStore[name] = Symbol[name];
+    } else if (USE_SYMBOL_AS_UID && symbolFor) {
+      WellKnownSymbolsStore[name] = symbolFor(description);
     } else {
-      WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
+      WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
     }
   } return WellKnownSymbolsStore[name];
 };
@@ -1056,19 +1309,31 @@ module.exports = function (name) {
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
+var global = __webpack_require__("da84");
+var call = __webpack_require__("c65b");
 var isObject = __webpack_require__("861d");
+var isSymbol = __webpack_require__("d9b5");
+var getMethod = __webpack_require__("dc4a");
+var ordinaryToPrimitive = __webpack_require__("485a");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TypeError = global.TypeError;
+var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
 
 // `ToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-toprimitive
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (input, PREFERRED_STRING) {
-  if (!isObject(input)) return input;
-  var fn, val;
-  if (PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
-  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
-  if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
-  throw TypeError("Can't convert object to primitive value");
+module.exports = function (input, pref) {
+  if (!isObject(input) || isSymbol(input)) return input;
+  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+  var result;
+  if (exoticToPrim) {
+    if (pref === undefined) pref = 'default';
+    result = call(exoticToPrim, input, pref);
+    if (!isObject(result) || isSymbol(result)) return result;
+    throw TypeError("Can't convert object to primitive value");
+  }
+  if (pref === undefined) pref = 'number';
+  return ordinaryToPrimitive(input, pref);
 };
 
 
@@ -1082,13 +1347,28 @@ module.exports = false;
 
 /***/ }),
 
-/***/ "c6b6":
+/***/ "c65b":
 /***/ (function(module, exports) {
 
-var toString = {}.toString;
+var call = Function.prototype.call;
+
+module.exports = call.bind ? call.bind(call) : function () {
+  return call.apply(call, arguments);
+};
+
+
+/***/ }),
+
+/***/ "c6b6":
+/***/ (function(module, exports, __webpack_require__) {
+
+var uncurryThis = __webpack_require__("e330");
+
+var toString = uncurryThis({}.toString);
+var stringSlice = uncurryThis(''.slice);
 
 module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
+  return stringSlice(toString(it), 8, -1);
 };
 
 
@@ -1138,20 +1418,23 @@ module.exports = g;
 /***/ "ca84":
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__("5135");
+var uncurryThis = __webpack_require__("e330");
+var hasOwn = __webpack_require__("1a2d");
 var toIndexedObject = __webpack_require__("fc6a");
 var indexOf = __webpack_require__("4d64").indexOf;
 var hiddenKeys = __webpack_require__("d012");
+
+var push = uncurryThis([].push);
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
   var i = 0;
   var result = [];
   var key;
-  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
+  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
   // Don't enum bug & hidden keys
-  while (names.length > i) if (has(O, key = names[i++])) {
-    ~indexOf(result, key) || result.push(key);
+  while (names.length > i) if (hasOwn(O, key = names[i++])) {
+    ~indexOf(result, key) || push(result, key);
   }
   return result;
 };
@@ -1180,11 +1463,13 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
-var createNonEnumerableProperty = __webpack_require__("9112");
+
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
 
 module.exports = function (key, value) {
   try {
-    createNonEnumerableProperty(global, key, value);
+    defineProperty(global, key, { value: value, configurable: true, writable: true });
   } catch (error) {
     global[key] = value;
   } return value;
@@ -1218,16 +1503,15 @@ module.exports = function (exec) {
 /***/ "d066":
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__("428f");
 var global = __webpack_require__("da84");
+var isCallable = __webpack_require__("1626");
 
-var aFunction = function (variable) {
-  return typeof variable == 'function' ? variable : undefined;
+var aFunction = function (argument) {
+  return isCallable(argument) ? argument : undefined;
 };
 
 module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(path[namespace]) || aFunction(global[namespace])
-    : path[namespace] && path[namespace][method] || global[namespace] && global[namespace][method];
+  return arguments.length < 2 ? aFunction(global[namespace]) : global[namespace] && global[namespace][method];
 };
 
 
@@ -1255,6 +1539,27 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
+/***/ "d9b5":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var getBuiltIn = __webpack_require__("d066");
+var isCallable = __webpack_require__("1626");
+var isPrototypeOf = __webpack_require__("3a9b");
+var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
+
+var Object = global.Object;
+
+module.exports = USE_SYMBOL_AS_UID ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  var $Symbol = getBuiltIn('Symbol');
+  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, Object(it));
+};
+
+
+/***/ }),
+
 /***/ "da84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1277,10 +1582,44 @@ module.exports =
 
 /***/ }),
 
+/***/ "dc4a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var aCallable = __webpack_require__("59ed");
+
+// `GetMethod` abstract operation
+// https://tc39.es/ecma262/#sec-getmethod
+module.exports = function (V, P) {
+  var func = V[P];
+  return func == null ? undefined : aCallable(func);
+};
+
+
+/***/ }),
+
+/***/ "e330":
+/***/ (function(module, exports) {
+
+var FunctionPrototype = Function.prototype;
+var bind = FunctionPrototype.bind;
+var call = FunctionPrototype.call;
+var callBind = bind && bind.bind(call);
+
+module.exports = bind ? function (fn) {
+  return fn && callBind(call, fn);
+} : function (fn) {
+  return fn && function () {
+    return call.apply(fn, arguments);
+  };
+};
+
+
+/***/ }),
+
 /***/ "e893":
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__("5135");
+var hasOwn = __webpack_require__("1a2d");
 var ownKeys = __webpack_require__("56ef");
 var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
 var definePropertyModule = __webpack_require__("9bf2");
@@ -1291,7 +1630,7 @@ module.exports = function (target, source) {
   var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    if (!hasOwn(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
   }
 };
 
@@ -1306,8 +1645,45 @@ var classof = __webpack_require__("c6b6");
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
 // eslint-disable-next-line es/no-array-isarray -- safe
-module.exports = Array.isArray || function isArray(arg) {
-  return classof(arg) == 'Array';
+module.exports = Array.isArray || function isArray(argument) {
+  return classof(argument) == 'Array';
+};
+
+
+/***/ }),
+
+/***/ "f5df":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var isCallable = __webpack_require__("1626");
+var classofRaw = __webpack_require__("c6b6");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var Object = global.Object;
+
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) == 'Object' && isCallable(O.callee) ? 'Arguments' : result;
 };
 
 
@@ -1411,7 +1787,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"12d6f74e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a929420-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
@@ -1423,7 +1799,7 @@ var es_array_concat = __webpack_require__("99af");
 
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/Datepicker.esm.js
 /*
-* @sum.cumo/vue-datepicker v3.1.0
+* @sum.cumo/vue-datepicker v3.2.3
 * (c) 2018-2021 sum.cumo GmbH
 * Released under the Apache-2.0 License.
 */
@@ -1510,6 +1886,8 @@ class Language {
 }
 
 var en = new Language('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+
+var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
 
 const getParsedDate = ({
   formatStr,
@@ -1891,9 +2269,7 @@ var makeDateUtils = (useUtc => ({ ...utils,
   useUtc
 }));
 
-var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
-
-var script = {
+var script$8 = {
   props: {
     autofocus: {
       type: Boolean,
@@ -2075,18 +2451,18 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 }
 
 /* script */
-const __vue_script__ = script;
+const __vue_script__$8 = script$8;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  const __vue_inject_styles__$8 = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  const __vue_scope_id__$8 = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  const __vue_module_identifier__$8 = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = undefined;
+  const __vue_is_functional_template__$8 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -2095,13 +2471,13 @@ const __vue_script__ = script;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
+    __vue_inject_styles__$8,
+    __vue_script__$8,
+    __vue_scope_id__$8,
+    __vue_is_functional_template__$8,
+    __vue_module_identifier__$8,
     false,
     undefined,
     undefined,
@@ -2109,9 +2485,9 @@ const __vue_script__ = script;
   );
 
 //
-var script$1 = {
+var script$7 = {
   name: 'DateInput',
-  mixins: [__vue_component__],
+  mixins: [__vue_component__$8],
   props: {
     isOpen: {
       type: Boolean,
@@ -2136,13 +2512,12 @@ var script$1 = {
   },
 
   data() {
-    const constructedDateUtils = makeDateUtils(this.useUtc);
     return {
       input: null,
       isFocusedUsed: false,
       isBlurred: false,
       typedDate: '',
-      utils: constructedDateUtils
+      utils: makeDateUtils(this.useUtc)
     };
   },
 
@@ -2162,6 +2537,10 @@ var script$1 = {
       return this.inputClass;
     },
 
+    formattedDate() {
+      return typeof this.format === 'function' ? this.format(new Date(this.selectedDate)) : this.utils.formatDate(new Date(this.selectedDate), this.format, this.translation);
+    },
+
     formattedValue() {
       if (!this.selectedDate) {
         return null;
@@ -2172,10 +2551,6 @@ var script$1 = {
       }
 
       return this.formattedDate;
-    },
-
-    formattedDate() {
-      return typeof this.format === 'function' ? this.format(new Date(this.selectedDate)) : this.utils.formatDate(new Date(this.selectedDate), this.format, this.translation);
     }
 
   },
@@ -2201,7 +2576,7 @@ var script$1 = {
     /**
      * submit typedDate and emit a blur event
      */
-    inputBlurred() {
+    handleInputBlur() {
       this.isBlurred = this.isOpen;
 
       if (this.typeable) {
@@ -2209,23 +2584,47 @@ var script$1 = {
       }
 
       this.$emit('blur');
-      this.$emit('close-calendar');
+      this.$emit('close');
       this.isFocusedUsed = false;
+    },
+
+    handleInputClick() {
+      const isFocusedUsed = this.showCalendarOnFocus && !this.isFocusedUsed;
+
+      if (!this.showCalendarOnButtonClick && !isFocusedUsed) {
+        this.toggle();
+      }
+
+      if (this.showCalendarOnFocus) {
+        this.isFocusedUsed = true;
+      }
+    },
+
+    handleInputFocus() {
+      if (this.showCalendarOnFocus) {
+        this.$emit('open');
+      }
+
+      this.isBlurred = false;
+      this.$emit('focus');
+    },
+
+    handleKeydownEnter() {
+      if (this.typeable) {
+        this.submitTypedDate();
+      }
+
+      this.$emit('close');
+    },
+
+    parseDate(value) {
+      return this.utils.parseDate(value, this.format, this.translation, this.parser);
     },
 
     /**
      * Attempt to parse a typed date
-     * @param {Event} event
      */
-    parseTypedDate(event) {
-      const code = event.keyCode ? event.keyCode : event.which; // close calendar if escape or enter are pressed
-
-      if ([27, // escape
-      13 // enter
-      ].indexOf(code) !== -1) {
-        this.input.blur();
-      }
-
+    parseTypedDate() {
       if (this.typeable) {
         const parsableDate = this.parseDate(this.input.value);
         const parsedDate = Date.parse(parsableDate);
@@ -2235,31 +2634,6 @@ var script$1 = {
           this.$emit('typed-date', new Date(parsedDate));
         }
       }
-    },
-
-    parseDate(value) {
-      return this.utils.parseDate(value, this.format, this.translation, this.parser);
-    },
-
-    showCalendarByClick() {
-      const isFocusedUsed = this.showCalendarOnFocus && !this.isFocusedUsed;
-
-      if (!this.showCalendarOnButtonClick && !isFocusedUsed) {
-        this.toggleCalendar();
-      }
-
-      if (this.showCalendarOnFocus) {
-        this.isFocusedUsed = true;
-      }
-    },
-
-    showCalendarByFocus() {
-      if (this.showCalendarOnFocus) {
-        this.$emit('show-calendar');
-      }
-
-      this.isBlurred = false;
-      this.$emit('focus');
     },
 
     /**
@@ -2278,23 +2652,23 @@ var script$1 = {
       }
     },
 
-    toggleCalendar() {
+    toggle() {
       if (!this.isOpen && this.isBlurred) {
         this.isBlurred = false;
         return;
       }
 
-      this.$emit(this.isOpen ? 'close-calendar' : 'show-calendar');
+      this.$emit(this.isOpen ? 'close' : 'open');
     }
 
   }
 };
 
 /* script */
-const __vue_script__$1 = script$1;
+const __vue_script__$7 = script$7;
 
 /* template */
-var __vue_render__ = function() {
+var __vue_render__$5 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2313,7 +2687,7 @@ var __vue_render__ = function() {
                 "input-group-prepend": _vm.bootstrapStyling,
                 "calendar-btn-disabled": _vm.disabled
               },
-              on: { click: _vm.toggleCalendar }
+              on: { click: _vm.toggle }
             },
             [
               _c(
@@ -2355,13 +2729,41 @@ var __vue_render__ = function() {
           readonly: !_vm.typeable,
           required: _vm.required,
           tabindex: _vm.tabindex,
-          type: _vm.inline ? "hidden" : "text"
+          type: _vm.inline ? "hidden" : null
         },
         domProps: { value: _vm.formattedValue },
         on: {
-          blur: _vm.inputBlurred,
-          click: _vm.showCalendarByClick,
-          focus: _vm.showCalendarByFocus,
+          blur: _vm.handleInputBlur,
+          click: _vm.handleInputClick,
+          focus: _vm.handleInputFocus,
+          keydown: [
+            function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              $event.preventDefault();
+              return _vm.handleKeydownEnter($event)
+            },
+            function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k(
+                  $event.keyCode,
+                  "escape",
+                  undefined,
+                  $event.key,
+                  undefined
+                )
+              ) {
+                return null
+              }
+              $event.preventDefault();
+              return _vm.$emit("close")
+            }
+          ],
           keyup: _vm.parseTypedDate
         }
       }),
@@ -2402,17 +2804,17 @@ var __vue_render__ = function() {
     2
   )
 };
-var __vue_staticRenderFns__ = [];
-__vue_render__._withStripped = true;
+var __vue_staticRenderFns__$5 = [];
+__vue_render__$5._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1 = undefined;
+  const __vue_inject_styles__$7 = undefined;
   /* scoped */
-  const __vue_scope_id__$1 = undefined;
+  const __vue_scope_id__$7 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
+  const __vue_module_identifier__$7 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1 = false;
+  const __vue_is_functional_template__$7 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -2421,170 +2823,13 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__$1,
-    __vue_script__$1,
-    __vue_scope_id__$1,
-    __vue_is_functional_template__$1,
-    __vue_module_identifier__$1,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$2 = {
-  name: 'PickerHeader',
-  props: {
-    config: {
-      type: Object,
-
-      default() {
-        return {
-          showHeader: true,
-          isRtl: false,
-          isNextDisabled: false,
-          isPreviousDisabled: false
-        };
-      }
-
-    },
-    next: {
-      type: Function,
-      required: true
-    },
-    previous: {
-      type: Function,
-      required: true
-    }
-  },
-  computed: {
-    /**
-     * Is the left hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isLeftNavDisabled() {
-      return this.config.isRtl ? this.config.isNextDisabled : this.config.isPreviousDisabled;
-    },
-
-    /**
-     * Is the right hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isRightNavDisabled() {
-      return this.config.isRtl ? this.config.isPreviousDisabled : this.config.isNextDisabled;
-    }
-
-  }
-};
-
-/* script */
-const __vue_script__$2 = script$2;
-
-/* template */
-var __vue_render__$1 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _vm.config.showHeader
-    ? _c(
-        "header",
-        [
-          _c(
-            "span",
-            {
-              staticClass: "prev",
-              class: { disabled: _vm.isLeftNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.config.isRtl ? _vm.next() : _vm.previous();
-                }
-              }
-            },
-            [
-              _vm._t("prevIntervalBtn", [
-                _c("span", { staticClass: "default" }, [_vm._v("<")])
-              ])
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _vm._t("default"),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "next",
-              class: { disabled: _vm.isRightNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.config.isRtl ? _vm.previous() : _vm.next();
-                }
-              }
-            },
-            [
-              _vm._t("nextIntervalBtn", [
-                _c("span", { staticClass: "default" }, [_vm._v(">")])
-              ])
-            ],
-            2
-          )
-        ],
-        2
-      )
-    : _vm._e()
-};
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$2 = undefined;
-  /* scoped */
-  const __vue_scope_id__$2 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$2 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-    __vue_inject_styles__$2,
-    __vue_script__$2,
-    __vue_scope_id__$2,
-    __vue_is_functional_template__$2,
-    __vue_module_identifier__$2,
+  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+    __vue_inject_styles__$7,
+    __vue_script__$7,
+    __vue_scope_id__$7,
+    __vue_is_functional_template__$7,
+    __vue_module_identifier__$7,
     false,
     undefined,
     undefined,
@@ -2849,18 +3094,158 @@ class DisabledDate {
 
 }
 
-var script$3 = {
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var script$6 = {
+  name: 'PickerHeader',
+  props: {
+    isNextDisabled: {
+      type: Boolean,
+      required: true
+    },
+    isPreviousDisabled: {
+      type: Boolean,
+      required: true
+    },
+    isRtl: {
+      type: Boolean,
+      required: true
+    }
+  },
+  computed: {
+    /**
+     * Is the left hand navigation button disabled?
+     * @return {Boolean}
+     */
+    isLeftNavDisabled() {
+      return this.isRtl ? this.isNextDisabled : this.isPreviousDisabled;
+    },
+
+    /**
+     * Is the right hand navigation button disabled?
+     * @return {Boolean}
+     */
+    isRightNavDisabled() {
+      return this.isRtl ? this.isPreviousDisabled : this.isNextDisabled;
+    }
+
+  }
+};
+
+/* script */
+const __vue_script__$6 = script$6;
+
+/* template */
+var __vue_render__$4 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "header",
+    [
+      _c(
+        "span",
+        {
+          staticClass: "prev",
+          class: { disabled: _vm.isLeftNavDisabled },
+          on: {
+            click: function($event) {
+              return _vm.$emit(_vm.isRtl ? "next" : "previous")
+            }
+          }
+        },
+        [
+          _vm._t("prevIntervalBtn", [
+            _c("span", { staticClass: "default" }, [_vm._v("<")])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("default"),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "next",
+          class: { disabled: _vm.isRightNavDisabled },
+          on: {
+            click: function($event) {
+              return _vm.$emit(_vm.isRtl ? "previous" : "next")
+            }
+          }
+        },
+        [
+          _vm._t("nextIntervalBtn", [
+            _c("span", { staticClass: "default" }, [_vm._v(">")])
+          ])
+        ],
+        2
+      )
+    ],
+    2
+  )
+};
+var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$6 = undefined;
+  /* scoped */
+  const __vue_scope_id__$6 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$6 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$6 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+    __vue_inject_styles__$6,
+    __vue_script__$6,
+    __vue_scope_id__$6,
+    __vue_is_functional_template__$6,
+    __vue_module_identifier__$6,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+var script$5 = {
   components: {
-    PickerHeader: __vue_component__$2
+    PickerHeader: __vue_component__$6
   },
   inheritAttrs: false,
   props: {
-    allowedToShowView: {
-      type: Function,
-
-      default() {}
-
-    },
     disabledDates: {
       type: Object,
 
@@ -2873,13 +3258,13 @@ var script$3 = {
       type: Boolean,
       default: false
     },
+    isUpDisabled: {
+      type: Boolean,
+      default: false
+    },
     pageDate: {
       type: Date,
       default: null
-    },
-    pageTimestamp: {
-      type: Number,
-      default: 0
     },
     selectedDate: {
       type: Date,
@@ -2905,16 +3290,6 @@ var script$3 = {
 
   data() {
     return {
-      headerConfig: {
-        showHeader: this.showHeader,
-        isRtl: this.isRtl,
-
-        /**
-         * Need to be set inside the different pickers for month, year, decade
-         */
-        isNextDisabled: this.isNextDisabled,
-        isPreviousDisabled: this.isPreviousDisabled
-      },
       utils: makeDateUtils(this.useUtc)
     };
   },
@@ -2939,28 +3314,61 @@ var script$3 = {
   },
   methods: {
     /**
-     * Emit an event to show the month picker
+     * Changes the page up or down
+     * @param {Number} incrementBy
      */
-    showPickerCalendar(type) {
-      this.$emit(`show-${type}-calendar`);
+    changePage(incrementBy) {
+      const date = this.pageDate;
+      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
+      this.$emit('page-change', date);
+    },
+
+    /**
+     * Emits a 'select' or 'select-disabled' event
+     * @param {Object} cell
+     */
+    select(cell) {
+      if (cell.isDisabled) {
+        this.$emit('select-disabled', cell);
+      } else {
+        this.$emit('select', cell);
+      }
+    },
+
+    /**
+     * Increment the current page
+     */
+    nextPage() {
+      if (!this.isNextDisabled) {
+        this.changePage(+1);
+      }
+    },
+
+    /**
+     * Decrement the page
+     */
+    previousPage() {
+      if (!this.isPreviousDisabled) {
+        this.changePage(-1);
+      }
     }
 
   }
 };
 
 /* script */
-const __vue_script__$3 = script$3;
+const __vue_script__$5 = script$5;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$3 = undefined;
+  const __vue_inject_styles__$5 = undefined;
   /* scoped */
-  const __vue_scope_id__$3 = undefined;
+  const __vue_scope_id__$5 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$3 = undefined;
+  const __vue_module_identifier__$5 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$3 = undefined;
+  const __vue_is_functional_template__$5 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -2969,13 +3377,13 @@ const __vue_script__$3 = script$3;
   
 
   
-  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$3,
-    __vue_script__$3,
-    __vue_scope_id__$3,
-    __vue_is_functional_template__$3,
-    __vue_module_identifier__$3,
+    __vue_inject_styles__$5,
+    __vue_script__$5,
+    __vue_scope_id__$5,
+    __vue_is_functional_template__$5,
+    __vue_module_identifier__$5,
     false,
     undefined,
     undefined,
@@ -3066,8 +3474,8 @@ class HighlightedDate {
 
 //
 var script$4 = {
-  name: 'DatepickerDayView',
-  mixins: [__vue_component__$3],
+  name: 'PickerDay',
+  mixins: [__vue_component__$5],
   props: {
     dayCellContent: {
       type: Function,
@@ -3096,6 +3504,23 @@ var script$4 = {
   },
   computed: {
     /**
+     * Sets an array with all days to show this month
+     * @return {Array}
+     */
+    cells() {
+      const days = [];
+      const daysInCalendar = this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
+      const dObj = this.firstCellDate();
+
+      for (let i = 0; i < daysInCalendar; i += 1) {
+        days.push(this.makeDay(i, dObj));
+        this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
+      }
+
+      return days;
+    },
+
+    /**
      * Gets the name of the month the current page is on
      * @return {String}
      */
@@ -3116,24 +3541,6 @@ var script$4 = {
     },
 
     /**
-     * Sets an array with all days to show this month
-     * @return {Array}
-     */
-    days() {
-      const days = [];
-      const daysInCalendar = this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
-      const firstOfMonth = this.newPageDate();
-      const dObj = new Date(firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth));
-
-      for (let i = 0; i < daysInCalendar; i += 1) {
-        days.push(this.makeDay(i, dObj));
-        this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
-      }
-
-      return days;
-    },
-
-    /**
      * Returns an array of day names
      * @return {String[]}
      */
@@ -3146,8 +3553,7 @@ var script$4 = {
      * @return {String[]}
      */
     daysInMonth() {
-      const dObj = this.newPageDate();
-      return this.utils.getDaysInMonth(dObj);
+      return this.utils.getDaysInMonth(this.pageDate);
     },
 
     /**
@@ -3155,8 +3561,8 @@ var script$4 = {
      * @return {number}
      */
     daysFromPrevMonth() {
-      const dObj = this.newPageDate();
-      return (7 - this.firstDayOfWeekNumber + this.utils.getDay(dObj)) % 7;
+      const firstOfMonthDayNumber = this.utils.getDay(this.pageDate);
+      return (7 - this.firstDayOfWeekNumber + firstOfMonthDayNumber) % 7;
     },
 
     /**
@@ -3174,6 +3580,14 @@ var script$4 = {
      */
     firstDayOfWeekNumber() {
       return this.utils.getDayFromAbbr(this.firstDayOfWeek);
+    },
+
+    /**
+     * A look-up object created from 'highlighted' prop
+     * @return {Object}
+     */
+    highlightedConfig() {
+      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).config;
     },
 
     /**
@@ -3220,29 +3634,25 @@ var script$4 = {
      * The first day of the next page's month.
      * @return {Date}
      */
-    nextPageDate() {
-      const d = new Date(this.pageTimestamp);
+    firstOfNextMonth() {
+      const d = new Date(this.pageDate);
       return new Date(this.utils.setMonth(d, this.utils.getMonth(d) + 1));
-    },
-
-    highlightedConfig() {
-      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).config;
     }
 
   },
   methods: {
     /**
-     * Change the page month
+     * Changes the page up or down (overrides changePage in pickerMixin)
      * @param {Number} incrementBy
      */
-    changeMonth(incrementBy) {
+    changePage(incrementBy) {
       const date = this.pageDate;
       this.utils.setMonth(date, this.utils.getMonth(date) + incrementBy);
-      this.$emit('changed-month', date);
+      this.$emit('page-change', date);
     },
 
     /**
-     * set the class for a specific day
+     * Set the class for a specific day
      * @param {Object} day
      * @return {Object}
      */
@@ -3259,13 +3669,6 @@ var script$4 = {
         'highlight-start': day.isHighlightStart,
         'highlight-end': day.isHighlightEnd
       };
-    },
-
-    /**
-     * @return {Number}
-     */
-    getPageMonth() {
-      return this.utils.getMonth(this.pageDate);
     },
 
     /**
@@ -3327,7 +3730,7 @@ var script$4 = {
      */
     // eslint-disable-next-line complexity
     makeDay(id, dObj) {
-      const isNextMonth = dObj >= this.nextPageDate;
+      const isNextMonth = dObj >= this.firstOfNextMonth;
       const isPreviousMonth = dObj < this.pageDate;
       const isSaturday = this.utils.getDay(dObj) === 6;
       const isSunday = this.utils.getDay(dObj) === 0;
@@ -3353,39 +3756,10 @@ var script$4 = {
      * Set up a new date object to the first day of the current 'page'
      * @return Date
      */
-    newPageDate() {
+    firstCellDate() {
       const d = this.pageDate;
-      return this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
-    },
-
-    /**
-     * Increment the current page month
-     */
-    nextMonth() {
-      if (!this.isNextDisabled) {
-        this.changeMonth(+1);
-      }
-    },
-
-    /**
-     * Decrement the page month
-     */
-    previousMonth() {
-      if (!this.isPreviousDisabled) {
-        this.changeMonth(-1);
-      }
-    },
-
-    /**
-     * Emits a selectDate event
-     * @param {Object} date
-     */
-    selectDate(date) {
-      if (date.isDisabled) {
-        this.$emit('selected-disabled', date);
-      } else {
-        this.$emit('select-date', date);
-      }
+      const firstOfMonth = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
+      return new Date(firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth));
     }
 
   }
@@ -3395,7 +3769,7 @@ var script$4 = {
 const __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$2 = function() {
+var __vue_render__$3 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3405,65 +3779,84 @@ var __vue_render__$2 = function() {
     [
       _vm._t("beforeCalendarHeaderDay"),
       _vm._v(" "),
-      _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextMonth,
-            previous: _vm.previousMonth
-          }
-        },
-        [
-          _c(
-            "span",
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
             {
-              staticClass: "day__month_btn",
-              class: _vm.allowedToShowView("month") ? "up" : "",
-              on: {
-                click: function($event) {
-                  return _vm.showPickerCalendar("month")
-                }
-              }
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
             },
-            [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
-          ),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
-      ),
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "day__month_btn",
+                  class: { up: !_vm.isUpDisabled },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("set-view", "month")
+                    }
+                  }
+                },
+                [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
+              ),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
-        { class: _vm.isRtl ? "flex-rtl" : "" },
+        { class: { "flex-rtl": _vm.isRtl } },
         [
-          _vm._l(_vm.daysOfWeek, function(d) {
-            return _c(
-              "span",
-              { key: d.timestamp, staticClass: "cell day-header" },
-              [_vm._v("\n      " + _vm._s(d) + "\n    ")]
-            )
+          _vm._l(_vm.daysOfWeek, function(day) {
+            return _c("span", { key: day, staticClass: "day-header" }, [
+              _vm._v("\n      " + _vm._s(day) + "\n    ")
+            ])
           }),
           _vm._v(" "),
-          _vm._l(_vm.days, function(day) {
-            return _c(
-              "span",
-              {
-                key: day.timestamp,
-                staticClass: "cell day",
-                class: _vm.dayClasses(day),
-                on: {
-                  click: function($event) {
-                    return _vm.selectDate(day)
+          _c(
+            "div",
+            { ref: "cells" },
+            _vm._l(_vm.cells, function(cell) {
+              return _c(
+                "span",
+                {
+                  key: cell.timestamp,
+                  staticClass: "cell day",
+                  class: _vm.dayClasses(cell),
+                  on: {
+                    click: function($event) {
+                      return _vm.select(cell)
+                    }
                   }
-                }
-              },
-              [_vm._v("\n      " + _vm._s(_vm.dayCellContent(day)) + "\n    ")]
-            )
-          })
+                },
+                [
+                  _vm._t(
+                    "dayCellContent",
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.dayCellContent(cell)) +
+                          "\n        "
+                      )
+                    ],
+                    { cell: cell }
+                  )
+                ],
+                2
+              )
+            }),
+            0
+          )
         ],
         2
       ),
@@ -3473,8 +3866,8 @@ var __vue_render__$2 = function() {
     2
   )
 };
-var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
+var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
 
   /* style */
   const __vue_inject_styles__$4 = undefined;
@@ -3493,7 +3886,7 @@ __vue_render__$2._withStripped = true;
 
   
   const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$4,
     __vue_script__$4,
     __vue_scope_id__$4,
@@ -3506,10 +3899,33 @@ __vue_render__$2._withStripped = true;
   );
 
 //
-var script$5 = {
-  name: 'DatepickerMonthView',
-  mixins: [__vue_component__$3],
+var script$3 = {
+  name: 'PickerMonth',
+  mixins: [__vue_component__$5],
   computed: {
+    /**
+     * Sets an array with all months to show this year
+     * @return {Array}
+     */
+    cells() {
+      const d = this.pageDate;
+      const months = []; // set up a new date object to the beginning of the current 'page'
+
+      const dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate())) : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
+
+      for (let i = 0; i < 12; i += 1) {
+        months.push({
+          month: this.utils.getMonthName(i, this.translation.months),
+          timestamp: dObj.valueOf(),
+          isSelected: this.isSelectedMonth(dObj),
+          isDisabled: this.isDisabledMonth(dObj)
+        });
+        this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
+      }
+
+      return months;
+    },
+
     /**
      * Is the next year disabled?
      * @return {Boolean}
@@ -3535,29 +3951,6 @@ var script$5 = {
     },
 
     /**
-     * Set an array with all months
-     * @return {Array}
-     */
-    months() {
-      const d = this.pageDate;
-      const months = []; // set up a new date object to the beginning of the current 'page'
-
-      const dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate())) : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
-
-      for (let i = 0; i < 12; i += 1) {
-        months.push({
-          month: this.utils.getMonthName(i, this.translation.months),
-          timestamp: dObj.valueOf(),
-          isSelected: this.isSelectedMonth(dObj),
-          isDisabled: this.isDisabledMonth(dObj)
-        });
-        this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
-      }
-
-      return months;
-    },
-
-    /**
      * Display the current page's year as the title.
      * @return {String}
      */
@@ -3570,16 +3963,6 @@ var script$5 = {
 
   },
   methods: {
-    /**
-     * Changes the year up or down
-     * @param {Number} incrementBy
-     */
-    changeYear(incrementBy) {
-      const date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changed-year', date);
-    },
-
     /**
      * Whether a month is disabled
      * @param {Date} date
@@ -3598,44 +3981,16 @@ var script$5 = {
       const month = this.utils.getMonth(date);
       const year = this.utils.getFullYear(date);
       return this.selectedDate && year === this.utils.getFullYear(this.selectedDate) && month === this.utils.getMonth(this.selectedDate);
-    },
-
-    /**
-     * Increments the year
-     */
-    nextYear() {
-      if (!this.isNextDisabled) {
-        this.changeYear(1);
-      }
-    },
-
-    /**
-     * Decrements the year
-     */
-    previousYear() {
-      if (!this.isPreviousDisabled) {
-        this.changeYear(-1);
-      }
-    },
-
-    /**
-     * Emits a selectMonth event
-     * @param {Object} month
-     */
-    selectMonth(month) {
-      if (!month.isDisabled) {
-        this.$emit('select-month', month);
-      }
     }
 
   }
 };
 
 /* script */
-const __vue_script__$5 = script$5;
+const __vue_script__$3 = script$3;
 
 /* template */
-var __vue_render__$3 = function() {
+var __vue_render__$2 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3645,71 +4000,78 @@ var __vue_render__$3 = function() {
     [
       _vm._t("beforeCalendarHeaderMonth"),
       _vm._v(" "),
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
+            {
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
+            },
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "month__year_btn",
+                  class: { up: !_vm.isUpDisabled },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("set-view", "year")
+                    }
+                  }
+                },
+                [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
+              ),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextYear,
-            previous: _vm.previousYear
-          }
-        },
-        [
-          _c(
+        "div",
+        { ref: "cells" },
+        _vm._l(_vm.cells, function(cell) {
+          return _c(
             "span",
             {
-              staticClass: "month__year_btn",
-              class: _vm.allowedToShowView("year") ? "up" : "",
+              key: cell.timestamp,
+              staticClass: "cell month",
+              class: { selected: cell.isSelected, disabled: cell.isDisabled },
               on: {
                 click: function($event) {
-                  return _vm.showPickerCalendar("year")
+                  return _vm.select(cell)
                 }
               }
             },
-            [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
-          ),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
+            [_vm._v("\n      " + _vm._s(cell.month) + "\n    ")]
+          )
+        }),
+        0
       ),
-      _vm._v(" "),
-      _vm._l(_vm.months, function(month) {
-        return _c(
-          "span",
-          {
-            key: month.timestamp,
-            staticClass: "cell month",
-            class: { selected: month.isSelected, disabled: month.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectMonth(month)
-              }
-            }
-          },
-          [_vm._v("\n    " + _vm._s(month.month) + "\n  ")]
-        )
-      }),
       _vm._v(" "),
       _vm._t("calendarFooterMonth")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
+var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$5 = undefined;
+  const __vue_inject_styles__$3 = undefined;
   /* scoped */
-  const __vue_scope_id__$5 = undefined;
+  const __vue_scope_id__$3 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$5 = undefined;
+  const __vue_module_identifier__$3 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$5 = false;
+  const __vue_is_functional_template__$3 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3718,13 +4080,13 @@ __vue_render__$3._withStripped = true;
   
 
   
-  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
-    __vue_inject_styles__$5,
-    __vue_script__$5,
-    __vue_scope_id__$5,
-    __vue_is_functional_template__$5,
-    __vue_module_identifier__$5,
+  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+    __vue_inject_styles__$3,
+    __vue_script__$3,
+    __vue_scope_id__$3,
+    __vue_is_functional_template__$3,
+    __vue_module_identifier__$3,
     false,
     undefined,
     undefined,
@@ -3732,9 +4094,9 @@ __vue_render__$3._withStripped = true;
   );
 
 //
-var script$6 = {
-  name: 'DatepickerYearView',
-  mixins: [__vue_component__$3],
+var script$2 = {
+  name: 'PickerYear',
+  mixins: [__vue_component__$5],
   props: {
     yearRange: {
       type: Number,
@@ -3742,6 +4104,30 @@ var script$6 = {
     }
   },
   computed: {
+    /**
+     * Sets an array with all years to show this decade (or yearRange)
+     * @return {Array}
+     */
+    cells() {
+      const d = this.pageDate;
+      const years = [];
+      const year = this.useUtc ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange; // set up a new date object to the beginning of the current 'page'7
+
+      const dObj = this.useUtc ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate())) : new Date(year, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
+
+      for (let i = 0; i < this.yearRange; i += 1) {
+        years.push({
+          year: this.utils.getFullYear(dObj),
+          timestamp: dObj.valueOf(),
+          isSelected: this.isSelectedYear(dObj),
+          isDisabled: this.isDisabledYear(dObj)
+        });
+        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
+      }
+
+      return years;
+    },
+
     /**
      * Is the next decade disabled?
      * @return {Boolean}
@@ -3791,44 +4177,10 @@ var script$6 = {
         yearSuffix
       } = this.translation;
       return `${this.pageDecadeStart} - ${this.pageDecadeEnd}${yearSuffix}`;
-    },
-
-    /**
-     * Set an array with years for a decade
-     * @return {Array}
-     */
-    years() {
-      const d = this.pageDate;
-      const years = [];
-      const year = this.useUtc ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange; // set up a new date object to the beginning of the current 'page'7
-
-      const dObj = this.useUtc ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate())) : new Date(year, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
-
-      for (let i = 0; i < this.yearRange; i += 1) {
-        years.push({
-          year: this.utils.getFullYear(dObj),
-          timestamp: dObj.valueOf(),
-          isSelected: this.isSelectedYear(dObj),
-          isDisabled: this.isDisabledYear(dObj)
-        });
-        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
-      }
-
-      return years;
     }
 
   },
   methods: {
-    /**
-     * Changes the year up or down
-     * @param {Number} incrementBy
-     */
-    changeYear(incrementBy) {
-      const date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changed-decade', date);
-    },
-
     /**
      * Whether a year is disabled
      * @param {Date} date
@@ -3849,30 +4201,20 @@ var script$6 = {
     },
 
     /**
-     * Increments the decade
+     * Increments the page (overrides nextPage in pickerMixin)
      */
-    nextDecade() {
+    nextPage() {
       if (!this.isNextDisabled) {
-        this.changeYear(this.yearRange);
+        this.changePage(this.yearRange);
       }
     },
 
     /**
-     * Decrements the decade
+     * Decrements the page (overrides previousPage in pickerMixin)
      */
-    previousDecade() {
+    previousPage() {
       if (!this.isPreviousDisabled) {
-        this.changeYear(-this.yearRange);
-      }
-    },
-
-    /**
-     * Emits a selectYear event
-     * @param {Object} year
-     */
-    selectYear(year) {
-      if (!year.isDisabled) {
-        this.$emit('select-year', year);
+        this.changePage(-this.yearRange);
       }
     }
 
@@ -3880,10 +4222,10 @@ var script$6 = {
 };
 
 /* script */
-const __vue_script__$6 = script$6;
+const __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$4 = function() {
+var __vue_render__$1 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3893,61 +4235,68 @@ var __vue_render__$4 = function() {
     [
       _vm._t("beforeCalendarHeaderYear"),
       _vm._v(" "),
-      _c(
-        "PickerHeader",
-        {
-          attrs: {
-            config: _vm.headerConfig,
-            next: _vm.nextDecade,
-            previous: _vm.previousDecade
-          }
-        },
-        [
-          _c("span", [
-            _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
-          ]),
-          _vm._v(" "),
-          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-          _vm._v(" "),
-          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-        ],
-        2
-      ),
+      _vm.showHeader
+        ? _c(
+            "PickerHeader",
+            {
+              attrs: {
+                "is-next-disabled": _vm.isNextDisabled,
+                "is-previous-disabled": _vm.isPreviousDisabled,
+                "is-rtl": _vm.isRtl
+              },
+              on: { next: _vm.nextPage, previous: _vm.previousPage }
+            },
+            [
+              _c("span", [
+                _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
+              ]),
+              _vm._v(" "),
+              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+              _vm._v(" "),
+              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+            ],
+            2
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.years, function(year) {
-        return _c(
-          "span",
-          {
-            key: year.timestamp,
-            staticClass: "cell year",
-            class: { selected: year.isSelected, disabled: year.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectYear(year)
+      _c(
+        "div",
+        { ref: "cells" },
+        _vm._l(_vm.cells, function(cell) {
+          return _c(
+            "span",
+            {
+              key: cell.timestamp,
+              staticClass: "cell year",
+              class: { selected: cell.isSelected, disabled: cell.isDisabled },
+              on: {
+                click: function($event) {
+                  return _vm.select(cell)
+                }
               }
-            }
-          },
-          [_vm._v("\n    " + _vm._s(year.year) + "\n  ")]
-        )
-      }),
+            },
+            [_vm._v("\n      " + _vm._s(cell.year) + "\n    ")]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _vm._t("calendarFooterYear")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
+var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$6 = undefined;
+  const __vue_inject_styles__$2 = undefined;
   /* scoped */
-  const __vue_scope_id__$6 = undefined;
+  const __vue_scope_id__$2 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$6 = undefined;
+  const __vue_module_identifier__$2 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$6 = false;
+  const __vue_is_functional_template__$2 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3956,13 +4305,13 @@ __vue_render__$4._withStripped = true;
   
 
   
-  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-    __vue_inject_styles__$6,
-    __vue_script__$6,
-    __vue_scope_id__$6,
-    __vue_is_functional_template__$6,
-    __vue_module_identifier__$6,
+  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+    __vue_inject_styles__$2,
+    __vue_script__$2,
+    __vue_scope_id__$2,
+    __vue_is_functional_template__$2,
+    __vue_module_identifier__$2,
     false,
     undefined,
     undefined,
@@ -4089,7 +4438,7 @@ function getRelativePosition({
   };
 }
 
-var script$7 = {
+var script$1 = {
   name: 'Popup',
   props: {
     appendToBody: {
@@ -4202,18 +4551,18 @@ var script$7 = {
 };
 
 /* script */
-const __vue_script__$7 = script$7;
+const __vue_script__$1 = script$1;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$7 = undefined;
+  const __vue_inject_styles__$1 = undefined;
   /* scoped */
-  const __vue_scope_id__$7 = undefined;
+  const __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$7 = undefined;
+  const __vue_module_identifier__$1 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$7 = undefined;
+  const __vue_is_functional_template__$1 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -4222,13 +4571,13 @@ const __vue_script__$7 = script$7;
   
 
   
-  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$7,
-    __vue_script__$7,
-    __vue_scope_id__$7,
-    __vue_is_functional_template__$7,
-    __vue_module_identifier__$7,
+    __vue_inject_styles__$1,
+    __vue_script__$1,
+    __vue_scope_id__$1,
+    __vue_is_functional_template__$1,
+    __vue_module_identifier__$1,
     false,
     undefined,
     undefined,
@@ -4236,19 +4585,16 @@ const __vue_script__$7 = script$7;
   );
 
 //
-
-const validDate = val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number';
-
-var script$8 = {
+var script = {
   name: 'Datepicker',
   components: {
-    DateInput: __vue_component__$1,
+    DateInput: __vue_component__$7,
     PickerDay: __vue_component__$4,
-    PickerMonth: __vue_component__$5,
-    PickerYear: __vue_component__$6,
-    Popup: __vue_component__$7
+    PickerMonth: __vue_component__$3,
+    PickerYear: __vue_component__$2,
+    Popup: __vue_component__$1
   },
-  mixins: [__vue_component__],
+  mixins: [__vue_component__$8],
   props: {
     appendToBody: {
       type: Boolean,
@@ -4321,7 +4667,7 @@ var script$8 = {
     value: {
       type: [String, Date, Number],
       default: '',
-      validator: validDate
+      validator: val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number'
     },
     wrapperClass: {
       type: [String, Object, Array],
@@ -4334,24 +4680,12 @@ var script$8 = {
   },
 
   data() {
-    // const startDate = this.openDate ? new Date(this.openDate) : new Date()
-    const constructedDateUtils = makeDateUtils(this.useUtc);
-    let startDate;
-
-    if (this.openDate) {
-      startDate = constructedDateUtils.getNewDateObject(this.openDate);
-    } else {
-      startDate = constructedDateUtils.getNewDateObject();
-    }
-
-    const pageTimestamp = constructedDateUtils.setDate(startDate, 1);
+    const utils = makeDateUtils(this.useUtc);
+    const startDate = utils.getNewDateObject(this.openDate || null);
+    const pageTimestamp = utils.setDate(startDate, 1);
     return {
-      /*
-       * Positioning
-       */
       calendarHeight: 0,
       calendarSlots,
-      currentPicker: '',
 
       /*
        * Vue cannot observe changes to a Date Object so date must be stored as a timestamp
@@ -4359,20 +4693,26 @@ var script$8 = {
        * {Number}
        */
       pageTimestamp,
-      resetTypedDate: constructedDateUtils.getNewDateObject(),
+      resetTypedDate: utils.getNewDateObject(),
 
       /*
        * Selected Date
        * {Date}
        */
       selectedDate: null,
-      utils: constructedDateUtils
+      utils,
+      view: ''
     };
   },
 
   computed: {
+    allowedViews() {
+      const views = ['day', 'month', 'year'];
+      return views.filter(view => this.allowedToShowView(view));
+    },
+
     computedInitialView() {
-      return this.initialView ? this.initialView : this.minimumView;
+      return this.initialView || this.minimumView;
     },
 
     isInline() {
@@ -4380,27 +4720,59 @@ var script$8 = {
     },
 
     isOpen() {
-      return this.currentPicker !== '';
+      return this.view !== '';
     },
 
     isRtl() {
-      return this.translation.rtl === true;
+      return this.translation.rtl;
+    },
+
+    isUpDisabled() {
+      return !this.allowedToShowView(this.nextView.up);
+    },
+
+    nextView() {
+      const isCurrentView = view => view === this.view;
+
+      const viewIndex = this.allowedViews.findIndex(isCurrentView);
+
+      const nextViewDown = index => {
+        return index <= 0 ? undefined : this.allowedViews[index - 1];
+      };
+
+      const nextViewUp = index => {
+        if (index < 0) {
+          return undefined;
+        }
+
+        if (index === this.allowedViews.length - 1) {
+          return 'decade';
+        }
+
+        return this.allowedViews[index + 1];
+      };
+
+      return {
+        up: nextViewUp(viewIndex),
+        down: nextViewDown(viewIndex)
+      };
     },
 
     pageDate() {
       return new Date(this.pageTimestamp);
     },
 
+    picker() {
+      const view = this.view || this.computedInitialView;
+      return `Picker${this.ucFirst(view)}`;
+    },
+
     pickerClasses() {
-      return [this.calendarClass, 'vdp-datepicker__calendar', this.isInline && 'inline', this.isRtl && this.appendToBody && 'rtl'];
+      return [this.calendarClass, this.isInline && 'inline', this.isRtl && this.appendToBody && 'rtl'];
     },
 
     translation() {
       return this.language;
-    },
-
-    disabledDatesClass() {
-      return new DisabledDate(this.utils, this.disabledDates);
     }
 
   },
@@ -4454,17 +4826,61 @@ var script$8 = {
      */
     close() {
       if (!this.isInline) {
-        this.currentPicker = '';
+        this.view = '';
         this.$emit('closed');
       }
     },
 
     /**
-     * Handles a month change from the day picker
+     * Set the new pageDate and emit `changed-<view>` event
      */
-    handleChangedMonthFromDayPicker(date) {
-      this.setPageDate(date);
-      this.$emit('changed-month', date);
+    handlePageChange(pageDate) {
+      this.setPageDate(pageDate);
+      this.$emit(`changed-${this.nextView.up}`, pageDate);
+    },
+
+    /**
+     * Emits a 'blur' event
+     */
+    handleInputBlur() {
+      this.$emit('blur');
+    },
+
+    /**
+     * Emits a 'focus' event
+     */
+    handleInputFocus() {
+      this.$emit('focus');
+    },
+
+    /**
+     * Set the date, or go to the next view down
+     */
+    handleSelect(cell) {
+      if (this.allowedToShowView(this.nextView.down)) {
+        this.setPageDate(new Date(cell.timestamp));
+        this.$emit(`changed-${this.view}`, cell);
+        this.setView(this.nextView.down);
+        return;
+      }
+
+      this.resetTypedDate = this.utils.getNewDateObject();
+      this.selectDate(cell.timestamp);
+      this.close();
+    },
+
+    /**
+     * Emit a 'selected-disabled' event
+     */
+    handleSelectDisabled(cell) {
+      this.$emit('selected-disabled', cell);
+    },
+
+    /**
+     * Set the date from a 'typed-date' event
+     */
+    handleTypedDate(date) {
+      this.selectDate(date.valueOf());
     },
 
     /**
@@ -4473,7 +4889,7 @@ var script$8 = {
     init() {
       if (this.value) {
         let parsedValue = this.parseValue(this.value);
-        const isDateDisabled = parsedValue && this.disabledDatesClass.isDateDisabled(parsedValue);
+        const isDateDisabled = parsedValue && this.isDateDisabled(parsedValue);
 
         if (isDateDisabled) {
           parsedValue = null;
@@ -4489,17 +4905,38 @@ var script$8 = {
     },
 
     /**
-     * Emits a 'blur' event
+     * Returns true if a date is disabled
+     * @param {Date} date
      */
-    onBlur() {
-      this.$emit('blur');
+    isDateDisabled(date) {
+      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(date);
     },
 
     /**
-     * Emits a 'focus' event
+     * Opens the calendar with the relevant view: 'day', 'month', or 'year'
      */
-    onFocus() {
-      this.$emit('focus');
+    open() {
+      if (this.disabled || this.isInline) {
+        return;
+      }
+
+      this.setInitialView();
+      this.$emit('opened');
+    },
+
+    /**
+     * Parse a datepicker value from string/number to date
+     * @param {Date|String|Number|null} date
+     */
+    parseValue(date) {
+      let dateTemp = date;
+
+      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
+        const parsed = new Date(dateTemp);
+        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
+      }
+
+      return dateTemp;
     },
 
     /**
@@ -4516,10 +4953,10 @@ var script$8 = {
     },
 
     /**
-     * Set the selected date
+     * Select the date
      * @param {Number} timestamp
      */
-    setDate(timestamp) {
+    selectDate(timestamp) {
       const date = new Date(timestamp);
       this.selectedDate = date;
       this.setPageDate(date);
@@ -4537,19 +4974,7 @@ var script$8 = {
         throw new Error(`initialView '${this.initialView}' cannot be rendered based on minimum '${this.minimumView}' and maximum '${this.maximumView}'`);
       }
 
-      switch (initialView) {
-        case 'year':
-          this.showSpecificCalendar('Year');
-          break;
-
-        case 'month':
-          this.showSpecificCalendar('Month');
-          break;
-
-        default:
-          this.showSpecificCalendar('Day');
-          break;
-      }
+      this.setView(initialView);
     },
 
     /**
@@ -4572,13 +4997,6 @@ var script$8 = {
     },
 
     /**
-     * Set the date from a typedDate event
-     */
-    setTypedDate(date) {
-      this.setDate(date.valueOf());
-    },
-
-    /**
      * Set the datepicker value
      * @param {Date|String|Number|null} date
      */
@@ -4594,94 +5012,28 @@ var script$8 = {
     },
 
     /**
-     * parse a datepicker value from string/number to date
-     * @param {Date|String|Number|null} date
+     * Set the picker view
      */
-    parseValue(date) {
-      let dateTemp = date;
-
-      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
-        const parsed = new Date(dateTemp);
-        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
-      }
-
-      return dateTemp;
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDate(date) {
-      this.resetTypedDate = this.utils.getNewDateObject();
-      this.close();
-      this.setDate(date.timestamp);
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDisabledDate(date) {
-      this.$emit('selected-disabled', date);
-    },
-
-    /**
-     * @param {Object} month
-     */
-    selectMonth(month) {
-      const date = new Date(month.timestamp);
-
-      if (this.allowedToShowView('day')) {
-        this.setPageDate(date);
-        this.$emit('changed-month', month);
-        this.showSpecificCalendar('Day');
-      } else {
-        this.selectDate(month);
+    setView(view) {
+      if (this.allowedToShowView(view)) {
+        this.view = view;
       }
     },
 
     /**
-     * @param {Object} year
+     * Capitalizes the first letter
      */
-    selectYear(year) {
-      const date = new Date(year.timestamp);
-
-      if (this.allowedToShowView('month')) {
-        this.setPageDate(date);
-        this.$emit('changed-year', year);
-        this.showSpecificCalendar('Month');
-      } else {
-        this.selectDate(year);
-      }
-    },
-
-    /**
-     * Shows the calendar at the relevant view: 'day', 'month', or 'year'
-     */
-    showCalendar() {
-      if (this.disabled || this.isInline) {
-        return;
-      }
-
-      this.setInitialView();
-      this.$emit('opened');
-    },
-
-    /**
-     * Show a specific picker
-     */
-    showSpecificCalendar(type) {
-      if (this.allowedToShowView(type.toLowerCase())) {
-        this.currentPicker = `Picker${type}`;
-      }
+    ucFirst(str) {
+      return str[0].toUpperCase() + str.substring(1);
     }
 
   }
 };
 
 /* script */
-const __vue_script__$8 = script$8;
+const __vue_script__ = script;
 /* template */
-var __vue_render__$5 = function() {
+var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -4689,7 +5041,7 @@ var __vue_render__$5 = function() {
     "div",
     {
       staticClass: "vdp-datepicker",
-      class: [_vm.wrapperClass, _vm.isRtl ? "rtl" : ""]
+      class: [_vm.wrapperClass, { rtl: _vm.isRtl }]
     },
     [
       _c(
@@ -4726,12 +5078,12 @@ var __vue_render__$5 = function() {
             "use-utc": _vm.useUtc
           },
           on: {
-            blur: _vm.onBlur,
+            blur: _vm.handleInputBlur,
             "clear-date": _vm.clearDate,
-            "close-calendar": _vm.close,
-            focus: _vm.onFocus,
-            "show-calendar": _vm.showCalendar,
-            "typed-date": _vm.setTypedDate
+            close: _vm.close,
+            focus: _vm.handleInputFocus,
+            open: _vm.open,
+            "typed-date": _vm.handleTypedDate
           }
         },
         [
@@ -4759,93 +5111,102 @@ var __vue_render__$5 = function() {
           }
         },
         [
-          _vm.isOpen
-            ? _c(
-                "div",
+          _c(
+            "div",
+            {
+              directives: [
                 {
-                  ref: "datepicker",
-                  class: _vm.pickerClasses,
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isOpen,
+                  expression: "isOpen"
+                }
+              ],
+              ref: "datepicker",
+              staticClass: "vdp-datepicker__calendar",
+              class: _vm.pickerClasses,
+              on: {
+                mousedown: function($event) {
+                  $event.preventDefault();
+                }
+              }
+            },
+            [
+              _vm._t("beforeCalendarHeader"),
+              _vm._v(" "),
+              _c(
+                _vm.picker,
+                {
+                  tag: "Component",
+                  attrs: {
+                    "day-cell-content": _vm.dayCellContent,
+                    "disabled-dates": _vm.disabledDates,
+                    "first-day-of-week": _vm.firstDayOfWeek,
+                    highlighted: _vm.highlighted,
+                    "is-rtl": _vm.isRtl,
+                    "is-up-disabled": _vm.isUpDisabled,
+                    "page-date": _vm.pageDate,
+                    "selected-date": _vm.selectedDate,
+                    "show-edge-dates": _vm.showEdgeDates,
+                    "show-full-month-name": _vm.fullMonthName,
+                    "show-header": _vm.showHeader,
+                    translation: _vm.translation,
+                    "use-utc": _vm.useUtc,
+                    "year-range": _vm.yearPickerRange
+                  },
                   on: {
-                    mousedown: function($event) {
-                      $event.preventDefault();
-                    }
-                  }
+                    "page-change": _vm.handlePageChange,
+                    select: _vm.handleSelect,
+                    "select-disabled": _vm.handleSelectDisabled,
+                    "set-view": _vm.setView
+                  },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "dayCellContent",
+                        fn: function(ref) {
+                          var cell = ref.cell;
+                          return [
+                            cell
+                              ? _vm._t("dayCellContent", null, { cell: cell })
+                              : _vm._e()
+                          ]
+                        }
+                      }
+                    ],
+                    null,
+                    true
+                  )
                 },
                 [
-                  _vm.isOpen
-                    ? [
-                        _vm._t("beforeCalendarHeader"),
-                        _vm._v(" "),
-                        _c(
-                          _vm.currentPicker,
-                          {
-                            tag: "Component",
-                            attrs: {
-                              "allowed-to-show-view": _vm.allowedToShowView,
-                              "day-cell-content": _vm.dayCellContent,
-                              "disabled-dates": _vm.disabledDates,
-                              "first-day-of-week": _vm.firstDayOfWeek,
-                              highlighted: _vm.highlighted,
-                              "is-rtl": _vm.isRtl,
-                              "page-date": _vm.pageDate,
-                              "page-timestamp": _vm.pageTimestamp,
-                              "selected-date": _vm.selectedDate,
-                              "show-edge-dates": _vm.showEdgeDates,
-                              "show-full-month-name": _vm.fullMonthName,
-                              "show-header": _vm.showHeader,
-                              translation: _vm.translation,
-                              "use-utc": _vm.useUtc,
-                              "year-range": _vm.yearPickerRange
-                            },
-                            on: {
-                              "select-date": _vm.selectDate,
-                              "changed-month":
-                                _vm.handleChangedMonthFromDayPicker,
-                              "selected-disabled": _vm.selectDisabledDate,
-                              "select-month": _vm.selectMonth,
-                              "changed-year": _vm.setPageDate,
-                              "show-month-calendar": function($event) {
-                                return _vm.showSpecificCalendar("Month")
-                              },
-                              "select-year": _vm.selectYear,
-                              "changed-decade": _vm.setPageDate,
-                              "show-year-calendar": function($event) {
-                                return _vm.showSpecificCalendar("Year")
-                              }
-                            }
-                          },
-                          [
-                            _vm._l(_vm.calendarSlots, function(slotKey) {
-                              return [_vm._t(slotKey, null, { slot: slotKey })]
-                            })
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _vm._t("calendarFooter")
-                      ]
-                    : _vm._e()
+                  _vm._l(_vm.calendarSlots, function(slotKey) {
+                    return [_vm._t(slotKey, null, { slot: slotKey })]
+                  })
                 ],
                 2
-              )
-            : _vm._e()
+              ),
+              _vm._v(" "),
+              _vm._t("calendarFooter")
+            ],
+            2
+          )
         ]
       )
     ],
     1
   )
 };
-var __vue_staticRenderFns__$5 = [];
-__vue_render__$5._withStripped = true;
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$8 = undefined;
+  const __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__$8 = undefined;
+  const __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__$8 = undefined;
+  const __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__$8 = false;
+  const __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -4854,20 +5215,20 @@ __vue_render__$5._withStripped = true;
   
 
   
-  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
-    __vue_inject_styles__$8,
-    __vue_script__$8,
-    __vue_scope_id__$8,
-    __vue_is_functional_template__$8,
-    __vue_module_identifier__$8,
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
     false,
     undefined,
     undefined,
     undefined
   );
 
-/* harmony default export */ var Datepicker_esm = (__vue_component__$8);
+/* harmony default export */ var Datepicker_esm = (__vue_component__);
 //# sourceMappingURL=Datepicker.esm.js.map
 
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/Language.esm.js
@@ -5341,7 +5702,7 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
 
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=script&lang=js&
 
 //
 //
