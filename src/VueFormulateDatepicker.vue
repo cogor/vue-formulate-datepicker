@@ -25,16 +25,33 @@ export default {
   data() {
     return {
       language: lang[this.context.attributes.language],
-      date: this.context.model,
     };
   },
   watch: {
     date() {
-      let d = this.date;
+      this.context.model = this.formatDate(this.date);
+    },
+  },
+  computed: {
+    date: {
+      get() {
+        return new Date(this.context.model);
+      },
+      set(val) {
+        this.context.model = this.formatDate(val);
+      },
+    },
+  },
+  mounted() {
+    this.context.model = this.formatDate(this.context.model);
+  },
+  methods: {
+    formatDate(date) {
+      let d = date;
       let year = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
       let month = new Intl.DateTimeFormat("en", { month: "2-digit" }).format(d);
       let day = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
-      this.context.model = `${year}-${month}-${day}`;
+      return `${year}-${month}-${day}`;
     },
   },
   components: { Datepicker },

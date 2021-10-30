@@ -1411,19 +1411,19 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62f27113-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=c2f8bd7e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62f27113-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=c2f8bd7e&
+// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
 
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/Datepicker.esm.js
 /*
-* @sum.cumo/vue-datepicker v3.2.0
+* @sum.cumo/vue-datepicker v3.1.0
 * (c) 2018-2021 sum.cumo GmbH
 * Released under the Apache-2.0 License.
 */
@@ -1510,8 +1510,6 @@ class Language {
 }
 
 var en = new Language('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
-
-var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
 
 const getParsedDate = ({
   formatStr,
@@ -1893,114 +1891,112 @@ var makeDateUtils = (useUtc => ({ ...utils,
   useUtc
 }));
 
-var script$8 = {
+var calendarSlots = ['beforeCalendarHeaderDay', 'calendarFooterDay', 'beforeCalendarHeaderMonth', 'calendarFooterMonth', 'beforeCalendarHeaderYear', 'calendarFooterYear', 'nextIntervalBtn', 'prevIntervalBtn'];
+
+var script = {
   props: {
     autofocus: {
       type: Boolean,
-      default: false,
+      default: false
     },
     bootstrapStyling: {
       type: Boolean,
-      default: false,
+      default: false
     },
     clearButton: {
       type: Boolean,
-      default: false,
+      default: false
     },
     clearButtonIcon: {
       type: String,
-      default: '',
+      default: ''
     },
     calendarButton: {
       type: Boolean,
-      default: false,
+      default: false
     },
     calendarButtonIcon: {
       type: String,
-      default: '',
+      default: ''
     },
     calendarButtonIconContent: {
       type: String,
-      default: '',
+      default: ''
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     format: {
       type: [String, Function],
-      default: 'dd MMM yyyy',
+      default: 'dd MMM yyyy'
     },
     id: {
       type: String,
-      default: null,
+      default: null
     },
     inline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     inputClass: {
       type: [String, Object, Array],
-      default: null,
+      default: null
     },
     maxlength: {
       type: [Number, String],
-      default: null,
+      default: null
     },
     name: {
       type: String,
-      default: null,
+      default: null
     },
     openDate: {
       type: [String, Date, Number],
       default: null,
-      validator: (val) =>
-        val === null ||
-        val instanceof Date ||
-        typeof val === 'string' ||
-        typeof val === 'number',
+      validator: val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number'
     },
     parser: {
       type: Function,
-      default: null,
+      default: null
     },
     pattern: {
       type: String,
-      default: null,
+      default: null
     },
     placeholder: {
       type: String,
-      default: null,
+      default: null
     },
     refName: {
       type: String,
-      default: '',
+      default: ''
     },
     required: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showCalendarOnButtonClick: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showCalendarOnFocus: {
       type: Boolean,
-      default: false,
+      default: false
     },
     tabindex: {
       type: [Number, String],
-      default: null,
+      default: null
     },
     typeable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     useUtc: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
@@ -2079,18 +2075,18 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 }
 
 /* script */
-const __vue_script__$8 = script$8;
+const __vue_script__ = script;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$8 = undefined;
+  const __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__$8 = undefined;
+  const __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__$8 = undefined;
+  const __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__$8 = undefined;
+  const __vue_is_functional_template__ = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -2099,13 +2095,13 @@ const __vue_script__$8 = script$8;
   
 
   
-  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$8,
-    __vue_script__$8,
-    __vue_scope_id__$8,
-    __vue_is_functional_template__$8,
-    __vue_module_identifier__$8,
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
     false,
     undefined,
     undefined,
@@ -2113,76 +2109,87 @@ const __vue_script__$8 = script$8;
   );
 
 //
-
-var script$7 = {
+var script$1 = {
   name: 'DateInput',
-  mixins: [__vue_component__$8],
+  mixins: [__vue_component__],
   props: {
     isOpen: {
       type: Boolean,
-      default: false,
+      default: false
     },
     resetTypedDate: {
       type: [Date],
-      default: null,
+      default: null
     },
     selectedDate: {
       type: Date,
-      default: null,
+      default: null
     },
     translation: {
       type: Object,
+
       default() {
-        return {}
-      },
-    },
+        return {};
+      }
+
+    }
   },
+
   data() {
+    const constructedDateUtils = makeDateUtils(this.useUtc);
     return {
       input: null,
       isFocusedUsed: false,
       isBlurred: false,
       typedDate: '',
-      utils: makeDateUtils(this.useUtc),
-    }
+      utils: constructedDateUtils
+    };
   },
+
   computed: {
     computedInputClass() {
       if (this.bootstrapStyling) {
         if (typeof this.inputClass === 'string') {
-          return [this.inputClass, 'form-control'].join(' ')
+          return [this.inputClass, 'form-control'].join(' ');
         }
-        return { 'form-control': true, ...this.inputClass }
+
+        return {
+          'form-control': true,
+          ...this.inputClass
+        };
       }
-      return this.inputClass
+
+      return this.inputClass;
     },
-    formattedDate() {
-      return typeof this.format === 'function'
-        ? this.format(new Date(this.selectedDate))
-        : this.utils.formatDate(
-            new Date(this.selectedDate),
-            this.format,
-            this.translation,
-          )
-    },
+
     formattedValue() {
       if (!this.selectedDate) {
-        return null
+        return null;
       }
+
       if (this.typedDate.length) {
-        return this.typedDate
+        return this.typedDate;
       }
-      return this.formattedDate
+
+      return this.formattedDate;
     },
+
+    formattedDate() {
+      return typeof this.format === 'function' ? this.format(new Date(this.selectedDate)) : this.utils.formatDate(new Date(this.selectedDate), this.format, this.translation);
+    }
+
   },
   watch: {
     resetTypedDate() {
       this.typedDate = '';
-    },
+    }
+
   },
+
   mounted() {
     this.input = this.$el.querySelector('input');
   },
+
   methods: {
     /**
      * emit a clearDate event
@@ -2190,64 +2197,71 @@ var script$7 = {
     clearDate() {
       this.$emit('clear-date');
     },
+
     /**
      * submit typedDate and emit a blur event
      */
-    handleInputBlur() {
+    inputBlurred() {
       this.isBlurred = this.isOpen;
+
       if (this.typeable) {
         this.submitTypedDate();
       }
+
       this.$emit('blur');
-      this.$emit('close');
+      this.$emit('close-calendar');
       this.isFocusedUsed = false;
     },
-    handleInputClick() {
-      const isFocusedUsed = this.showCalendarOnFocus && !this.isFocusedUsed;
 
-      if (!this.showCalendarOnButtonClick && !isFocusedUsed) {
-        this.toggle();
-      }
-
-      if (this.showCalendarOnFocus) {
-        this.isFocusedUsed = true;
-      }
-    },
-    handleInputFocus() {
-      if (this.showCalendarOnFocus) {
-        this.$emit('open');
-      }
-
-      this.isBlurred = false;
-      this.$emit('focus');
-    },
-    handleKeydownEnter() {
-      if (this.typeable) {
-        this.submitTypedDate();
-      }
-      this.$emit('close');
-    },
-    parseDate(value) {
-      return this.utils.parseDate(
-        value,
-        this.format,
-        this.translation,
-        this.parser,
-      )
-    },
     /**
      * Attempt to parse a typed date
+     * @param {Event} event
      */
-    parseTypedDate() {
+    parseTypedDate(event) {
+      const code = event.keyCode ? event.keyCode : event.which; // close calendar if escape or enter are pressed
+
+      if ([27, // escape
+      13 // enter
+      ].indexOf(code) !== -1) {
+        this.input.blur();
+      }
+
       if (this.typeable) {
         const parsableDate = this.parseDate(this.input.value);
         const parsedDate = Date.parse(parsableDate);
+
         if (!Number.isNaN(parsedDate)) {
           this.typedDate = this.input.value;
           this.$emit('typed-date', new Date(parsedDate));
         }
       }
     },
+
+    parseDate(value) {
+      return this.utils.parseDate(value, this.format, this.translation, this.parser);
+    },
+
+    showCalendarByClick() {
+      const isFocusedUsed = this.showCalendarOnFocus && !this.isFocusedUsed;
+
+      if (!this.showCalendarOnButtonClick && !isFocusedUsed) {
+        this.toggleCalendar();
+      }
+
+      if (this.showCalendarOnFocus) {
+        this.isFocusedUsed = true;
+      }
+    },
+
+    showCalendarByFocus() {
+      if (this.showCalendarOnFocus) {
+        this.$emit('show-calendar');
+      }
+
+      this.isBlurred = false;
+      this.$emit('focus');
+    },
+
     /**
      * Submits a typed date if it's valid
      */
@@ -2263,21 +2277,24 @@ var script$7 = {
         this.$emit('typed-date', parsedDate);
       }
     },
-    toggle() {
+
+    toggleCalendar() {
       if (!this.isOpen && this.isBlurred) {
         this.isBlurred = false;
-        return
+        return;
       }
-      this.$emit(this.isOpen ? 'close' : 'open');
-    },
-  },
+
+      this.$emit(this.isOpen ? 'close-calendar' : 'show-calendar');
+    }
+
+  }
 };
 
 /* script */
-const __vue_script__$7 = script$7;
+const __vue_script__$1 = script$1;
 
 /* template */
-var __vue_render__$5 = function() {
+var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2296,7 +2313,7 @@ var __vue_render__$5 = function() {
                 "input-group-prepend": _vm.bootstrapStyling,
                 "calendar-btn-disabled": _vm.disabled
               },
-              on: { click: _vm.toggle }
+              on: { click: _vm.toggleCalendar }
             },
             [
               _c(
@@ -2338,41 +2355,13 @@ var __vue_render__$5 = function() {
           readonly: !_vm.typeable,
           required: _vm.required,
           tabindex: _vm.tabindex,
-          type: _vm.inline ? "hidden" : null
+          type: _vm.inline ? "hidden" : "text"
         },
         domProps: { value: _vm.formattedValue },
         on: {
-          blur: _vm.handleInputBlur,
-          click: _vm.handleInputClick,
-          focus: _vm.handleInputFocus,
-          keydown: [
-            function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
-              }
-              $event.preventDefault();
-              return _vm.handleKeydownEnter($event)
-            },
-            function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k(
-                  $event.keyCode,
-                  "escape",
-                  undefined,
-                  $event.key,
-                  undefined
-                )
-              ) {
-                return null
-              }
-              $event.preventDefault();
-              return _vm.$emit("close")
-            }
-          ],
+          blur: _vm.inputBlurred,
+          click: _vm.showCalendarByClick,
+          focus: _vm.showCalendarByFocus,
           keyup: _vm.parseTypedDate
         }
       }),
@@ -2413,17 +2402,17 @@ var __vue_render__$5 = function() {
     2
   )
 };
-var __vue_staticRenderFns__$5 = [];
-__vue_render__$5._withStripped = true;
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$7 = undefined;
+  const __vue_inject_styles__$1 = undefined;
   /* scoped */
-  const __vue_scope_id__$7 = undefined;
+  const __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$7 = undefined;
+  const __vue_module_identifier__$1 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$7 = false;
+  const __vue_is_functional_template__$1 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -2432,13 +2421,170 @@ __vue_render__$5._withStripped = true;
   
 
   
-  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
-    __vue_inject_styles__$7,
-    __vue_script__$7,
-    __vue_scope_id__$7,
-    __vue_is_functional_template__$7,
-    __vue_module_identifier__$7,
+  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__$1,
+    __vue_script__$1,
+    __vue_scope_id__$1,
+    __vue_is_functional_template__$1,
+    __vue_module_identifier__$1,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var script$2 = {
+  name: 'PickerHeader',
+  props: {
+    config: {
+      type: Object,
+
+      default() {
+        return {
+          showHeader: true,
+          isRtl: false,
+          isNextDisabled: false,
+          isPreviousDisabled: false
+        };
+      }
+
+    },
+    next: {
+      type: Function,
+      required: true
+    },
+    previous: {
+      type: Function,
+      required: true
+    }
+  },
+  computed: {
+    /**
+     * Is the left hand navigation button disabled?
+     * @return {Boolean}
+     */
+    isLeftNavDisabled() {
+      return this.config.isRtl ? this.config.isNextDisabled : this.config.isPreviousDisabled;
+    },
+
+    /**
+     * Is the right hand navigation button disabled?
+     * @return {Boolean}
+     */
+    isRightNavDisabled() {
+      return this.config.isRtl ? this.config.isPreviousDisabled : this.config.isNextDisabled;
+    }
+
+  }
+};
+
+/* script */
+const __vue_script__$2 = script$2;
+
+/* template */
+var __vue_render__$1 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _vm.config.showHeader
+    ? _c(
+        "header",
+        [
+          _c(
+            "span",
+            {
+              staticClass: "prev",
+              class: { disabled: _vm.isLeftNavDisabled },
+              on: {
+                click: function($event) {
+                  _vm.config.isRtl ? _vm.next() : _vm.previous();
+                }
+              }
+            },
+            [
+              _vm._t("prevIntervalBtn", [
+                _c("span", { staticClass: "default" }, [_vm._v("<")])
+              ])
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm._t("default"),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "next",
+              class: { disabled: _vm.isRightNavDisabled },
+              on: {
+                click: function($event) {
+                  _vm.config.isRtl ? _vm.previous() : _vm.next();
+                }
+              }
+            },
+            [
+              _vm._t("nextIntervalBtn", [
+                _c("span", { staticClass: "default" }, [_vm._v(">")])
+              ])
+            ],
+            2
+          )
+        ],
+        2
+      )
+    : _vm._e()
+};
+var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$2 = undefined;
+  /* scoped */
+  const __vue_scope_id__$2 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$2 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$2 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+    __vue_inject_styles__$2,
+    __vue_script__$2,
+    __vue_scope_id__$2,
+    __vue_is_functional_template__$2,
+    __vue_module_identifier__$2,
     false,
     undefined,
     undefined,
@@ -2703,267 +2849,118 @@ class DisabledDate {
 
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var script$6 = {
-  name: 'PickerHeader',
-  props: {
-    isNextDisabled: {
-      type: Boolean,
-      required: true,
-    },
-    isPreviousDisabled: {
-      type: Boolean,
-      required: true,
-    },
-    isRtl: {
-      type: Boolean,
-      required: true,
-    },
+var script$3 = {
+  components: {
+    PickerHeader: __vue_component__$2
   },
-  computed: {
-    /**
-     * Is the left hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isLeftNavDisabled() {
-      return this.isRtl ? this.isNextDisabled : this.isPreviousDisabled
-    },
-    /**
-     * Is the right hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isRightNavDisabled() {
-      return this.isRtl ? this.isPreviousDisabled : this.isNextDisabled
-    },
-  },
-};
-
-/* script */
-const __vue_script__$6 = script$6;
-
-/* template */
-var __vue_render__$4 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "header",
-    [
-      _c(
-        "span",
-        {
-          staticClass: "prev",
-          class: { disabled: _vm.isLeftNavDisabled },
-          on: {
-            click: function($event) {
-              return _vm.$emit(_vm.isRtl ? "next" : "previous")
-            }
-          }
-        },
-        [
-          _vm._t("prevIntervalBtn", [
-            _c("span", { staticClass: "default" }, [_vm._v("<")])
-          ])
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _vm._t("default"),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "next",
-          class: { disabled: _vm.isRightNavDisabled },
-          on: {
-            click: function($event) {
-              return _vm.$emit(_vm.isRtl ? "previous" : "next")
-            }
-          }
-        },
-        [
-          _vm._t("nextIntervalBtn", [
-            _c("span", { staticClass: "default" }, [_vm._v(">")])
-          ])
-        ],
-        2
-      )
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$6 = undefined;
-  /* scoped */
-  const __vue_scope_id__$6 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$6 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$6 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-    __vue_inject_styles__$6,
-    __vue_script__$6,
-    __vue_scope_id__$6,
-    __vue_is_functional_template__$6,
-    __vue_module_identifier__$6,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-var script$5 = {
-  components: { PickerHeader: __vue_component__$6 },
   inheritAttrs: false,
   props: {
+    allowedToShowView: {
+      type: Function,
+
+      default() {}
+
+    },
     disabledDates: {
       type: Object,
+
       default() {
-        return {}
-      },
+        return {};
+      }
+
     },
     isRtl: {
       type: Boolean,
-      default: false,
-    },
-    isUpDisabled: {
-      type: Boolean,
-      default: false,
+      default: false
     },
     pageDate: {
       type: Date,
-      default: null,
+      default: null
+    },
+    pageTimestamp: {
+      type: Number,
+      default: 0
     },
     selectedDate: {
       type: Date,
-      default: null,
+      default: null
     },
     showHeader: {
       type: Boolean,
-      default: true,
+      default: true
     },
     translation: {
       type: Object,
+
       default() {
-        return {}
-      },
+        return {};
+      }
+
     },
     useUtc: {
       type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      utils: makeDateUtils(this.useUtc),
+      default: false
     }
   },
+
+  data() {
+    return {
+      headerConfig: {
+        showHeader: this.showHeader,
+        isRtl: this.isRtl,
+
+        /**
+         * Need to be set inside the different pickers for month, year, decade
+         */
+        isNextDisabled: this.isNextDisabled,
+        isPreviousDisabled: this.isPreviousDisabled
+      },
+      utils: makeDateUtils(this.useUtc)
+    };
+  },
+
   computed: {
     /**
      * A look-up object created from 'disabledDates' prop
      * @return {Object}
      */
     disabledConfig() {
-      return new DisabledDate(this.utils, this.disabledDates).config
+      return new DisabledDate(this.utils, this.disabledDates).config;
     },
+
     /**
      * Returns the current page's full year as an integer.
      * @return {Number}
      */
     pageYear() {
-      return this.utils.getFullYear(this.pageDate)
-    },
+      return this.utils.getFullYear(this.pageDate);
+    }
+
   },
   methods: {
     /**
-     * Changes the page up or down
-     * @param {Number} incrementBy
+     * Emit an event to show the month picker
      */
-    changePage(incrementBy) {
-      const date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
+    showPickerCalendar(type) {
+      this.$emit(`show-${type}-calendar`);
+    }
 
-      this.$emit('page-change', date);
-    },
-    /**
-     * Emits a 'select' or 'select-disabled' event
-     * @param {Object} cell
-     */
-    select(cell) {
-      if (cell.isDisabled) {
-        this.$emit('select-disabled', cell);
-      } else {
-        this.$emit('select', cell);
-      }
-    },
-    /**
-     * Increment the current page
-     */
-    nextPage() {
-      if (!this.isNextDisabled) {
-        this.changePage(+1);
-      }
-    },
-    /**
-     * Decrement the page
-     */
-    previousPage() {
-      if (!this.isPreviousDisabled) {
-        this.changePage(-1);
-      }
-    },
-  },
+  }
 };
 
 /* script */
-const __vue_script__$5 = script$5;
+const __vue_script__$3 = script$3;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$5 = undefined;
+  const __vue_inject_styles__$3 = undefined;
   /* scoped */
-  const __vue_scope_id__$5 = undefined;
+  const __vue_scope_id__$3 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$5 = undefined;
+  const __vue_module_identifier__$3 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$5 = undefined;
+  const __vue_is_functional_template__$3 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -2972,13 +2969,13 @@ const __vue_script__$5 = script$5;
   
 
   
-  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$5,
-    __vue_script__$5,
-    __vue_scope_id__$5,
-    __vue_is_functional_template__$5,
-    __vue_module_identifier__$5,
+    __vue_inject_styles__$3,
+    __vue_script__$3,
+    __vue_scope_id__$3,
+    __vue_is_functional_template__$3,
+    __vue_module_identifier__$3,
     false,
     undefined,
     undefined,
@@ -3068,183 +3065,184 @@ class HighlightedDate {
 }
 
 //
-
 var script$4 = {
-  name: 'PickerDay',
-  mixins: [__vue_component__$5],
+  name: 'DatepickerDayView',
+  mixins: [__vue_component__$3],
   props: {
     dayCellContent: {
       type: Function,
-      default: (day) => day.date,
+      default: day => day.date
     },
     highlighted: {
       type: Object,
+
       default() {
-        return {}
-      },
+        return {};
+      }
+
     },
     firstDayOfWeek: {
       type: String,
-      default: 'sun',
+      default: 'sun'
     },
     showFullMonthName: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showEdgeDates: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   computed: {
+    /**
+     * Gets the name of the month the current page is on
+     * @return {String}
+     */
+    currMonthName() {
+      const monthName = this.showFullMonthName ? this.translation.months : this.translation.monthsAbbr;
+      return this.utils.getMonthNameAbbr(this.pageMonth, monthName);
+    },
+
+    /**
+     * Gets the name of the year that current page is on
+     * @return {String}
+     */
+    currYearName() {
+      const {
+        yearSuffix
+      } = this.translation;
+      return `${this.pageYear}${yearSuffix}`;
+    },
+
     /**
      * Sets an array with all days to show this month
      * @return {Array}
      */
-    cells() {
+    days() {
       const days = [];
-      const daysInCalendar =
-        this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
-      const dObj = this.firstCellDate();
+      const daysInCalendar = this.daysFromPrevMonth + this.daysInMonth + this.daysFromNextMonth;
+      const firstOfMonth = this.newPageDate();
+      const dObj = new Date(firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth));
 
       for (let i = 0; i < daysInCalendar; i += 1) {
         days.push(this.makeDay(i, dObj));
         this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
       }
 
-      return days
+      return days;
     },
-    /**
-     * Gets the name of the month the current page is on
-     * @return {String}
-     */
-    currMonthName() {
-      const monthName = this.showFullMonthName
-        ? this.translation.months
-        : this.translation.monthsAbbr;
 
-      return this.utils.getMonthNameAbbr(this.pageMonth, monthName)
-    },
-    /**
-     * Gets the name of the year that current page is on
-     * @return {String}
-     */
-    currYearName() {
-      const { yearSuffix } = this.translation;
-      return `${this.pageYear}${yearSuffix}`
-    },
     /**
      * Returns an array of day names
      * @return {String[]}
      */
     daysOfWeek() {
-      return this.translation.getDaysStartingOn(this.firstDayOfWeekNumber)
+      return this.translation.getDaysStartingOn(this.firstDayOfWeekNumber);
     },
+
     /**
      * Returns the number of days in this month
      * @return {String[]}
      */
     daysInMonth() {
-      return this.utils.getDaysInMonth(this.pageDate)
+      const dObj = this.newPageDate();
+      return this.utils.getDaysInMonth(dObj);
     },
+
     /**
      * Calculates how many days to show from the previous month
      * @return {number}
      */
     daysFromPrevMonth() {
-      const firstOfMonthDayNumber = this.utils.getDay(this.pageDate);
-      return (7 - this.firstDayOfWeekNumber + firstOfMonthDayNumber) % 7
+      const dObj = this.newPageDate();
+      return (7 - this.firstDayOfWeekNumber + this.utils.getDay(dObj)) % 7;
     },
+
     /**
      * Calculates how many days to show from the next month
      * @return {number}
      */
     daysFromNextMonth() {
       const daysThisAndPrevMonth = this.daysFromPrevMonth + this.daysInMonth;
-      return Math.ceil(daysThisAndPrevMonth / 7) * 7 - daysThisAndPrevMonth
+      return Math.ceil(daysThisAndPrevMonth / 7) * 7 - daysThisAndPrevMonth;
     },
+
     /**
      * Returns first-day-of-week as a number (Sunday is 0)
      * @return {Number}
      */
     firstDayOfWeekNumber() {
-      return this.utils.getDayFromAbbr(this.firstDayOfWeek)
+      return this.utils.getDayFromAbbr(this.firstDayOfWeek);
     },
-    /**
-     * A look-up object created from 'highlighted' prop
-     * @return {Object}
-     */
-    highlightedConfig() {
-      return new HighlightedDate(
-        this.utils,
-        this.disabledDates,
-        this.highlighted,
-      ).config
-    },
+
     /**
      * Is the next month disabled?
      * @return {Boolean}
      */
     isNextDisabled() {
       if (!this.disabledConfig.has.from) {
-        return false
+        return false;
       }
-      return (
-        this.disabledConfig.from.month <= this.pageMonth &&
-        this.disabledConfig.from.year <= this.pageYear
-      )
+
+      return this.disabledConfig.from.month <= this.pageMonth && this.disabledConfig.from.year <= this.pageYear;
     },
+
     /**
      * Is the previous month disabled?
      * @return {Boolean}
      */
     isPreviousDisabled() {
       if (!this.disabledConfig.has.to) {
-        return false
+        return false;
       }
-      return (
-        this.disabledConfig.to.month >= this.pageMonth &&
-        this.disabledConfig.to.year >= this.pageYear
-      )
+
+      return this.disabledConfig.to.month >= this.pageMonth && this.disabledConfig.to.year >= this.pageYear;
     },
+
     /**
      * Returns the current page's month as an integer.
      * @return {Number}
      */
     pageMonth() {
-      return this.utils.getMonth(this.pageDate)
+      return this.utils.getMonth(this.pageDate);
     },
+
     /**
      * Display the current page's month & year as the title.
      * @return {String}
      */
     pageTitleDay() {
-      return this.translation.ymd
-        ? `${this.currYearName} ${this.currMonthName}`
-        : `${this.currMonthName} ${this.currYearName}`
+      return this.translation.ymd ? `${this.currYearName} ${this.currMonthName}` : `${this.currMonthName} ${this.currYearName}`;
     },
+
     /**
      * The first day of the next page's month.
      * @return {Date}
      */
-    firstOfNextMonth() {
-      const d = new Date(this.pageDate);
-      return new Date(this.utils.setMonth(d, this.utils.getMonth(d) + 1))
+    nextPageDate() {
+      const d = new Date(this.pageTimestamp);
+      return new Date(this.utils.setMonth(d, this.utils.getMonth(d) + 1));
     },
+
+    highlightedConfig() {
+      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).config;
+    }
+
   },
   methods: {
     /**
-     * Changes the page up or down (overrides changePage in pickerMixin)
+     * Change the page month
      * @param {Number} incrementBy
      */
-    changePage(incrementBy) {
+    changeMonth(incrementBy) {
       const date = this.pageDate;
       this.utils.setMonth(date, this.utils.getMonth(date) + incrementBy);
-
-      this.$emit('page-change', date);
+      this.$emit('changed-month', date);
     },
+
     /**
-     * Set the class for a specific day
+     * set the class for a specific day
      * @param {Object} day
      * @return {Object}
      */
@@ -3259,19 +3257,26 @@ var script$4 = {
         'sat': day.isSaturday,
         'sun': day.isSunday,
         'highlight-start': day.isHighlightStart,
-        'highlight-end': day.isHighlightEnd,
-      }
+        'highlight-end': day.isHighlightEnd
+      };
     },
+
+    /**
+     * @return {Number}
+     */
+    getPageMonth() {
+      return this.utils.getMonth(this.pageDate);
+    },
+
     /**
      * Whether a day is disabled
      * @param {Date} date to check if disabled
      * @return {Boolean}
      */
     isDisabledDate(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(
-        date,
-      )
+      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(date);
     },
+
     /**
      * Whether a day is highlighted
      * (only if it is not disabled already except when highlighted.includeDisabled is true)
@@ -3280,13 +3285,9 @@ var script$4 = {
      */
     isHighlightedDate(date) {
       const dateWithoutTime = this.utils.resetDateTime(date);
-
-      return new HighlightedDate(
-        this.utils,
-        this.disabledDates,
-        this.highlighted,
-      ).isDateHighlighted(dateWithoutTime)
+      return new HighlightedDate(this.utils, this.disabledDates, this.highlighted).isDateHighlighted(dateWithoutTime);
     },
+
     /**
      * Whether a day is highlighted and it is the last date
      * in the highlighted range of dates
@@ -3295,14 +3296,9 @@ var script$4 = {
      */
     isHighlightEnd(date) {
       const config = this.highlightedConfig;
-
-      return (
-        this.isHighlightedDate(date) &&
-        config.to.year === this.utils.getFullYear(date) &&
-        config.to.month === this.utils.getMonth(date) &&
-        config.to.day === this.utils.getDate(date)
-      )
+      return this.isHighlightedDate(date) && config.to.year === this.utils.getFullYear(date) && config.to.month === this.utils.getMonth(date) && config.to.day === this.utils.getDate(date);
     },
+
     /**
      * Whether a day is highlighted and it is the first date
      * in the highlighted range of dates
@@ -3311,24 +3307,18 @@ var script$4 = {
      */
     isHighlightStart(date) {
       const config = this.highlightedConfig;
-
-      return (
-        this.isHighlightedDate(date) &&
-        config.from.year === this.utils.getFullYear(date) &&
-        config.from.month === this.utils.getMonth(date) &&
-        config.from.day === this.utils.getDate(date)
-      )
+      return this.isHighlightedDate(date) && config.from.year === this.utils.getFullYear(date) && config.from.month === this.utils.getMonth(date) && config.from.day === this.utils.getDate(date);
     },
+
     /**
      * Whether a day is selected
      * @param {Date} dObj to check if selected
      * @return {Boolean}
      */
     isSelectedDate(dObj) {
-      return (
-        this.selectedDate && this.utils.compareDates(this.selectedDate, dObj)
-      )
+      return this.selectedDate && this.utils.compareDates(this.selectedDate, dObj);
     },
+
     /**
      * Defines the objects within the days array
      * @param  {id}  id
@@ -3337,12 +3327,11 @@ var script$4 = {
      */
     // eslint-disable-next-line complexity
     makeDay(id, dObj) {
-      const isNextMonth = dObj >= this.firstOfNextMonth;
+      const isNextMonth = dObj >= this.nextPageDate;
       const isPreviousMonth = dObj < this.pageDate;
       const isSaturday = this.utils.getDay(dObj) === 6;
       const isSunday = this.utils.getDay(dObj) === 0;
       const showDate = this.showEdgeDates || !(isPreviousMonth || isNextMonth);
-
       return {
         date: showDate ? this.utils.getDate(dObj) : '',
         timestamp: dObj.valueOf(),
@@ -3356,38 +3345,57 @@ var script$4 = {
         isSaturday,
         isSunday,
         isPreviousMonth,
-        isNextMonth,
-      }
+        isNextMonth
+      };
     },
+
     /**
      * Set up a new date object to the first day of the current 'page'
      * @return Date
      */
-    firstCellDate() {
+    newPageDate() {
       const d = this.pageDate;
-
-      const firstOfMonth = this.useUtc
-        ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1))
-        : new Date(
-            d.getFullYear(),
-            d.getMonth(),
-            1,
-            d.getHours(),
-            d.getMinutes(),
-          );
-
-      return new Date(
-        firstOfMonth.setDate(firstOfMonth.getDate() - this.daysFromPrevMonth),
-      )
+      return this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
     },
-  },
+
+    /**
+     * Increment the current page month
+     */
+    nextMonth() {
+      if (!this.isNextDisabled) {
+        this.changeMonth(+1);
+      }
+    },
+
+    /**
+     * Decrement the page month
+     */
+    previousMonth() {
+      if (!this.isPreviousDisabled) {
+        this.changeMonth(-1);
+      }
+    },
+
+    /**
+     * Emits a selectDate event
+     * @param {Object} date
+     */
+    selectDate(date) {
+      if (date.isDisabled) {
+        this.$emit('selected-disabled', date);
+      } else {
+        this.$emit('select-date', date);
+      }
+    }
+
+  }
 };
 
 /* script */
 const __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$3 = function() {
+var __vue_render__$2 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3397,84 +3405,65 @@ var __vue_render__$3 = function() {
     [
       _vm._t("beforeCalendarHeaderDay"),
       _vm._v(" "),
-      _vm.showHeader
-        ? _c(
-            "PickerHeader",
+      _c(
+        "PickerHeader",
+        {
+          attrs: {
+            config: _vm.headerConfig,
+            next: _vm.nextMonth,
+            previous: _vm.previousMonth
+          }
+        },
+        [
+          _c(
+            "span",
             {
-              attrs: {
-                "is-next-disabled": _vm.isNextDisabled,
-                "is-previous-disabled": _vm.isPreviousDisabled,
-                "is-rtl": _vm.isRtl
-              },
-              on: { next: _vm.nextPage, previous: _vm.previousPage }
+              staticClass: "day__month_btn",
+              class: _vm.allowedToShowView("month") ? "up" : "",
+              on: {
+                click: function($event) {
+                  return _vm.showPickerCalendar("month")
+                }
+              }
             },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "day__month_btn",
-                  class: { up: !_vm.isUpDisabled },
-                  on: {
-                    click: function($event) {
-                      return _vm.$emit("set-view", "month")
-                    }
-                  }
-                },
-                [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
-              ),
-              _vm._v(" "),
-              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-              _vm._v(" "),
-              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-            ],
-            2
-          )
-        : _vm._e(),
+            [_vm._v("\n      " + _vm._s(_vm.pageTitleDay) + "\n    ")]
+          ),
+          _vm._v(" "),
+          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+          _vm._v(" "),
+          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+        ],
+        2
+      ),
       _vm._v(" "),
       _c(
         "div",
-        { class: { "flex-rtl": _vm.isRtl } },
+        { class: _vm.isRtl ? "flex-rtl" : "" },
         [
-          _vm._l(_vm.daysOfWeek, function(day) {
-            return _c("span", { key: day, staticClass: "day-header" }, [
-              _vm._v("\n      " + _vm._s(day) + "\n    ")
-            ])
+          _vm._l(_vm.daysOfWeek, function(d) {
+            return _c(
+              "span",
+              { key: d.timestamp, staticClass: "cell day-header" },
+              [_vm._v("\n      " + _vm._s(d) + "\n    ")]
+            )
           }),
           _vm._v(" "),
-          _c(
-            "div",
-            { ref: "cells" },
-            _vm._l(_vm.cells, function(cell) {
-              return _c(
-                "span",
-                {
-                  key: cell.timestamp,
-                  staticClass: "cell day",
-                  class: _vm.dayClasses(cell),
-                  on: {
-                    click: function($event) {
-                      return _vm.select(cell)
-                    }
+          _vm._l(_vm.days, function(day) {
+            return _c(
+              "span",
+              {
+                key: day.timestamp,
+                staticClass: "cell day",
+                class: _vm.dayClasses(day),
+                on: {
+                  click: function($event) {
+                    return _vm.selectDate(day)
                   }
-                },
-                [
-                  _vm._t(
-                    "dayCellContent",
-                    [
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(_vm.dayCellContent(cell)) +
-                          "\n        "
-                      )
-                    ],
-                    { cell: cell }
-                  )
-                ],
-                2
-              )
-            }),
-            0
-          )
+                }
+              },
+              [_vm._v("\n      " + _vm._s(_vm.dayCellContent(day)) + "\n    ")]
+            )
+          })
         ],
         2
       ),
@@ -3484,8 +3473,8 @@ var __vue_render__$3 = function() {
     2
   )
 };
-var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
+var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
   /* style */
   const __vue_inject_styles__$4 = undefined;
@@ -3504,7 +3493,7 @@ __vue_render__$3._withStripped = true;
 
   
   const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
+    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$4,
     __vue_script__$4,
     __vue_scope_id__$4,
@@ -3517,81 +3506,89 @@ __vue_render__$3._withStripped = true;
   );
 
 //
-
-var script$3 = {
-  name: 'PickerMonth',
-  mixins: [__vue_component__$5],
+var script$5 = {
+  name: 'DatepickerMonthView',
+  mixins: [__vue_component__$3],
   computed: {
-    /**
-     * Sets an array with all months to show this year
-     * @return {Array}
-     */
-    cells() {
-      const d = this.pageDate;
-      const months = [];
-      // set up a new date object to the beginning of the current 'page'
-      const dObj = this.useUtc
-        ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate()))
-        : new Date(
-            d.getFullYear(),
-            0,
-            d.getDate(),
-            d.getHours(),
-            d.getMinutes(),
-          );
-
-      for (let i = 0; i < 12; i += 1) {
-        months.push({
-          month: this.utils.getMonthName(i, this.translation.months),
-          timestamp: dObj.valueOf(),
-          isSelected: this.isSelectedMonth(dObj),
-          isDisabled: this.isDisabledMonth(dObj),
-        });
-        this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
-      }
-
-      return months
-    },
     /**
      * Is the next year disabled?
      * @return {Boolean}
      */
     isNextDisabled() {
       if (!this.disabledConfig.has.from) {
-        return false
+        return false;
       }
-      return this.disabledConfig.from.year <= this.pageYear
+
+      return this.disabledConfig.from.year <= this.pageYear;
     },
+
     /**
      * Is the previous year disabled?
      * @return {Boolean}
      */
     isPreviousDisabled() {
       if (!this.disabledConfig.has.to) {
-        return false
+        return false;
       }
-      return this.disabledConfig.to.year >= this.pageYear
+
+      return this.disabledConfig.to.year >= this.pageYear;
     },
+
+    /**
+     * Set an array with all months
+     * @return {Array}
+     */
+    months() {
+      const d = this.pageDate;
+      const months = []; // set up a new date object to the beginning of the current 'page'
+
+      const dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate())) : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
+
+      for (let i = 0; i < 12; i += 1) {
+        months.push({
+          month: this.utils.getMonthName(i, this.translation.months),
+          timestamp: dObj.valueOf(),
+          isSelected: this.isSelectedMonth(dObj),
+          isDisabled: this.isDisabledMonth(dObj)
+        });
+        this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
+      }
+
+      return months;
+    },
+
     /**
      * Display the current page's year as the title.
      * @return {String}
      */
     pageTitleMonth() {
-      const { yearSuffix } = this.translation;
-      return `${this.pageYear}${yearSuffix}`
-    },
+      const {
+        yearSuffix
+      } = this.translation;
+      return `${this.pageYear}${yearSuffix}`;
+    }
+
   },
   methods: {
+    /**
+     * Changes the year up or down
+     * @param {Number} incrementBy
+     */
+    changeYear(incrementBy) {
+      const date = this.pageDate;
+      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
+      this.$emit('changed-year', date);
+    },
+
     /**
      * Whether a month is disabled
      * @param {Date} date
      * @return {Boolean}
      */
     isDisabledMonth(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isMonthDisabled(
-        date,
-      )
+      return new DisabledDate(this.utils, this.disabledDates).isMonthDisabled(date);
     },
+
     /**
      * Whether the selected date is in this month
      * @param {Date} date
@@ -3600,21 +3597,45 @@ var script$3 = {
     isSelectedMonth(date) {
       const month = this.utils.getMonth(date);
       const year = this.utils.getFullYear(date);
-
-      return (
-        this.selectedDate &&
-        year === this.utils.getFullYear(this.selectedDate) &&
-        month === this.utils.getMonth(this.selectedDate)
-      )
+      return this.selectedDate && year === this.utils.getFullYear(this.selectedDate) && month === this.utils.getMonth(this.selectedDate);
     },
-  },
+
+    /**
+     * Increments the year
+     */
+    nextYear() {
+      if (!this.isNextDisabled) {
+        this.changeYear(1);
+      }
+    },
+
+    /**
+     * Decrements the year
+     */
+    previousYear() {
+      if (!this.isPreviousDisabled) {
+        this.changeYear(-1);
+      }
+    },
+
+    /**
+     * Emits a selectMonth event
+     * @param {Object} month
+     */
+    selectMonth(month) {
+      if (!month.isDisabled) {
+        this.$emit('select-month', month);
+      }
+    }
+
+  }
 };
 
 /* script */
-const __vue_script__$3 = script$3;
+const __vue_script__$5 = script$5;
 
 /* template */
-var __vue_render__$2 = function() {
+var __vue_render__$3 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3624,78 +3645,71 @@ var __vue_render__$2 = function() {
     [
       _vm._t("beforeCalendarHeaderMonth"),
       _vm._v(" "),
-      _vm.showHeader
-        ? _c(
-            "PickerHeader",
-            {
-              attrs: {
-                "is-next-disabled": _vm.isNextDisabled,
-                "is-previous-disabled": _vm.isPreviousDisabled,
-                "is-rtl": _vm.isRtl
-              },
-              on: { next: _vm.nextPage, previous: _vm.previousPage }
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "month__year_btn",
-                  class: { up: !_vm.isUpDisabled },
-                  on: {
-                    click: function($event) {
-                      return _vm.$emit("set-view", "year")
-                    }
-                  }
-                },
-                [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
-              ),
-              _vm._v(" "),
-              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-              _vm._v(" "),
-              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-            ],
-            2
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c(
-        "div",
-        { ref: "cells" },
-        _vm._l(_vm.cells, function(cell) {
-          return _c(
+        "PickerHeader",
+        {
+          attrs: {
+            config: _vm.headerConfig,
+            next: _vm.nextYear,
+            previous: _vm.previousYear
+          }
+        },
+        [
+          _c(
             "span",
             {
-              key: cell.timestamp,
-              staticClass: "cell month",
-              class: { selected: cell.isSelected, disabled: cell.isDisabled },
+              staticClass: "month__year_btn",
+              class: _vm.allowedToShowView("year") ? "up" : "",
               on: {
                 click: function($event) {
-                  return _vm.select(cell)
+                  return _vm.showPickerCalendar("year")
                 }
               }
             },
-            [_vm._v("\n      " + _vm._s(cell.month) + "\n    ")]
-          )
-        }),
-        0
+            [_vm._v("\n      " + _vm._s(_vm.pageTitleMonth) + "\n    ")]
+          ),
+          _vm._v(" "),
+          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+          _vm._v(" "),
+          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+        ],
+        2
       ),
+      _vm._v(" "),
+      _vm._l(_vm.months, function(month) {
+        return _c(
+          "span",
+          {
+            key: month.timestamp,
+            staticClass: "cell month",
+            class: { selected: month.isSelected, disabled: month.isDisabled },
+            on: {
+              click: function($event) {
+                $event.stopPropagation();
+                return _vm.selectMonth(month)
+              }
+            }
+          },
+          [_vm._v("\n    " + _vm._s(month.month) + "\n  ")]
+        )
+      }),
       _vm._v(" "),
       _vm._t("calendarFooterMonth")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
+var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$3 = undefined;
+  const __vue_inject_styles__$5 = undefined;
   /* scoped */
-  const __vue_scope_id__$3 = undefined;
+  const __vue_scope_id__$5 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$3 = undefined;
+  const __vue_module_identifier__$5 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$3 = false;
+  const __vue_is_functional_template__$5 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3704,13 +3718,13 @@ __vue_render__$2._withStripped = true;
   
 
   
-  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
-    __vue_inject_styles__$3,
-    __vue_script__$3,
-    __vue_scope_id__$3,
-    __vue_is_functional_template__$3,
-    __vue_module_identifier__$3,
+  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
+    __vue_inject_styles__$5,
+    __vue_script__$5,
+    __vue_scope_id__$5,
+    __vue_is_functional_template__$5,
+    __vue_module_identifier__$5,
     false,
     undefined,
     undefined,
@@ -3718,103 +3732,112 @@ __vue_render__$2._withStripped = true;
   );
 
 //
-
-var script$2 = {
-  name: 'PickerYear',
-  mixins: [__vue_component__$5],
+var script$6 = {
+  name: 'DatepickerYearView',
+  mixins: [__vue_component__$3],
   props: {
     yearRange: {
       type: Number,
-      default: 10,
-    },
+      default: 10
+    }
   },
   computed: {
-    /**
-     * Sets an array with all years to show this decade (or yearRange)
-     * @return {Array}
-     */
-    cells() {
-      const d = this.pageDate;
-      const years = [];
-      const year = this.useUtc
-        ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange
-        : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange;
-      // set up a new date object to the beginning of the current 'page'7
-      const dObj = this.useUtc
-        ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate()))
-        : new Date(
-            year,
-            d.getMonth(),
-            d.getDate(),
-            d.getHours(),
-            d.getMinutes(),
-          );
-      for (let i = 0; i < this.yearRange; i += 1) {
-        years.push({
-          year: this.utils.getFullYear(dObj),
-          timestamp: dObj.valueOf(),
-          isSelected: this.isSelectedYear(dObj),
-          isDisabled: this.isDisabledYear(dObj),
-        });
-        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
-      }
-
-      return years
-    },
     /**
      * Is the next decade disabled?
      * @return {Boolean}
      */
     isNextDisabled() {
       if (!this.disabledConfig.has.from) {
-        return false
+        return false;
       }
-      return this.disabledConfig.from.year <= this.pageDecadeEnd
+
+      return this.disabledConfig.from.year <= this.pageDecadeEnd;
     },
+
     /**
      * Is the previous decade disabled?
      * @return {Boolean}
      */
     isPreviousDisabled() {
       if (!this.disabledConfig.has.to) {
-        return false
+        return false;
       }
-      return this.disabledConfig.to.year >= this.pageDecadeStart
+
+      return this.disabledConfig.to.year >= this.pageDecadeStart;
     },
+
     /**
      * The year at which the current yearRange starts
      * @return {Number}
      */
     pageDecadeStart() {
-      return Math.floor(this.pageYear / this.yearRange) * this.yearRange
+      return Math.floor(this.pageYear / this.yearRange) * this.yearRange;
     },
+
     /**
      * The year at which the current yearRange ends
      * @return {Number}
      */
     pageDecadeEnd() {
-      return this.pageDecadeStart + this.yearRange - 1
+      return this.pageDecadeStart + this.yearRange - 1;
     },
+
     /**
      * Display the current page's decade (or year range) as the title.
      * @return {String}
      */
     pageTitleYear() {
-      const { yearSuffix } = this.translation;
-      return `${this.pageDecadeStart} - ${this.pageDecadeEnd}${yearSuffix}`
+      const {
+        yearSuffix
+      } = this.translation;
+      return `${this.pageDecadeStart} - ${this.pageDecadeEnd}${yearSuffix}`;
     },
+
+    /**
+     * Set an array with years for a decade
+     * @return {Array}
+     */
+    years() {
+      const d = this.pageDate;
+      const years = [];
+      const year = this.useUtc ? Math.floor(d.getUTCFullYear() / this.yearRange) * this.yearRange : Math.floor(d.getFullYear() / this.yearRange) * this.yearRange; // set up a new date object to the beginning of the current 'page'7
+
+      const dObj = this.useUtc ? new Date(Date.UTC(year, d.getUTCMonth(), d.getUTCDate())) : new Date(year, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
+
+      for (let i = 0; i < this.yearRange; i += 1) {
+        years.push({
+          year: this.utils.getFullYear(dObj),
+          timestamp: dObj.valueOf(),
+          isSelected: this.isSelectedYear(dObj),
+          isDisabled: this.isDisabledYear(dObj)
+        });
+        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
+      }
+
+      return years;
+    }
+
   },
   methods: {
+    /**
+     * Changes the year up or down
+     * @param {Number} incrementBy
+     */
+    changeYear(incrementBy) {
+      const date = this.pageDate;
+      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
+      this.$emit('changed-decade', date);
+    },
+
     /**
      * Whether a year is disabled
      * @param {Date} date
      * @return {Boolean}
      */
     isDisabledYear(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isYearDisabled(
-        date,
-      )
+      return new DisabledDate(this.utils, this.disabledDates).isYearDisabled(date);
     },
+
     /**
      * Whether the selected date is in this year
      * @param {Date} date
@@ -3822,35 +3845,45 @@ var script$2 = {
      */
     isSelectedYear(date) {
       const year = this.utils.getFullYear(date);
+      return this.selectedDate && year === this.utils.getFullYear(this.selectedDate);
+    },
 
-      return (
-        this.selectedDate && year === this.utils.getFullYear(this.selectedDate)
-      )
-    },
     /**
-     * Increments the page (overrides nextPage in pickerMixin)
+     * Increments the decade
      */
-    nextPage() {
+    nextDecade() {
       if (!this.isNextDisabled) {
-        this.changePage(this.yearRange);
+        this.changeYear(this.yearRange);
       }
     },
+
     /**
-     * Decrements the page (overrides previousPage in pickerMixin)
+     * Decrements the decade
      */
-    previousPage() {
+    previousDecade() {
       if (!this.isPreviousDisabled) {
-        this.changePage(-this.yearRange);
+        this.changeYear(-this.yearRange);
       }
     },
-  },
+
+    /**
+     * Emits a selectYear event
+     * @param {Object} year
+     */
+    selectYear(year) {
+      if (!year.isDisabled) {
+        this.$emit('select-year', year);
+      }
+    }
+
+  }
 };
 
 /* script */
-const __vue_script__$2 = script$2;
+const __vue_script__$6 = script$6;
 
 /* template */
-var __vue_render__$1 = function() {
+var __vue_render__$4 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3860,68 +3893,61 @@ var __vue_render__$1 = function() {
     [
       _vm._t("beforeCalendarHeaderYear"),
       _vm._v(" "),
-      _vm.showHeader
-        ? _c(
-            "PickerHeader",
-            {
-              attrs: {
-                "is-next-disabled": _vm.isNextDisabled,
-                "is-previous-disabled": _vm.isPreviousDisabled,
-                "is-rtl": _vm.isRtl
-              },
-              on: { next: _vm.nextPage, previous: _vm.previousPage }
-            },
-            [
-              _c("span", [
-                _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
-              ]),
-              _vm._v(" "),
-              _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
-              _vm._v(" "),
-              _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
-            ],
-            2
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c(
-        "div",
-        { ref: "cells" },
-        _vm._l(_vm.cells, function(cell) {
-          return _c(
-            "span",
-            {
-              key: cell.timestamp,
-              staticClass: "cell year",
-              class: { selected: cell.isSelected, disabled: cell.isDisabled },
-              on: {
-                click: function($event) {
-                  return _vm.select(cell)
-                }
-              }
-            },
-            [_vm._v("\n      " + _vm._s(cell.year) + "\n    ")]
-          )
-        }),
-        0
+        "PickerHeader",
+        {
+          attrs: {
+            config: _vm.headerConfig,
+            next: _vm.nextDecade,
+            previous: _vm.previousDecade
+          }
+        },
+        [
+          _c("span", [
+            _vm._v("\n      " + _vm._s(_vm.pageTitleYear) + "\n    ")
+          ]),
+          _vm._v(" "),
+          _vm._t("nextIntervalBtn", null, { slot: "nextIntervalBtn" }),
+          _vm._v(" "),
+          _vm._t("prevIntervalBtn", null, { slot: "prevIntervalBtn" })
+        ],
+        2
       ),
+      _vm._v(" "),
+      _vm._l(_vm.years, function(year) {
+        return _c(
+          "span",
+          {
+            key: year.timestamp,
+            staticClass: "cell year",
+            class: { selected: year.isSelected, disabled: year.isDisabled },
+            on: {
+              click: function($event) {
+                $event.stopPropagation();
+                return _vm.selectYear(year)
+              }
+            }
+          },
+          [_vm._v("\n    " + _vm._s(year.year) + "\n  ")]
+        )
+      }),
       _vm._v(" "),
       _vm._t("calendarFooterYear")
     ],
     2
   )
 };
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
+var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$2 = undefined;
+  const __vue_inject_styles__$6 = undefined;
   /* scoped */
-  const __vue_scope_id__$2 = undefined;
+  const __vue_scope_id__$6 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
+  const __vue_module_identifier__$6 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$2 = false;
+  const __vue_is_functional_template__$6 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3930,13 +3956,13 @@ __vue_render__$1._withStripped = true;
   
 
   
-  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-    __vue_inject_styles__$2,
-    __vue_script__$2,
-    __vue_scope_id__$2,
-    __vue_is_functional_template__$2,
-    __vue_module_identifier__$2,
+  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+    __vue_inject_styles__$6,
+    __vue_script__$6,
+    __vue_scope_id__$6,
+    __vue_is_functional_template__$6,
+    __vue_module_identifier__$6,
     false,
     undefined,
     undefined,
@@ -4063,63 +4089,72 @@ function getRelativePosition({
   };
 }
 
-var script$1 = {
+var script$7 = {
   name: 'Popup',
   props: {
     appendToBody: {
       type: Boolean,
-      default: true,
+      default: true
     },
     fixedPosition: {
       type: String,
-      default: '',
+      default: ''
     },
     inline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     rtl: {
       type: Boolean,
-      default: false,
+      default: false
     },
     visible: {
       type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      popupRect: null,
+      default: false
     }
   },
+
+  data() {
+    return {
+      popupRect: null
+    };
+  },
+
   watch: {
     visible: {
       immediate: true,
+
       handler(val) {
         this.$nextTick(() => {
           if (val) {
             this.displayPopup();
           }
         });
-      },
-    },
+      }
+
+    }
   },
+
   mounted() {
     if (this.inline) {
-      return
+      return;
     }
+
     if (this.appendToBody) {
       document.body.appendChild(this.$el);
     }
   },
+
   beforeDestroy() {
     if (this.inline) {
-      return
+      return;
     }
+
     if (this.appendToBody && this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el);
     }
   },
+
   methods: {
     setTopStyle() {
       if (this.appendToBody) {
@@ -4127,47 +4162,58 @@ var script$1 = {
         this.$el.style.top = `${relativeRect.bottom + window.scrollY}px`;
       }
     },
+
     displayPopup() {
-      if (this.inline || !this.visible) return
+      if (this.inline || !this.visible) return;
       this.setTopStyle();
       const popup = this.$el;
       const relativeElement = this.$parent.$el;
+
       if (!this.popupRect) {
         this.popupRect = getPopupElementSize(popup);
       }
-      const { width, height } = this.popupRect;
-      const { left, top } = getRelativePosition({
+
+      const {
+        width,
+        height
+      } = this.popupRect;
+      const {
+        left,
+        top
+      } = getRelativePosition({
         el: popup,
         elRelative: relativeElement,
         targetWidth: width,
         targetHeight: height,
         appendToBody: this.appendToBody,
         fixedPosition: this.fixedPosition,
-        rtl: this.rtl,
+        rtl: this.rtl
       });
-
       this.$el.style.left = left;
       this.$el.style.top = top;
-    },
+    }
+
   },
+
   render() {
-    return this.$slots.default
-  },
+    return this.$slots.default;
+  }
+
 };
 
 /* script */
-const __vue_script__$1 = script$1;
+const __vue_script__$7 = script$7;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1 = undefined;
+  const __vue_inject_styles__$7 = undefined;
   /* scoped */
-  const __vue_scope_id__$1 = undefined;
+  const __vue_scope_id__$7 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
+  const __vue_module_identifier__$7 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1 = undefined;
+  const __vue_is_functional_template__$7 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -4176,13 +4222,13 @@ const __vue_script__$1 = script$1;
   
 
   
-  const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
+  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
     {},
-    __vue_inject_styles__$1,
-    __vue_script__$1,
-    __vue_scope_id__$1,
-    __vue_is_functional_template__$1,
-    __vue_module_identifier__$1,
+    __vue_inject_styles__$7,
+    __vue_script__$7,
+    __vue_scope_id__$7,
+    __vue_is_functional_template__$7,
+    __vue_module_identifier__$7,
     false,
     undefined,
     undefined,
@@ -4191,208 +4237,193 @@ const __vue_script__$1 = script$1;
 
 //
 
-var script = {
+const validDate = val => val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number';
+
+var script$8 = {
   name: 'Datepicker',
   components: {
-    DateInput: __vue_component__$7,
+    DateInput: __vue_component__$1,
     PickerDay: __vue_component__$4,
-    PickerMonth: __vue_component__$3,
-    PickerYear: __vue_component__$2,
-    Popup: __vue_component__$1,
+    PickerMonth: __vue_component__$5,
+    PickerYear: __vue_component__$6,
+    Popup: __vue_component__$7
   },
-  mixins: [__vue_component__$8],
+  mixins: [__vue_component__],
   props: {
     appendToBody: {
       type: Boolean,
-      default: false,
+      default: false
     },
     calendarClass: {
       type: [String, Object, Array],
-      default: '',
+      default: ''
     },
     dayCellContent: {
       type: Function,
-      default: (day) => day.date,
+      default: day => day.date
     },
     disabledDates: {
       type: Object,
+
       default() {
-        return {}
-      },
+        return {};
+      }
+
     },
     firstDayOfWeek: {
       type: String,
-      default: 'sun',
+      default: 'sun'
     },
     fixedPosition: {
       type: String,
       default: '',
-      validator: (val) => {
-        const possibleValues = [
-          '',
-          'bottom',
-          'bottom-left',
-          'bottom-right',
-          'top',
-          'top-left',
-          'top-right',
-        ];
-        return possibleValues.includes(val)
-      },
+      validator: val => {
+        const possibleValues = ['', 'bottom', 'bottom-left', 'bottom-right', 'top', 'top-left', 'top-right'];
+        return possibleValues.includes(val);
+      }
     },
     fullMonthName: {
       type: Boolean,
-      default: false,
+      default: false
     },
     highlighted: {
       type: Object,
+
       default() {
-        return {}
-      },
+        return {};
+      }
+
     },
     initialView: {
       type: String,
-      default: '',
+      default: ''
     },
     language: {
       type: Object,
-      default: () => en,
+      default: () => en
     },
     maximumView: {
       type: String,
-      default: 'year',
+      default: 'year'
     },
     minimumView: {
       type: String,
-      default: 'day',
+      default: 'day'
     },
     showEdgeDates: {
       type: Boolean,
-      default: true,
+      default: true
     },
     showHeader: {
       type: Boolean,
-      default: true,
+      default: true
     },
     value: {
       type: [String, Date, Number],
       default: '',
-      validator: (val) =>
-        val === null ||
-        val instanceof Date ||
-        typeof val === 'string' ||
-        typeof val === 'number',
+      validator: validDate
     },
     wrapperClass: {
       type: [String, Object, Array],
-      default: '',
+      default: ''
     },
     yearPickerRange: {
       type: Number,
-      default: 10,
-    },
+      default: 10
+    }
   },
-  data() {
-    const utils = makeDateUtils(this.useUtc);
-    const startDate = utils.getNewDateObject(this.openDate || null);
-    const pageTimestamp = utils.setDate(startDate, 1);
 
+  data() {
+    // const startDate = this.openDate ? new Date(this.openDate) : new Date()
+    const constructedDateUtils = makeDateUtils(this.useUtc);
+    let startDate;
+
+    if (this.openDate) {
+      startDate = constructedDateUtils.getNewDateObject(this.openDate);
+    } else {
+      startDate = constructedDateUtils.getNewDateObject();
+    }
+
+    const pageTimestamp = constructedDateUtils.setDate(startDate, 1);
     return {
+      /*
+       * Positioning
+       */
       calendarHeight: 0,
       calendarSlots,
+      currentPicker: '',
+
       /*
        * Vue cannot observe changes to a Date Object so date must be stored as a timestamp
        * This represents the first day of the current viewing month
        * {Number}
        */
       pageTimestamp,
-      resetTypedDate: utils.getNewDateObject(),
+      resetTypedDate: constructedDateUtils.getNewDateObject(),
+
       /*
        * Selected Date
        * {Date}
        */
       selectedDate: null,
-      utils,
-      view: '',
-    }
+      utils: constructedDateUtils
+    };
   },
+
   computed: {
-    allowedViews() {
-      const views = ['day', 'month', 'year'];
-
-      return views.filter((view) => this.allowedToShowView(view))
-    },
     computedInitialView() {
-      return this.initialView || this.minimumView
+      return this.initialView ? this.initialView : this.minimumView;
     },
+
     isInline() {
-      return !!this.inline
+      return !!this.inline;
     },
+
     isOpen() {
-      return this.view !== ''
+      return this.currentPicker !== '';
     },
+
     isRtl() {
-      return this.translation.rtl
+      return this.translation.rtl === true;
     },
-    isUpDisabled() {
-      return !this.allowedToShowView(this.nextView.up)
-    },
-    nextView() {
-      const isCurrentView = (view) => view === this.view;
-      const viewIndex = this.allowedViews.findIndex(isCurrentView);
-      const nextViewDown = (index) => {
-        return index <= 0 ? undefined : this.allowedViews[index - 1]
-      };
-      const nextViewUp = (index) => {
-        if (index < 0) {
-          return undefined
-        }
 
-        if (index === this.allowedViews.length - 1) {
-          return 'decade'
-        }
-
-        return this.allowedViews[index + 1]
-      };
-
-      return {
-        up: nextViewUp(viewIndex),
-        down: nextViewDown(viewIndex),
-      }
-    },
     pageDate() {
-      return new Date(this.pageTimestamp)
+      return new Date(this.pageTimestamp);
     },
-    picker() {
-      const view = this.view || this.computedInitialView;
-      return `Picker${this.ucFirst(view)}`
-    },
+
     pickerClasses() {
-      return [
-        this.calendarClass,
-        this.isInline && 'inline',
-        this.isRtl && this.appendToBody && 'rtl',
-      ]
+      return [this.calendarClass, 'vdp-datepicker__calendar', this.isInline && 'inline', this.isRtl && this.appendToBody && 'rtl'];
     },
+
     translation() {
-      return this.language
+      return this.language;
     },
+
+    disabledDatesClass() {
+      return new DisabledDate(this.utils, this.disabledDates);
+    }
+
   },
   watch: {
     initialView() {
       this.setInitialView();
     },
+
     openDate() {
       this.setPageDate();
     },
+
     value(value) {
       const parsedValue = this.parseValue(value);
       this.setValue(parsedValue);
-    },
+    }
+
   },
+
   mounted() {
     this.init();
   },
+
   methods: {
     /**
      * Are we allowed to show a specific picker view?
@@ -4404,9 +4435,9 @@ var script = {
       const minimumViewIndex = views.indexOf(this.minimumView);
       const maximumViewIndex = views.indexOf(this.maximumView);
       const viewIndex = views.indexOf(view);
-
-      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex
+      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex;
     },
+
     /**
      * Clear the selected date
      */
@@ -4417,73 +4448,38 @@ var script = {
       this.$emit('input', null);
       this.$emit('cleared');
     },
+
     /**
      * Close the calendar views
      */
     close() {
       if (!this.isInline) {
-        this.view = '';
+        this.currentPicker = '';
         this.$emit('closed');
       }
     },
-    /**
-     * Set the new pageDate and emit `changed-<view>` event
-     */
-    handlePageChange(pageDate) {
-      this.setPageDate(pageDate);
-      this.$emit(`changed-${this.nextView.up}`, pageDate);
-    },
-    /**
-     * Emits a 'blur' event
-     */
-    handleInputBlur() {
-      this.$emit('blur');
-    },
-    /**
-     * Emits a 'focus' event
-     */
-    handleInputFocus() {
-      this.$emit('focus');
-    },
-    /**
-     * Set the date, or go to the next view down
-     */
-    handleSelect(cell) {
-      if (this.allowedToShowView(this.nextView.down)) {
-        this.setPageDate(new Date(cell.timestamp));
-        this.$emit(`changed-${this.view}`, cell);
-        this.setView(this.nextView.down);
-        return
-      }
 
-      this.resetTypedDate = this.utils.getNewDateObject();
-      this.selectDate(cell.timestamp);
-      this.close();
-    },
     /**
-     * Emit a 'selected-disabled' event
+     * Handles a month change from the day picker
      */
-    handleSelectDisabled(cell) {
-      this.$emit('selected-disabled', cell);
+    handleChangedMonthFromDayPicker(date) {
+      this.setPageDate(date);
+      this.$emit('changed-month', date);
     },
-    /**
-     * Set the date from a 'typed-date' event
-     */
-    handleTypedDate(date) {
-      this.selectDate(date.valueOf());
-    },
+
     /**
      * Initiate the component
      */
     init() {
       if (this.value) {
         let parsedValue = this.parseValue(this.value);
-        const isDateDisabled = parsedValue && this.isDateDisabled(parsedValue);
+        const isDateDisabled = parsedValue && this.disabledDatesClass.isDateDisabled(parsedValue);
 
         if (isDateDisabled) {
           parsedValue = null;
           this.$emit('input', parsedValue);
         }
+
         this.setValue(parsedValue);
       }
 
@@ -4491,37 +4487,21 @@ var script = {
         this.setInitialView();
       }
     },
+
     /**
-     * Returns true if a date is disabled
-     * @param {Date} date
+     * Emits a 'blur' event
      */
-    isDateDisabled(date) {
-      return new DisabledDate(this.utils, this.disabledDates).isDateDisabled(
-        date,
-      )
+    onBlur() {
+      this.$emit('blur');
     },
+
     /**
-     * Opens the calendar with the relevant view: 'day', 'month', or 'year'
+     * Emits a 'focus' event
      */
-    open() {
-      if (this.disabled || this.isInline) {
-        return
-      }
-      this.setInitialView();
-      this.$emit('opened');
+    onFocus() {
+      this.$emit('focus');
     },
-    /**
-     * Parse a datepicker value from string/number to date
-     * @param {Date|String|Number|null} date
-     */
-    parseValue(date) {
-      let dateTemp = date;
-      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
-        const parsed = new Date(dateTemp);
-        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
-      }
-      return dateTemp
-    },
+
     /**
      * Called in the event that the user navigates to date pages and
      * closes the picker without selecting a date.
@@ -4529,21 +4509,24 @@ var script = {
     resetDefaultPageDate() {
       if (this.selectedDate === null) {
         this.setPageDate();
-        return
+        return;
       }
+
       this.setPageDate(this.selectedDate);
     },
+
     /**
-     * Select the date
+     * Set the selected date
      * @param {Number} timestamp
      */
-    selectDate(timestamp) {
+    setDate(timestamp) {
       const date = new Date(timestamp);
       this.selectedDate = date;
       this.setPageDate(date);
       this.$emit('selected', date);
       this.$emit('input', date);
     },
+
     /**
      * Sets the initial picker page view: day, month or year
      */
@@ -4551,28 +4534,50 @@ var script = {
       const initialView = this.computedInitialView;
 
       if (!this.allowedToShowView(initialView)) {
-        throw new Error(
-          `initialView '${this.initialView}' cannot be rendered based on minimum '${this.minimumView}' and maximum '${this.maximumView}'`,
-        )
+        throw new Error(`initialView '${this.initialView}' cannot be rendered based on minimum '${this.minimumView}' and maximum '${this.maximumView}'`);
       }
 
-      this.setView(initialView);
+      switch (initialView) {
+        case 'year':
+          this.showSpecificCalendar('Year');
+          break;
+
+        case 'month':
+          this.showSpecificCalendar('Month');
+          break;
+
+        default:
+          this.showSpecificCalendar('Day');
+          break;
+      }
     },
+
     /**
      * Sets the date that the calendar should open on
      */
     setPageDate(date) {
       let dateTemp = date;
+
       if (!dateTemp) {
         if (this.openDate) {
           dateTemp = new Date(this.openDate);
         } else {
           dateTemp = new Date();
         }
+
         dateTemp = this.utils.resetDateTime(dateTemp);
       }
+
       this.pageTimestamp = this.utils.setDate(new Date(dateTemp), 1);
     },
+
+    /**
+     * Set the date from a typedDate event
+     */
+    setTypedDate(date) {
+      this.setDate(date.valueOf());
+    },
+
     /**
      * Set the datepicker value
      * @param {Date|String|Number|null} date
@@ -4581,32 +4586,102 @@ var script = {
       if (!date) {
         this.setPageDate();
         this.selectedDate = null;
-        return
+        return;
       }
+
       this.selectedDate = date;
       this.setPageDate(date);
     },
+
     /**
-     * Set the picker view
+     * parse a datepicker value from string/number to date
+     * @param {Date|String|Number|null} date
      */
-    setView(view) {
-      if (this.allowedToShowView(view)) {
-        this.view = view;
+    parseValue(date) {
+      let dateTemp = date;
+
+      if (typeof dateTemp === 'string' || typeof dateTemp === 'number') {
+        const parsed = new Date(dateTemp);
+        dateTemp = Number.isNaN(parsed.valueOf()) ? null : parsed;
+      }
+
+      return dateTemp;
+    },
+
+    /**
+     * @param {Object} date
+     */
+    selectDate(date) {
+      this.resetTypedDate = this.utils.getNewDateObject();
+      this.close();
+      this.setDate(date.timestamp);
+    },
+
+    /**
+     * @param {Object} date
+     */
+    selectDisabledDate(date) {
+      this.$emit('selected-disabled', date);
+    },
+
+    /**
+     * @param {Object} month
+     */
+    selectMonth(month) {
+      const date = new Date(month.timestamp);
+
+      if (this.allowedToShowView('day')) {
+        this.setPageDate(date);
+        this.$emit('changed-month', month);
+        this.showSpecificCalendar('Day');
+      } else {
+        this.selectDate(month);
       }
     },
+
     /**
-     * Capitalizes the first letter
+     * @param {Object} year
      */
-    ucFirst(str) {
-      return str[0].toUpperCase() + str.substring(1)
+    selectYear(year) {
+      const date = new Date(year.timestamp);
+
+      if (this.allowedToShowView('month')) {
+        this.setPageDate(date);
+        this.$emit('changed-year', year);
+        this.showSpecificCalendar('Month');
+      } else {
+        this.selectDate(year);
+      }
     },
-  },
+
+    /**
+     * Shows the calendar at the relevant view: 'day', 'month', or 'year'
+     */
+    showCalendar() {
+      if (this.disabled || this.isInline) {
+        return;
+      }
+
+      this.setInitialView();
+      this.$emit('opened');
+    },
+
+    /**
+     * Show a specific picker
+     */
+    showSpecificCalendar(type) {
+      if (this.allowedToShowView(type.toLowerCase())) {
+        this.currentPicker = `Picker${type}`;
+      }
+    }
+
+  }
 };
 
 /* script */
-const __vue_script__ = script;
+const __vue_script__$8 = script$8;
 /* template */
-var __vue_render__ = function() {
+var __vue_render__$5 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -4614,7 +4689,7 @@ var __vue_render__ = function() {
     "div",
     {
       staticClass: "vdp-datepicker",
-      class: [_vm.wrapperClass, { rtl: _vm.isRtl }]
+      class: [_vm.wrapperClass, _vm.isRtl ? "rtl" : ""]
     },
     [
       _c(
@@ -4651,12 +4726,12 @@ var __vue_render__ = function() {
             "use-utc": _vm.useUtc
           },
           on: {
-            blur: _vm.handleInputBlur,
+            blur: _vm.onBlur,
             "clear-date": _vm.clearDate,
-            close: _vm.close,
-            focus: _vm.handleInputFocus,
-            open: _vm.open,
-            "typed-date": _vm.handleTypedDate
+            "close-calendar": _vm.close,
+            focus: _vm.onFocus,
+            "show-calendar": _vm.showCalendar,
+            "typed-date": _vm.setTypedDate
           }
         },
         [
@@ -4684,102 +4759,93 @@ var __vue_render__ = function() {
           }
         },
         [
-          _c(
-            "div",
-            {
-              directives: [
+          _vm.isOpen
+            ? _c(
+                "div",
                 {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isOpen,
-                  expression: "isOpen"
-                }
-              ],
-              ref: "datepicker",
-              staticClass: "vdp-datepicker__calendar",
-              class: _vm.pickerClasses,
-              on: {
-                mousedown: function($event) {
-                  $event.preventDefault();
-                }
-              }
-            },
-            [
-              _vm._t("beforeCalendarHeader"),
-              _vm._v(" "),
-              _c(
-                _vm.picker,
-                {
-                  tag: "Component",
-                  attrs: {
-                    "day-cell-content": _vm.dayCellContent,
-                    "disabled-dates": _vm.disabledDates,
-                    "first-day-of-week": _vm.firstDayOfWeek,
-                    highlighted: _vm.highlighted,
-                    "is-rtl": _vm.isRtl,
-                    "is-up-disabled": _vm.isUpDisabled,
-                    "page-date": _vm.pageDate,
-                    "selected-date": _vm.selectedDate,
-                    "show-edge-dates": _vm.showEdgeDates,
-                    "show-full-month-name": _vm.fullMonthName,
-                    "show-header": _vm.showHeader,
-                    translation: _vm.translation,
-                    "use-utc": _vm.useUtc,
-                    "year-range": _vm.yearPickerRange
-                  },
+                  ref: "datepicker",
+                  class: _vm.pickerClasses,
                   on: {
-                    "page-change": _vm.handlePageChange,
-                    select: _vm.handleSelect,
-                    "select-disabled": _vm.handleSelectDisabled,
-                    "set-view": _vm.setView
-                  },
-                  scopedSlots: _vm._u(
-                    [
-                      {
-                        key: "dayCellContent",
-                        fn: function(ref) {
-                          var cell = ref.cell;
-                          return [
-                            cell
-                              ? _vm._t("dayCellContent", null, { cell: cell })
-                              : _vm._e()
-                          ]
-                        }
-                      }
-                    ],
-                    null,
-                    true
-                  )
+                    mousedown: function($event) {
+                      $event.preventDefault();
+                    }
+                  }
                 },
                 [
-                  _vm._l(_vm.calendarSlots, function(slotKey) {
-                    return [_vm._t(slotKey, null, { slot: slotKey })]
-                  })
+                  _vm.isOpen
+                    ? [
+                        _vm._t("beforeCalendarHeader"),
+                        _vm._v(" "),
+                        _c(
+                          _vm.currentPicker,
+                          {
+                            tag: "Component",
+                            attrs: {
+                              "allowed-to-show-view": _vm.allowedToShowView,
+                              "day-cell-content": _vm.dayCellContent,
+                              "disabled-dates": _vm.disabledDates,
+                              "first-day-of-week": _vm.firstDayOfWeek,
+                              highlighted: _vm.highlighted,
+                              "is-rtl": _vm.isRtl,
+                              "page-date": _vm.pageDate,
+                              "page-timestamp": _vm.pageTimestamp,
+                              "selected-date": _vm.selectedDate,
+                              "show-edge-dates": _vm.showEdgeDates,
+                              "show-full-month-name": _vm.fullMonthName,
+                              "show-header": _vm.showHeader,
+                              translation: _vm.translation,
+                              "use-utc": _vm.useUtc,
+                              "year-range": _vm.yearPickerRange
+                            },
+                            on: {
+                              "select-date": _vm.selectDate,
+                              "changed-month":
+                                _vm.handleChangedMonthFromDayPicker,
+                              "selected-disabled": _vm.selectDisabledDate,
+                              "select-month": _vm.selectMonth,
+                              "changed-year": _vm.setPageDate,
+                              "show-month-calendar": function($event) {
+                                return _vm.showSpecificCalendar("Month")
+                              },
+                              "select-year": _vm.selectYear,
+                              "changed-decade": _vm.setPageDate,
+                              "show-year-calendar": function($event) {
+                                return _vm.showSpecificCalendar("Year")
+                              }
+                            }
+                          },
+                          [
+                            _vm._l(_vm.calendarSlots, function(slotKey) {
+                              return [_vm._t(slotKey, null, { slot: slotKey })]
+                            })
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _vm._t("calendarFooter")
+                      ]
+                    : _vm._e()
                 ],
                 2
-              ),
-              _vm._v(" "),
-              _vm._t("calendarFooter")
-            ],
-            2
-          )
+              )
+            : _vm._e()
         ]
       )
     ],
     1
   )
 };
-var __vue_staticRenderFns__ = [];
-__vue_render__._withStripped = true;
+var __vue_staticRenderFns__$5 = [];
+__vue_render__$5._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  const __vue_inject_styles__$8 = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  const __vue_scope_id__$8 = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  const __vue_module_identifier__$8 = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  const __vue_is_functional_template__$8 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -4788,20 +4854,20 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
+  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+    __vue_inject_styles__$8,
+    __vue_script__$8,
+    __vue_scope_id__$8,
+    __vue_is_functional_template__$8,
+    __vue_module_identifier__$8,
     false,
     undefined,
     undefined,
     undefined
   );
 
-/* harmony default export */ var Datepicker_esm = (__vue_component__);
+/* harmony default export */ var Datepicker_esm = (__vue_component__$8);
 //# sourceMappingURL=Datepicker.esm.js.map
 
 // CONCATENATED MODULE: ./node_modules/@sum.cumo/vue-datepicker/dist/locale/Language.esm.js
@@ -5302,13 +5368,30 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
   },
   data: function data() {
     return {
-      language: index_esm_namespaceObject[this.context.attributes.language],
-      date: this.context.model
+      language: index_esm_namespaceObject[this.context.attributes.language]
     };
   },
   watch: {
     date: function date() {
-      var d = this.date;
+      this.context.model = this.formatDate(this.date);
+    }
+  },
+  computed: {
+    date: {
+      get: function get() {
+        return new Date(this.context.model);
+      },
+      set: function set(val) {
+        this.context.model = this.formatDate(val);
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.context.model = this.formatDate(this.context.model);
+  },
+  methods: {
+    formatDate: function formatDate(date) {
+      var d = date;
       var year = new Intl.DateTimeFormat("en", {
         year: "numeric"
       }).format(d);
@@ -5318,7 +5401,7 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
       var day = new Intl.DateTimeFormat("en", {
         day: "2-digit"
       }).format(d);
-      this.context.model = "".concat(year, "-").concat(month, "-").concat(day);
+      return "".concat(year, "-").concat(month, "-").concat(day);
     }
   },
   components: {
