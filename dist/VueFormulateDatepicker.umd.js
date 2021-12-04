@@ -1787,12 +1787,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a929420-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"410f9a16-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueFormulateDatepicker.vue?vue&type=template&id=87f63202&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Datepicker',_vm._b({class:("formulate-input-element formulate-input-element--" + (_vm.context.type)),attrs:{"input-class":_vm.context.attributes.class,"data-type":_vm.context.type,"options":_vm.context.options,"language":_vm.language},on:{"blur":_vm.context.blurHandler},model:{value:(_vm.date),callback:function ($$v) {_vm.date=$$v},expression:"date"}},'Datepicker',_vm.context.attributes,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=0eb8a910&
+// CONCATENATED MODULE: ./src/VueFormulateDatepicker.vue?vue&type=template&id=87f63202&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -5732,27 +5732,37 @@ const zh_esm_language = new Language_esm('Chinese', ['一月', '二月', '三月
       language: index_esm_namespaceObject[this.context.attributes.language]
     };
   },
-  watch: {
-    date: function date() {
-      this.context.model = this.formatDate(this.date);
-    }
-  },
   computed: {
     date: {
       get: function get() {
-        return new Date(this.context.model);
+        if (this.context.model) {
+          return this.formatDate(this.context.model);
+        } else return null;
       },
       set: function set(val) {
+        this.context.rootEmit("input", this.formatDate(val));
         this.context.model = this.formatDate(val);
       }
     }
   },
-  mounted: function mounted() {
-    this.context.model = this.formatDate(this.context.model);
+  watch: {
+    "context.model": {
+      handler: function handler(val) {
+        this.context.model = this.formatDate(val);
+        this.context.rootEmit("input", this.formatDate(val));
+      }
+    },
+    "context.value": {
+      handler: function handler(val) {
+        this.context.model = this.formatDate(val);
+        this.context.rootEmit("input", this.formatDate(val));
+      }
+    }
   },
   methods: {
     formatDate: function formatDate(date) {
-      var d = date;
+      if (!date) return null;
+      var d = new Date(date);
       var year = new Intl.DateTimeFormat("en", {
         year: "numeric"
       }).format(d);

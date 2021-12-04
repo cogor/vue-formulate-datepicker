@@ -22,9 +22,7 @@
     "postbuild": "rm dist/demo.html"
   },
   "dependencies": {
-    "@sum.cumo/vue-datepicker": "3.2.3",
-    "core-js": "3.19.0",
-    "vue": "2.6.14"
+    "@sum.cumo/vue-datepicker": "3.2.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.15",
@@ -38,7 +36,15 @@
     "prettier": "2.3.2",
     "vue-template-compiler": "2.6.14"
   },
+  "peerDependencies": {
+    "vue": "^2.6.14"
+  },
   "engines": {
     "node": ">=12"
-  }
+  },
+  "files": [
+    "src",
+    "dist",
+    "LICENSE"
+  ]
 }
