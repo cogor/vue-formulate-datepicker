@@ -22,7 +22,7 @@
     "postbuild": "rm dist/demo.html"
   },
   "dependencies": {
-    "@sum.cumo/vue-datepicker": "3.2.3"
+    "@sum.cumo/vue-datepicker": "4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.15",
